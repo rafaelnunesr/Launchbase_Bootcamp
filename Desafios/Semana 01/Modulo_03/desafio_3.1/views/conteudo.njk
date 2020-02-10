@@ -1,0 +1,85 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+    <title>Conteudo - Rocketseat</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+        <section class="cursos">
+            <div class="curso" id="starter">
+                <div class="curso_photo logo_grande">
+                    <img src="https://skylab.rocketseat.com.br/static/64c237ccff807c054339a62d53b4b402.svg" alt="started">
+                </div>
+                <div class="curso_info">
+                    <h1>Starter</h1>
+                </div>
+
+                <div class="modulos">
+                    <p>Quantidade de Modulos: 6</p>
+                </div>
+                <div class="price">
+                    <p>Gratis</p>
+                </div>
+            </div>
+
+            <div class="curso" id="launchbase">
+                <div class="curso_photo">
+                    <img src="https://skylab.rocketseat.com.br/static/0828532024cb46921a6b5e941f8d788d.svg" alt="launchbase">
+                </div>
+                <div class="curso_info">
+                    <h1>LaunchBase</h1>
+                </div>
+
+                <div class="modulos">
+                    <p>Quantidade de Modulos: 16</p>
+                </div>
+
+                <div class="price">
+                    <p>Pago</p>
+                </div>
+            </div>
+
+            <div class="curso" id="gostack">
+                <div class="curso_photo logo_grande">
+                    <img src="https://skylab.rocketseat.com.br/static/83a178a0653dab1d55e2ed7946465975.svg" alt="goStack">
+                </div>
+                <div class="curso_info">
+                    <h1>GoStack</h1>
+                </div>
+
+                <div class="modulos">
+                    <p>Quantidade de Modulos: 26</p>
+                </div>
+
+                <div class="price">
+                    <p>Pago</p>
+                </div>
+            </div>
+            
+        </section>
+
+        <div class="modal-overlay" id="gostack">
+            <div class="modal">
+                <a class="close-modal">
+                    <i class="material-icons">close</i>
+                </a>
+
+                <a class="maximize">
+                    <i class="material-icons">
+                        fullscreen
+                        </i>
+                </a>
+
+                <div class="modal-content">
+                    <!-- Video aqui -->
+                    <iframe src="" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+        
+        <script src="/scripts.js"></script>
+
+{% endblock %}

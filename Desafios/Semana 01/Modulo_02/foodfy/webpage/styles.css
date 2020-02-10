@@ -1,0 +1,222 @@
+@import "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap";
+
+@import "https://fonts.googleapis.com/css?family=PT+Serif&display=swap";
+
+:root {
+    --color-gray_1: rgb(68, 68, 68);
+    --color-gray_2: rgb(82, 82, 82);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    margin: 0 auto;
+    background-color: rgb(194, 194, 194);
+    font-family: 'Roboto', sans-serif;
+    color: var(--color-gray_1);
+}
+
+body .background {
+    background-color: white;
+    margin: 3px 3px auto;
+    border-radius: 5px;
+    padding-bottom: 120vh;
+}
+
+header nav {
+    position: absolute;
+    left: 14%;
+    display: inline-block;
+    top: 20px;
+}
+
+header .logo_name {
+    font-family: 'PT Serif', serif;
+    font-size: 24px;
+    font-weight: 34px;
+    display: inline-block;
+    padding-right: 20px;
+}
+
+header a{
+    text-decoration: none;
+    padding-right: 10px;
+    color: var(--color-gray_1);
+}
+
+
+header .header_box {
+    position: absolute;
+    left: 14%;
+    top: 60px;
+    right: 14%;
+}
+
+header .box {
+    background-color: rgb(255, 223, 219);
+    border-radius: 15px;
+    height: 336px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+header .title {
+    max-width: 90%;
+    text-align: center;
+    margin-top: 25%;
+    color: var(--color-gray_1);    
+}
+
+header .description_website {
+    position: absolute;
+    top: 50%;
+    left: 6%;
+    right: 60%;
+    color: var(--color-gray_1);  
+}
+
+header .logo {
+    max-width: 90%;
+    position: absolute;
+    left: 60%;
+    right: 20%;
+    bottom: 0;
+}
+
+main {
+    position: absolute;
+    left: 14%;
+    top: 57%;
+}
+
+main .mais_acessadas {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: lighter;
+}
+
+main .receitas {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-right: 14%;
+}
+
+main .receita {
+    padding-top: 15px;
+}
+
+main .receita img {
+    border-radius: 15px;
+    max-width: 90%;
+}
+
+main .description_receitas {
+    color: black;
+    font-weight: normal;
+}
+
+main .nome_chef {
+    color: var(--color-gray_2);
+    font-size: 12px;
+    padding-top: 2px;
+}
+
+
+footer p {
+    text-align: center;
+    margin: 16px auto;
+    font-size: 14px;
+    color: rgb(136, 136, 136);
+}
+
+/* === SOBRE.HTML === */
+.about h1 {
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 30px;
+    bottom: 320px;
+}
+
+.about_description p {
+    position: relative;
+    right: 14%;
+    max-width: 70%;
+    margin: 0 14% auto;
+    font-size: 14px;
+    padding-top: 20px;
+    text-align: justify;
+    bottom: 330px;
+}
+
+.sub_h h2{
+    position: relative;
+    bottom: 320px;
+    font-size: 16px;
+}
+
+/* === RECEITAS.HTML === */
+.receitas_html {
+    position: absolute;
+    top: 60px;
+}
+
+/* === MODAL === */
+.modal-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal {
+    background-color: white;
+    width: 30%;
+    height: 40%;
+    margin: 30vh auto;
+    position: relative;
+    border-radius: 20px;
+}
+
+.modal .close-modal {
+    color: rgb(116, 116, 116);
+    position: absolute;
+    cursor: pointer;
+    bottom: 5px;
+    left: 130px;
+}
+
+.modal_content img {
+    position: absolute;
+    width: 90%;
+    top: 7%;
+    left: 5%;
+    border-radius: 10px;
+}
+
+/* === MODAL.ACTIVE === */
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal_description {
+    position: absolute;
+    top: 200px;
+    left: 5%;
+}
+
+.modal_chef {
+    position: absolute;
+    top: 220px;
+    left: 5%;
+    font-size: 11px;
+}
+
+

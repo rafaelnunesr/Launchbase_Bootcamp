@@ -1,0 +1,92 @@
+:root {
+    --border-color: rgb(53, 44, 75);
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: rgb(116, 87, 191);
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+header {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.226);
+    padding: 30px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+header div a {
+    color: white;
+    font-size: 20px;
+    line-height: 30px;
+    text-decoration: none;
+    margin: 0 30px;
+
+}
+
+header div a:hover{
+    color: rgb(55, 206, 50);
+    transition: color 200ms;
+}
+
+/* === SOBRE */
+body .wrapper {
+    text-align: center;
+    padding: 32px;
+}
+
+body .wrapper img {
+    border-radius: 50%;
+}
+
+body .wrapper .info{
+    padding: 30px;
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+body .wrapper h1 {
+    font-weight: bold;
+}
+
+body .wrapper #info {
+    padding: 20px;
+    font-size: 15px;
+    font-weight: lighter;
+}
+
+body .wrapper .techs {
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+body .wrapper ul {
+    padding: 10px;
+    font-size: 15px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+body .social_medias {
+    text-align: center;
+}
+
+body .social_medias a {
+    text-decoration: none;
+    color: white;
+    margin: 0 30px;
+    border-bottom: 2px solid rgb(55, 206, 50);
+}
+
+body .social_medias a:hover{
+    color: rgb(55, 206, 50);
+    transition: color 200ms;
+}
