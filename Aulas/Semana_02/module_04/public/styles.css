@@ -66,4 +66,25 @@ header {
     width: 800px;
     height: 400px;
     margin: 45px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    /* sombra */
+    box-shadow: 0px 2px 6px -2px rgba(0, 0, 0, 0.4);
+
+    /* animation */
+    animation-name: up; /* up == nome da animacao */
+    animation-duration: 200ms; /* animation time */
+    animation-timing-function: ease;
+}
+
+@keyframes up {
+    from {
+        opacity: 0;
+        transform: translateY(15px)
+    }
+    to
+    {
+        opacity: 1;
+    }
 }
