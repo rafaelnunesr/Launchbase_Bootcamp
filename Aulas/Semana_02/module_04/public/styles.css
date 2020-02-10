@@ -75,7 +75,7 @@ header {
     /* animation */
     animation-name: up; /* up == nome da animacao */
     animation-duration: 200ms; /* animation time */
-    animation-timing-function: ease;
+    animation-timing-function: ease-out;
 }
 
 @keyframes up {
