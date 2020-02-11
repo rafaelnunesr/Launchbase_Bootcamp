@@ -1,0 +1,19 @@
+/* fe5f55-12355b-420039-f7fff7-eef5db */
+
+:root {
+    --orange-color: #fe5f55;
+    --blue-color: #12355b;
+    --purple-color: #420039;
+    --cream-color: #f7fff7;
+    --gold-color: #eef5db;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0
+}
+
+body {
+    
+}
