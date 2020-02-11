@@ -42,10 +42,31 @@ header {
 .links a {
     text-decoration: none;
     color: white;
+    position: relative;
 }
 
 .links a.active {
-     color: var(--orange-color);
+     color: var(--gold-color);
+}
+
+.links a:hover {
+    color: var(--orange-color);
+}
+
+.links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: -4px;
+    background-color: white;
+}
+
+.links a:hover::after {
+    width: 100%;
+    background-color: var(--orange-color);
+    transition: all 700ms cubic-bezier(0.42, 0, 1.0, 1.0);
 }
 
 footer {
@@ -53,7 +74,7 @@ footer {
     bottom: 0;
     left: 0;
     background-color: var(--gold-color);
-    padding: 22px;
+    padding: 16px;
     width: 100%;
 }
 
