@@ -1,0 +1,18 @@
+{
+  "instructors": [
+    {
+      "avatar-url": "https://google.com",
+      "name": "Rafael Nunes Rios",
+      "birth": "2020-02-11",
+      "gender": "M",
+      "services": "node"
+    },
+    {
+      "avatar-url": "https://google.com",
+      "name": "shdgds",
+      "birth": "2021-01-02",
+      "gender": "F",
+      "services": " kahdskaksa"
+    }
+  ]
+}
