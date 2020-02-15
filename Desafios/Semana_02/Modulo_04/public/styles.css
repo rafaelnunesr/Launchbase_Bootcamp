@@ -131,7 +131,6 @@ footer p {
     height: calc(100% - 1px);
     border-bottom-left-radius: 20px;
     border-top-left-radius: 20px;
-    position: relative;
 }
 
 .details {
@@ -203,10 +202,7 @@ button {
     margin-top: 10px;
     color: white;
     font-size: 15px;
-    opacity: 0.3;
 }
-
-
 
 button:hover {
     background: #fa3f31;

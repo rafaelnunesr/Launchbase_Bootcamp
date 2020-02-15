@@ -12,4 +12,5 @@ routes.get('/teachers', function(req, res) {
 
 routes.post('/teachers', teachers.post)
 
+
 module.exports = routes

@@ -1,30 +1,33 @@
-const input_values = document.querySelectorAll('.item')
-const last_input = document.querySelector('.lectures')
+
+/*
+const name = document.querySelector('.name')
+const birth = document.querySelector('.birth')
+const lectures = document.querySelector('.lectures')
 const button = document.querySelector('button')
-const birth = document.getElementsByName('birth')
 
-const save_info = document.querySelector('p')
+let filled = 0
 
-last_input.addEventListener("change", function(){
-    
-    let allow_newTeacher = true
-
-    for (let value of input_values)
-    {
-        if (value == undefined) {
-            allow_newTeacher = false
-        }
-    }
-
-    if (birth.value == "") {
-        allow_newTeacher = false
-    }
-    
-    if (allow_newTeacher){
+function filled_done () {
+    if (filled >= 3){
         button.disabled = false
+        button.style.opacity = 1
+        filled = 0
     }
-    else {
-        alert("Por gentileza, preencha todos os dados")
-        save_info.style.color = "#fe5f55"
-    }
+}
+
+name.addEventListener('change', function(){
+    filled += 1;
+    filled_done()
 })
+
+birth.addEventListener('change', function(){
+    filled += 1;
+    filled_done()
+})
+
+lectures.addEventListener('change', function(){
+    filled += 1;
+    filled_done()
+})
+
+*/
