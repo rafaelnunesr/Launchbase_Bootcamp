@@ -203,7 +203,10 @@ button {
     margin-top: 10px;
     color: white;
     font-size: 15px;
+    opacity: 0.3;
 }
+
+
 
 button:hover {
     background: #fa3f31;
