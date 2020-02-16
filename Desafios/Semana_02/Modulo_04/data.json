@@ -1,0 +1,13 @@
+{
+  "teachers": [
+    {
+      "id": 1,
+      "name": "shdgds",
+      "birth": 1267488000000,
+      "education": "secondary_education",
+      "class_type": "presential",
+      "lectures": "nonde",
+      "created_at": 1581815366647
+    }
+  ]
+}

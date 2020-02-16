@@ -208,3 +208,44 @@ button:hover {
     background: #fa3f31;
 }
 
+/*=== NOT-FILLED ===*/
+.not_filled_container{
+    margin-top: 50px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+.not_filled_container h1,
+.not_filled_container h3,
+.not_filled_container h6 {
+    padding: 20px;
+    color: rgb(150, 150, 150);
+}
+
+/*=== NOT FOUND ===*/
+.not_found {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 30px;
+}
+
+.not_found h1 {
+    font-size: 300px;
+    font-weight: bolder;
+    left: 40px;
+}
+
+.not_found h3 {
+    font-size: 100px;
+    font-weight: normal;
+    max-width: 80%;
+    margin-top: 70px;
+}
+
+.not_found h6 {
+    margin: 0 auto;
+    font-size: 40px;
+    font-weight: bolder;
+    text-align: center;
+}

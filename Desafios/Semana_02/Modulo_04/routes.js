@@ -12,5 +12,12 @@ routes.get('/teachers', function(req, res) {
 
 routes.post('/teachers', teachers.post)
 
+routes.get('/not-filled', function(req, res) {
+    return res.render('not-filled')
+})
+
+routes.use(function(req, res) {
+    return res.status(404).render('not-found')
+})
 
 module.exports = routes
