@@ -29,7 +29,7 @@ exports.post = function(req, res) {
     fs.writeFile('data.json', JSON.stringify(data, null, 2), function(err){
         if (err) return res.send('Write file error')
 
-        return res.render('/teachers')
+        return res.render('/teachers', {teacher: data})
     })
 
 }
