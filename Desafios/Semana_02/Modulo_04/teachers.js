@@ -14,6 +14,9 @@ exports.post = function(req, res) {
     birth = Date.parse(birth)
     const created_at = Date.now()
     const id = Number(data.teachers.length + 1)
+    education = education.split("_").join(' ')
+    class_type = class_type.split('_')
+    lectures = lectures.split(',')
 
     data.teachers.push({
         id,
@@ -29,7 +32,7 @@ exports.post = function(req, res) {
     fs.writeFile('data.json', JSON.stringify(data, null, 2), function(err){
         if (err) return res.send('Write file error')
 
-        return res.render('/teachers', {teacher: data})
+        return res.render('./index')
     })
 
 }

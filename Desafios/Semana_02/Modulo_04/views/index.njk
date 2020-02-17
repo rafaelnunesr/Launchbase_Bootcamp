@@ -1,52 +1,55 @@
 {% extends 'layout.njk' %}
 
 {% block content %}
-    <div class="card">
-        <section class="avatar"></section>
-        <section class="details">
-            <h3>Detalhes</h3>
 
-            <div class="item">
-                <div class="nome">
-                    <div>Nome</div>
-                    <div>Rafael Nunes</div>
-                </div>
-            </div>
+    {% for item in teacher %}
+        <div class="cards">
+            <div class="card">
+                <section class="avatar"></section>
+                <section class="details">
+                    <h3>Detalhes</h3>
 
-            <div class="item">
-                <div class="birth">
-                    <div>Data de Nascimento</div>
-                    <div>16/11/1989</div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="education">
-                    <div>Escolaridade</div>
-                    <div>Ensino Medio</div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="class-type">
-                    <div>Tipo de Aula</div>
-                    <div>
-                        <span>Presencial</span>
-                        <span>A Distancia</span>
+                    <div class="item">
+                        <div class="nome">
+                            <div>Nome</div>
+                            <div>{{ item.name }}</div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="item">
-                <div class="lectures">
-                    <div>Área de Atuação</div>
-                    <div>
-                        <span>Matematica</span>
-                        <span>Fisica</span>
+                    <div class="item">
+                        <div class="birth">
+                            <div>Data de Nascimento</div>
+                            <div>{{ item.birth }}</div>
+                        </div>
                     </div>
-                </div>
-            </div>     
-        </section>
-    </div>
 
+                    <div class="item">
+                        <div class="education">
+                            <div>Escolaridade</div>
+                            <div>{{item.education}}</div>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="class-type">
+                            <div>Tipo de Aula</div>
+                            <div>
+                                <span>Presencial</span>
+                                <span>A Distancia</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="lectures">
+                            <div>Área de Atuação</div>
+                            <div>
+                                <span>{{item.lectures}}</span>
+                            </div>
+                        </div>
+                    </div>    
+                </section>
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}
