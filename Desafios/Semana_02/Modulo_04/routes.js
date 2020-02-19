@@ -4,7 +4,7 @@ const teachers = require('./teachers')
 const data = require('./data')
 
 routes.get('/', function(req, res) {
-    return res.render('index', {teacher: data.teachers})
+    return res.render('index', {teacher: teachers})
 })
 
 routes.get('/teachers', function(req, res) {
