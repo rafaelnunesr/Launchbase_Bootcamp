@@ -1,0 +1,125 @@
+{% extends 'layout.njk' %}
+
+{% block header %}
+    <title>New Teacher | </title>
+{% endblock %}
+
+{% block content %}
+    <section>
+        <form class="card" method="POST" action="/teachers">
+            <div class="avatar">
+                <img src="../img/noprofile.png" alt="profile photo">
+            </div>
+
+            <div class="introduction">
+                <h3>Detalhes sobre você</h3>
+                <textarea name="introduction" cols="45" rows="10"></textarea>
+            </div>
+
+            <div class="personal_info">
+                <div class="item">
+                    <div class="avatar_url">
+                        <h3>Avatar URL</h3>
+                        <div>
+                            <input 
+                                type="text"
+                                name="avatar_url"
+                                placeholder="https://">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="name">
+                        <h3>Nome</h3>
+                        <div>
+                            <input 
+                                type="text"
+                                name="name"
+                                placeholder="Nome Completo">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="gender">
+                        <h3>Sexo</h3>
+                        <div>
+                            <span>
+                                <input 
+                                    type="radio" 
+                                    name="gender"
+                                    value="F" checked>Feminino
+                            </span>
+
+                            <span>
+                                <input 
+                                    type="radio" 
+                                    name="gender"
+                                    value="M">Masculino
+                            </span>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="birth">
+                        <h3>Data de Nascimento</h3>
+                        <div>
+                            <input 
+                                type="date" 
+                                name="birth">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="education">
+                        <h3>Escolaridade</h3>
+                        <div>
+                            <select name="education">
+                                <option value="secondary_education">Ensino Médio Completo</option>
+                                <option value="graduated">Ensino Superior Completo</option>
+                                <option value="post_graduated">Mestrado</option>
+                                <option value="doctorate">Doutorado</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="class_type">
+                        <h3>Tipo de Aula</h3>
+                        <div>
+                            <select name="class_type">
+                                <option value="presential">Presencial</option>
+                                <option value="ead">EAD</option>
+                                <option value="presential_ead">Presencial / EAD</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="lectures">
+                        <h3>Área de Atuação</h3>
+                        <div>
+                            <input 
+                                type="text"
+                                placeholder="Separe as matérias com virgulas">
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="save">
+                <p>Obrigatório o preenchimento de todos os campos.</p>
+                <button type="submit">Salvar</button> 
+            </div> 
+
+        </form>
+    </section>
+{% endblock %}
