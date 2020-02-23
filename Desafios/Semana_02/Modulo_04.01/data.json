@@ -1,5 +1,16 @@
 {
   "teachers": [
-
+    {
+      "id": 1,
+      "name": "Rafael Nunes",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/42895506?s=460&v=4",
+      "gender": "M",
+      "birth": 976320000000,
+      "education": "post_graduated",
+      "class_type": "ead",
+      "lectures": "nor, math, english",
+      "introduction": "Hey sksjdkjdks dkjskdjks dksjdkjskd dksjdksjkd dkjskdjskda skdhjksjh smdjsjdks dsdjsdjksd sdjsajdksa dskdjskhdka dsakdjskdjksad askdjskad dksjdskajdksd kdjskdjaskds",
+      "created_at": 1582419040675
+    }
   ]
 }
