@@ -11,6 +11,30 @@
       "lectures": "nor, math, english",
       "introduction": "Hey sksjdkjdks dkjskdjks dksjdkjskd dksjdksjkd dkjskdjskda skdhjksjh smdjsjdks dsdjsdjksd sdjsajdksa dskdjskhdka dsakdjskdjksad askdjskad dksjdskajdksd kdjskdjaskds",
       "created_at": 1582419040675
+    },
+    {
+      "id": 2,
+      "name": "Rodrigo",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/42895506?s=460&v=4",
+      "gender": "M",
+      "birth": 565574400000,
+      "education": "post_graduated",
+      "class_type": "ead",
+      "lectures": "js, html, css",
+      "introduction": "Hey, guys.",
+      "created_at": 1582583292874
+    },
+    {
+      "id": 3,
+      "name": "Rodrigo",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/42895506?s=460&v=4",
+      "gender": "M",
+      "birth": 565574400000,
+      "education": "secondary_education",
+      "class_type": "presential",
+      "lectures": "js,",
+      "introduction": "asasa",
+      "created_at": 1582584236980
     }
   ]
 }

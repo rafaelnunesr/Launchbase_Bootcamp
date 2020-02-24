@@ -3,10 +3,10 @@ module.exports = {
         const today = new Date()
         const birth = new Date(timestamp)
 
-        let age = today.getFullYear() - birth.getFullYear()
-        const month = today.getMonth - birth.getMonth()
+        let age = today.getUTCFullYear() - birth.getUTCFullYear()
+        const month = today.getMonth - birth.getUTCMonth()
 
-        if(month < 0 || month == 0 && today.getDate() < birth.getDate()){
+        if(month < 0 || month == 0 && today.getUTCDate() < birth.getUTCDate()){
             age = age - 1
         }
         return age
@@ -56,6 +56,18 @@ module.exports = {
                 type = 'Não informado'
         }
         return type
+    },
+    date: function(timestamp){
+        const date = new Date (timestamp)
+
+        const year = date.getUTCFullYear()
+
+        const month = `0${date.getUTCMonth() + 1}`.slice(-2)
+
+        const day = `0${date.getUTCDate()}`.slice(-2)
+
+        return `${year}-${month}-${day}`
     }
+
 
 }
