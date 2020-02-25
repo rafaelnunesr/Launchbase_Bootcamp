@@ -22,6 +22,8 @@ routes.post('/instructors', instructors.post) // instructors.post e o nome da fu
 
 routes.put("/instructors", instructors.put)
 
+routes.delete("/instructors", instructors.delete)
+
 routes.get('/members', function(req, res) {
     return res.send("members")
 })
