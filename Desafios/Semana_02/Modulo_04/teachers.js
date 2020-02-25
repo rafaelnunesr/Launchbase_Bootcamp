@@ -1,5 +1,5 @@
 const fs = require('fs')
-const data = require('./data.json.js')
+const data = require('./data.json')
 const { age, education, class_t, date } = require('./utils')
 
 // create
