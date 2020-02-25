@@ -2,265 +2,39 @@
   "teachers": [
     {
       "id": 1,
-      "name": "shdgds",
-      "birth": 1267488000000,
-      "education": "secondary_education",
-      "class_type": "presential",
-      "lectures": "nonde",
-      "created_at": 1581815366647
+      "name": "Rafael Nunes",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/42895506?s=460&v=4",
+      "gender": "M",
+      "birth": 976320000000,
+      "education": "post_graduated",
+      "class_type": "ead",
+      "lectures": "nor, math, english",
+      "introduction": "Hey sksjdkjdks dkjskdjks dksjdkjskd dksjdksjkd dkjskdjskda skdhjksjh smdjsjdks dsdjsdjksd sdjsajdksa dskdjskhdka dsakdjskdjksad askdjskad dksjdskajdksd kdjskdjaskds",
+      "created_at": 1582419040675
     },
     {
       "id": 2,
-      "name": "rafael",
-      "birth": 1467488000000,
-      "education": "primary_education",
-      "class_type": "presential",
-      "lectures": "node",
-      "created_at": 1581815366647
+      "name": "Rodrigo",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/42895506?s=460&v=4",
+      "gender": "M",
+      "birth": 565574400000,
+      "education": "post_graduated",
+      "class_type": "ead",
+      "lectures": "js, html, css",
+      "introduction": "Hey, guys.",
+      "created_at": 1582583292874
     },
     {
       "id": 3,
-      "name": "rock",
-      "birth": 1283472000000,
-      "education": [
-        "secondary",
-        "education"
-      ],
+      "name": "Rodrigo",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/42895506?s=460&v=4",
+      "gender": "M",
+      "birth": 565574400000,
+      "education": "secondary_education",
       "class_type": "presential",
-      "lectures": "nor",
-      "created_at": 1581897058340
-    },
-    {
-      "id": 4,
-      "name": "rock",
-      "birth": 1283472000000,
-      "education": "secondary education",
-      "class_type": "presential",
-      "lectures": "nor",
-      "created_at": 1581897155377
-    },
-    {
-      "id": 5,
-      "name": "rock",
-      "birth": 1283472000000,
-      "education": "secondary education",
-      "class_type": [
-        "presential"
-      ],
-      "lectures": [
-        "nor",
-        " math",
-        " english"
-      ],
-      "created_at": 1581897220082
-    },
-    {
-      "id": 6,
-      "name": "dan",
-      "birth": 1283472000000,
-      "education": "secondary education",
-      "class_type": [
-        "presential"
-      ],
-      "lectures": [
-        "english",
-        " math",
-        " port"
-      ],
-      "created_at": 1581897373204
-    },
-    {
-      "id": 7,
-      "name": "dan",
-      "birth": 1283472000000,
-      "education": "secondary education",
-      "class_type": [
-        "presential",
-        "ead"
-      ],
-      "lectures": [
-        "english",
-        " math",
-        " port"
-      ],
-      "created_at": 1581897393604
-    },
-    {
-      "id": 8,
-      "name": "rock",
-      "birth": 1586044800000,
-      "education": "secondary education",
-      "class_type": [
-        "presential"
-      ],
-      "lectures": [
-        "hjs"
-      ],
-      "created_at": 1581898176939
-    },
-    {
-      "id": 9,
-      "name": "rock",
-      "birth": 1586044800000,
-      "education": "secondary education",
-      "class_type": [
-        "presential"
-      ],
-      "lectures": [
-        "hjs"
-      ],
-      "created_at": 1581898320063
-    },
-    {
-      "id": 10,
-      "name": "Rafael ",
-      "birth": 1367539200000,
-      "education": "secondary education",
-      "class_type": [
-        "presential"
-      ],
-      "lectures": [
-        "nor",
-        " math",
-        " english"
-      ],
-      "created_at": 1581898397194
-    },
-    {
-      "id": 11,
-      "name": "Rafael ",
-      "birth": 1367539200000,
-      "education": "secondary education",
-      "class_type": [
-        "presential"
-      ],
-      "lectures": [
-        "nor",
-        " math",
-        " english"
-      ],
-      "created_at": 1581898410326
-    },
-    {
-      "id": 12,
-      "name": "Rafael ",
-      "birth": 1367539200000,
-      "education": "secondary education",
-      "class_type": [
-        "presential"
-      ],
-      "lectures": [
-        "nor",
-        " math",
-        " english"
-      ],
-      "created_at": 1581898447861
-    },
-    {
-      "id": 13,
-      "name": "Rafael ",
-      "birth": 1367539200000,
-      "education": "secondary education",
-      "class_type": [
-        "presential"
-      ],
-      "lectures": [
-        "nor",
-        " math",
-        " english"
-      ],
-      "created_at": 1581898457716
-    },
-    {
-      "id": 14,
-      "name": "dan",
-      "birth": 1588464000000,
-      "education": "secondary education",
-      "class_type": [
-        "presential"
-      ],
-      "lectures": [
-        "sjhds"
-      ],
-      "created_at": 1581898540616
-    },
-    {
-      "id": 15,
-      "name": "dan",
-      "birth": 1588464000000,
-      "education": "secondary education",
-      "class_type": [
-        "presential"
-      ],
-      "lectures": [
-        "sjhds"
-      ],
-      "created_at": 1581898557100
-    },
-    {
-      "id": 16,
-      "name": "dan",
-      "birth": 1588464000000,
-      "education": "secondary education",
-      "class_type": [
-        "presential"
-      ],
-      "lectures": [
-        "sjhds"
-      ],
-      "created_at": 1581898584267
-    },
-    {
-      "id": 17,
-      "name": "dan",
-      "birth": 1588464000000,
-      "education": "secondary education",
-      "class_type": [
-        "presential"
-      ],
-      "lectures": [
-        "sjhds"
-      ],
-      "created_at": 1581898600375
-    },
-    {
-      "id": 18,
-      "name": "dan",
-      "birth": 1441238400000,
-      "education": "secondary education",
-      "class_type": [
-        "presential"
-      ],
-      "lectures": [
-        "nonde"
-      ],
-      "created_at": 1581898635681
-    },
-    {
-      "id": 19,
-      "name": "dan",
-      "birth": 1441238400000,
-      "education": "secondary education",
-      "class_type": [
-        "presential"
-      ],
-      "lectures": [
-        "nonde"
-      ],
-      "created_at": 1581898645365
-    },
-    {
-      "id": 20,
-      "name": "dan",
-      "birth": 1441238400000,
-      "education": "secondary education",
-      "class_type": [
-        "presential"
-      ],
-      "lectures": [
-        "nonde"
-      ],
-      "created_at": 1581898658115
+      "lectures": "js,",
+      "introduction": "asasa",
+      "created_at": 1582584236980
     }
   ]
 }
