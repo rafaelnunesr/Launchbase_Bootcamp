@@ -1,0 +1,98 @@
+{% extends 'layout.njk' %}
+
+{% block header %}
+    <title>Teachers | {{teacher.name}}</title>
+{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="card">
+            <div class="avatar">
+                <img src="{{teacher.avatar_url}}" alt="profile photo">
+            </div>
+
+            <div class="introduction">
+                <h3>Detalhes sobre {{teacher.name}}</h3>
+                <div>
+                    <p>{{teacher.introduction}}</p>
+                </div>
+            </div>
+
+            <div class="personal_info">
+
+                <div class="item">
+                    <div class="name">
+                        <h3>Nome</h3>
+                        <div>
+                            {{teacher.name}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="gender">
+                        <h3>Sexo</h3>
+                        <div>
+                            {{'Feminino' if teacher.gender == 'F' else 'Masculino'}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="birth">
+                        <h3>Idade</h3>
+                        <div>
+                            {{teacher.birth}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="education">
+                        <h3>Escolaridade</h3>
+                        <div>
+                            {{teacher.education}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="class_type">
+                        <h3>Tipo de Aula</h3>
+                        <div>
+                            {{teacher.class_type}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="membership">
+                        <h3>Membro desde</h3>
+                        <div>{{teacher.created_at}}</div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="lectures">
+                        <h3>Área de Atuação</h3>
+                        <span>
+                            {% for lecture in teacher.lectures%}
+                                <div>
+                                    {{ lecture }}
+                                </div>
+                            {% endfor %}
+                        </span>
+                        </div>     
+                    </div>
+                </div>
+
+                <div class="save">
+                    <button type="submit">Editar</button> 
+                </div> 
+
+            </div>
+
+        </div>
+    </section>
+    
+{% endblock %}
