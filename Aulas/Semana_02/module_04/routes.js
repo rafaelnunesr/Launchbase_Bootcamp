@@ -20,4 +20,10 @@ routes.get('/instructors/:id/edit', instructors.edit)
 
 routes.post('/instructors', instructors.post) // instructors.post e o nome da funcao exportada pelo instructors.js
 
+routes.put("/instructors", instructors.put)
+
+routes.get('/members', function(req, res) {
+    return res.send("members")
+})
+
 module.exports = routes
