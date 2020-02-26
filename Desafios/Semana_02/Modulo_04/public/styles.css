@@ -226,6 +226,8 @@ input::placeholder{
     top: -35px;
 }
 
+.form-delete button,
+.button,
 .save button {
     font-size: 20px;
     font-weight: bolder;
@@ -236,8 +238,14 @@ input::placeholder{
     position: absolute;
     bottom: 15px;
     right: 30px;
+    text-decoration: none;
 }
 
+.button:hover,
 .save button:hover{
     background: #ff5100;
+}
+
+.form-delete button {
+    background-color: red;
 }

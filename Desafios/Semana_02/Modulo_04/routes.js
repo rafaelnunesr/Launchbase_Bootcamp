@@ -20,4 +20,6 @@ routes.get('/teachers/:id', teachers.show)
 
 routes.get('/teachers/:id/edit', teachers.edit)
 
+routes.put('/teachers', teachers.put)
+
 module.exports = routes

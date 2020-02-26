@@ -5,5 +5,9 @@
 {% endblock %}
 
 {% block content %}
-    {% include 'teachers/fields.njk' %}
+    <section>
+        <form class="card" method="POST" action="/teachers">
+            {% include 'teachers/fields.njk' %}
+        </form>
+    </section>
 {% endblock %}

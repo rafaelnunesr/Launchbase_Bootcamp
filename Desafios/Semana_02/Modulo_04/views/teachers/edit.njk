@@ -1,6 +1,18 @@
 {% extends 'layout.njk' %}
 
 {% block content %}
-    {% include 'teachers/fields.njk' %}
+    <section>
+        <div class="card">
+            <form method="POST" action="/teachers?_method=PUT">
+                {% include 'teachers/fields.njk' %}
 
+                <input type="hidden" name="id" value={{ teacher.id }}>
+            </form>
+
+            <form class="form-delete" action="/teachers?_method=DELETE" method="POST">
+                <input type="hidden" name="id" value={{ teacher.id }}>
+                <button type='submit'>Deletar</button>
+            </form>
+        </div>
+    </section>
 {% endblock %}
