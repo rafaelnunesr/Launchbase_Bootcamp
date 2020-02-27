@@ -249,3 +249,20 @@ input::placeholder{
 .form-delete button {
     background-color: red;
 }
+
+.form-delete button:hover{
+    background: rgb(192, 41, 41);
+}
+
+/*=== EDIT ====*/
+.form-edit .personal_info{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.form-edit .save{
+    position: absolute;
+    bottom: 0;
+    right: 100px;
+}

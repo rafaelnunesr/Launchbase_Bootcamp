@@ -86,13 +86,11 @@ exports.put = function(req, res) {
 
     let index = 0
 
-    console.log(teacher)
-
     const foundTeacher = data.teachers.find(function(teacher, foundIndex){
         if (id == teacher.id){
             index = foundIndex
             return true
-        }
+        }})
 
     if (!foundTeacher){
         return res.send('Teacher not found!')
@@ -113,5 +111,20 @@ exports.put = function(req, res) {
 
         return res.redirect(`/teachers/${id}`)
         })
+}
+
+exports.delete = function(req, res){
+    const { id } = req.body
+
+    const filteredTeacher = data.teachers.filter(function(teacher){
+        return teacher.id != id
+    })
+
+    data.teachers = filteredTeacher
+
+    fs.writeFile('data.json', JSON.stringify(data, null, 2), function(err){
+        if (err) return res.send('Write file error!')
+
+        return res.redirect('/teachers')
     })
 }

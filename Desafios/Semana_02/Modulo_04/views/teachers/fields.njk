@@ -16,7 +16,10 @@
         <div class="avatar_url">
             <h3>Avatar URL</h3>
             <div>
-                <input type="text" name="avatar_url" placeholder="https://" value={{ teacher.avatar_url }}>
+                <input type="text" 
+                    name="avatar_url"
+                    placeholder="https://" 
+                    value={{ teacher.avatar_url }}>
             </div>
         </div>
     </div>
@@ -35,7 +38,7 @@
             <h3>Sexo</h3>
             <div>
                 <span>
-                    <input type="radio" name="gender" value="F" {% if teacher.gender == "F" %} checked {% endif%}>Feminino
+                    <input type="radio" name="gender" value="F" {% if teacher.gender == "F" %} checked {% endif %}>Feminino
                 </span>
 
                 <span>
@@ -95,6 +98,5 @@
 </div>
 
 <div class="save">
-    <p>Obrigatório o preenchimento de todos os campos.</p>
     <button type="submit">Salvar</button>
 </div>
