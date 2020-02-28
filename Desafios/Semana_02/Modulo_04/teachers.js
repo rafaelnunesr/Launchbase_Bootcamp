@@ -99,7 +99,8 @@ exports.put = function(req, res) {
     const teacher_ = {
         ...foundTeacher,
         ...req.body,
-        birth: Date.parse(req.body.birth)
+        birth: Date.parse(req.body.birth),
+        id: Number(req.body.id)
     }
 
     data.teachers[index] = teacher_
@@ -128,3 +129,6 @@ exports.delete = function(req, res){
         return res.redirect('/teachers')
     })
 }
+
+exports.index = function(req, res){
+    return res.render('teachers/index', {teachers: data.teachers})}

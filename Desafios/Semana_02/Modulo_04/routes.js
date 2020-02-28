@@ -20,8 +20,6 @@ routes.put('/teachers', teachers.put)
 
 routes.delete('/teachers', teachers.delete)
 
-routes.get('/teachers', function(req, res){
-    return res.render('teachers/index')
-})
+routes.get('/teachers', teachers.index)
 
 module.exports = routes

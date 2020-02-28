@@ -5,58 +5,29 @@
 {% endblock %}
 
 {% block content %}
-    <div class="card">
-        <div class="avatar">
-            <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="profile photo">
-        </div>
+    <div class="card table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Nome Completo</th>
+                    <th>Acompanhamento</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for teacher in teachers %}
+                    <tr>
+                        <td>
+                            <span style="background-image: url({{ teacher.avatar_url }})"></span>
+                        </td>
+                        <td>{{ teacher.name }}</td>
+                        <td>{{ teacher.lectures }}</td>
+                        <td><a href="/teachers/{{ teacher.id }}">ver</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-        <div class="introduction">
-            <h3>Sobre Rafael</h3>
-            <p>Lorem ipsum dolor sit amet <strong>consectetur</strong>, adipisicing elit. Ratione consequatur inventore consectetur enim obcaecati, placeat hic <strong>tempore</strong> incidunt pariatur autem sit, voluptates ex iure nesciunt accusantium rerum magnam alias suscipit?</p>
-        </div>
-
-        <div class="personal_info">
-            <div class="item">
-                <div class="name">
-                    <h3>Nome</h3>
-                    <div class="info">Rafael Nunes</div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="age">
-                    <h3>Idade</h3>
-                    <div class="info">29 anos</div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="education">
-                    <h3>Escolaridade</h3>
-                    <div class="info">Ensino Medio Completo</div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="class_type">
-                    <h3>Tipo de Aula</h3>
-                    <div class="info">EAD</div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="lectures">
-                    <h3>Área de Atuação</h3>
-                    <span>
-                        <div>Matematica</div>
-                        <div>Portugues</div>
-                        <div>English</div>
-                        <div>Node</div>
-                    </span>
-                    
-                </div>
-            </div>
-
-        </div>
     </div>
 {% endblock %}

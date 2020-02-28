@@ -266,3 +266,64 @@ input::placeholder{
     bottom: 0;
     right: 100px;
 }
+
+/* INDEX TEACHERS */
+.table-container {
+    display: block;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+table {
+    width: 100%;
+}
+
+.table-container table {
+    border-spacing: 0;
+    text-align: left;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(18, 52, 89, 0.3);
+}
+
+th {
+    text-transform: uppercase;
+    color: rgba(18, 52, 89, 0.8);
+    font-weight: normal;
+}
+
+tbody td:first-child{
+    display: grid;
+    grid-template-columns: 60px 1fr;
+}
+
+tbody td:first-child span {
+    width: 40px;
+    height: 40px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 5px 4px 5px -4px rgba(18, 52, 89, 1);
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody a {
+    text-decoration: none;
+    color: white;
+    background-color: var(--orange-color);
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+tbody a:hover{
+    background-color: rgb(255, 51, 0);
+}
+

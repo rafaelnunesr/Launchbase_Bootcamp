@@ -1,5 +1,16 @@
 {
   "teachers": [
-    
+    {
+      "id": 1,
+      "name": "Rafael",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/42895506?s=460&v=4",
+      "gender": "M",
+      "birth": 565747200000,
+      "education": "secondary_education",
+      "class_type": "presential",
+      "lectures": "Matematica, Geografia, lista",
+      "introduction": "",
+      "created_at": 1582850653982
+    }
   ]
 }
