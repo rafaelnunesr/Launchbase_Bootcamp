@@ -1,3 +1,13 @@
 {
-  "instructors": []
+  "instructors": [
+    {
+      "id": 1,
+      "avatar_url": "https://avatars3.githubusercontent.com/u/42895506?s=460&v=4",
+      "birth": 629164800000,
+      "created_at": 1582845805309,
+      "name": "Rafael",
+      "services": "natacao",
+      "gender": "M"
+    }
+  ]
 }
