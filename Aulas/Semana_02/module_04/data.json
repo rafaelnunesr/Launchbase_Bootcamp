@@ -2,12 +2,25 @@
   "instructors": [
     {
       "id": 1,
-      "avatar_url": "https://avatars3.githubusercontent.com/u/42895506?s=460&v=4",
-      "birth": 629164800000,
-      "created_at": 1582845805309,
-      "name": "Rafael",
-      "services": "natacao",
+      "avatar_url": "https://images.pexels.com/photos/594610/pexels-photo-594610.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "birth": 946771200000,
+      "created_at": 1582980275269,
+      "name": "rock165",
+      "services": "node",
       "gender": "M"
+    }
+  ],
+  "members": [
+    {
+      "id": 1,
+      "avatar_url": "https://avatars3.githubusercontent.com/u/42895506?s=460&v=4",
+      "name": "Rafael",
+      "email": "rafa@rafa",
+      "birth": 976060800000,
+      "gender": "M",
+      "blood": "A+",
+      "weight": "80",
+      "height": "188"
     }
   ]
 }

@@ -1,33 +1,16 @@
 const fs = require('fs')
-const data = require("./data.json")
-const { age, date } = require('./utils')
+const data = require("../data.json")
+const { age, date } = require('../utils')
 
-//show
-exports.show = function(req, res) {
-    //req.params
-    const { id } = req.params
-
-    const foundInstructor = data.instructors.find(function(instructor){
-        return instructor.id == id
-    })
-
-    if (!foundInstructor) {
-        return res.send('Instructor not found')
-    }
-
-    // corrigir os dados, como datas
-    const instructor = {
-        ...foundInstructor,
-        age: age(foundInstructor.birth),
-        gender: "",
-        services: foundInstructor.services.split(","),
-        created_at: new Intl.DateTimeFormat("pt-BR").format(foundInstructor.created_at)
-    } 
-
-    return res.render('instructors/show', {instructor})
+//index
+exports.index = function(req, res) {
+    return res.render('instructors/index', { instructors: data.instructors })
 }
 
-// create
+exports.create = function(req, res) {
+    return res.render('instructors/create')}
+
+// post
 exports.post = function (req, res) {
     const keys = Object.keys(req.body) 
 
@@ -62,6 +45,31 @@ exports.post = function (req, res) {
     })
 }
 
+//show
+exports.show = function(req, res) {
+    //req.params
+    const { id } = req.params
+
+    const foundInstructor = data.instructors.find(function(instructor){
+        return instructor.id == id
+    })
+
+    if (!foundInstructor) {
+        return res.send('Instructor not found')
+    }
+
+    // corrigir os dados, como datas
+    const instructor = {
+        ...foundInstructor,
+        age: age(foundInstructor.birth),
+        gender: "",
+        services: foundInstructor.services.split(","),
+        created_at: new Intl.DateTimeFormat("pt-BR").format(foundInstructor.created_at)
+    } 
+
+    return res.render('instructors/show', {instructor})
+}
+
 //edit
 exports.edit = function(req, res) {
     //req.params
@@ -77,7 +85,7 @@ exports.edit = function(req, res) {
 
     const instructor = {
         ...foundInstructor,
-        birth: date(foundInstructor.birth)
+        birth: date(foundInstructor.birth).iso
     }
 
     return res.render('instructors/edit', { instructor })
@@ -133,9 +141,4 @@ exports.delete = function(req, res){
         }
         return res.redirect('/instructors')
     } )
-}
-
-//index
-exports.index = function(req, res) {
-    return res.render('instructors/index', { instructors: data.instructors })
 }
