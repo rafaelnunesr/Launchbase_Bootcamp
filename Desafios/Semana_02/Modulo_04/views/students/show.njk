@@ -1,0 +1,93 @@
+{% extends 'layout.njk' %}
+
+{% block header %}
+    <title>Student | {{student.name}}</title>
+{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="card">
+            <div class="avatar">
+                <img src="{{student.avatar_url}}" alt="profile photo">
+            </div>
+
+            <div class="introduction">
+                <h3>Detalhes sobre {{student.name}}</h3>
+                <div>
+                    <p>{{student.introduction}}</p>
+                </div>
+            </div>
+
+            <div class="personal_info">
+
+                <div class="item">
+                    <div class="name">
+                        <h3>Nome</h3>
+                        <div>
+                            {{student.name}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="email">
+                        <h3>Email</h3>
+                        <div>
+                            {{student.email}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="gender">
+                        <h3>Sexo</h3>
+                        <div>
+                            {{'Feminino' if student.gender == 'F' else 'Masculino'}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="birth">
+                        <h3>Data Aniversário</h3>
+                        <div>
+                            {{student.birth}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="education">
+                        <h3>Escolaridade</h3>
+                        <div>
+                            {{student.scholarship}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="membership">
+                        <h3>Membro desde</h3>
+                        <div>{{student.created_at}}</div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="hour_week">
+                        <h3>Horas Semanais de Estudo</h3>
+                        <div>
+                            {{student.hour_week}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="save">
+                    <a href="/students/{{student.id}}/edit" class='button'>Editar</a>
+                </div> 
+
+            </div>
+
+        </div>
+    </section>
+    
+{% endblock %}

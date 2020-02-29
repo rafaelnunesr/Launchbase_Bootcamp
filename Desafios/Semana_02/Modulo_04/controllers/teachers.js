@@ -1,6 +1,12 @@
 const fs = require('fs')
-const data = require('./data.json')
-const { age, education, class_t, date } = require('./utils')
+const data = require('../data.json')
+const { age, education, class_t, date } = require('../utils')
+
+exports.index = function(req, res){
+    return res.render('teachers/index', {teachers: data.teachers})}
+
+exports.create = function(req, res){
+    return res.render('teachers/create')}
 
 // create
 exports.post = function(req, res){
@@ -75,12 +81,14 @@ exports.edit = function(req, res){
 
     const teacher = {
         ...foundTeacher,
-        birth: date(foundTeacher.birth)
+        birth: date(foundTeacher.birth),
+        lectures: foundTeacher.lectures
     }
 
     return res.render('teachers/edit', { teacher })
 }
 
+//atualizar
 exports.put = function(req, res) {
     const { id } = req.body
 
@@ -114,6 +122,7 @@ exports.put = function(req, res) {
         })
 }
 
+// delete
 exports.delete = function(req, res){
     const { id } = req.body
 
@@ -129,6 +138,3 @@ exports.delete = function(req, res){
         return res.redirect('/teachers')
     })
 }
-
-exports.index = function(req, res){
-    return res.render('teachers/index', {teachers: data.teachers})}

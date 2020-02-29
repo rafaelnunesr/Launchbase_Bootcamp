@@ -7,7 +7,7 @@
 {% block content %}
     <div class="card table-container">
         <div class="create">
-            <a href="/teachers/create">Novo</a>
+            <a href="/students/create">Novo</a>
         </div>
         <table>
             <thead>
@@ -19,14 +19,14 @@
                 </tr>
             </thead>
             <tbody>
-                {% for teacher in teachers %}
+                {% for student in students %}
                     <tr>
                         <td>
-                            <span style="background-image: url({{ teacher.avatar_url }})"></span>
+                            <span style="background-image: url({{ student.avatar_url }})"></span>
                         </td>
-                        <td>{{ teacher.name }}</td>
-                        <td>{{ teacher.lectures }}</td>
-                        <td><a href="/teachers/{{ teacher.id }}">ver</a></td>
+                        <td>{{ student.name }}</td>
+                        <td>{{ student.lectures }}</td>
+                        <td><a href="/students/{{ student.id }}">ver</a></td>
                     </tr>
                 {% endfor %}
             </tbody>

@@ -1,16 +1,42 @@
 {
+  "students": [
+    {
+      "id": 1,
+      "name": "Helena",
+      "avatar_url": "https://images.pexels.com/photos/594610/pexels-photo-594610.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "gender": "F",
+      "birth": 968198400000,
+      "introduction": "                sjnsjasa",
+      "created_at": 1582998612522,
+      "email": "",
+      "scholarship": "0",
+      "hour_week": ""
+    },
+    {
+      "id": 2,
+      "introduction": "jshd",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/42895506?s=460&v=4",
+      "name": "Diw",
+      "email": "diw@email.com",
+      "gender": "M",
+      "birth": 923356800000,
+      "scholarship": "13",
+      "hour_week": "60",
+      "created_at": 1582999003243
+    }
+  ],
   "teachers": [
     {
       "id": 1,
       "name": "Rafael",
-      "avatar_url": "https://avatars3.githubusercontent.com/u/42895506?s=460&v=4",
+      "avatar_url": "https://images.pexels.com/photos/594610/pexels-photo-594610.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       "gender": "M",
-      "birth": 565747200000,
-      "education": "secondary_education",
-      "class_type": "presential",
-      "lectures": "Matematica, Geografia, lista",
-      "introduction": "",
-      "created_at": 1582850653982
+      "birth": 660355200000,
+      "education": "post_graduated",
+      "class_type": "presential_ead",
+      "lectures": "math,",
+      "introduction": "hey",
+      "created_at": 1582997309775
     }
   ]
 }

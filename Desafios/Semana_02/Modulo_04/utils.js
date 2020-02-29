@@ -67,7 +67,73 @@ module.exports = {
         const day = `0${date.getUTCDate()}`.slice(-2)
 
         return `${year}-${month}-${day}`
-    }
+    },
+    school: function(school_level){
+        let level = ''
 
+        switch (school_level){
+            case '0':
+                level =  'Berçário/Pré-Escola'
+                break
+            
+            case '1':
+                level =  '1 Ano Ensino Infantil'
+                break
+
+            case '2':
+                level =  '2 Ano Ensino Infantil'
+                break
+
+            case '3':
+                level =  '3 Ano Ensino Infantil'
+                break
+            
+            case '4':
+                level =  '4 Ano Ensino Infantil'
+                break
+
+            case '5':
+                level =  '5 Ano Ensino Fundamental'
+                break
+
+            case '6':
+                level =  '6 Ano Ensino Fundamental'
+                break
+            
+            case '7':
+                level =  '7 Ano Ensino Fundamental'
+                break
+
+            case '8':
+                level =  '8 Ano Ensino Fundamental'
+                break
+
+            case '9':
+                level =  '1 Ano Ensino Médio'
+                break
+            
+            case '10':
+                level =  '2 Ano Ensino Médio'
+                break
+
+            case '11':
+                level =  '3 Ano Ensino Médio'
+                break
+
+            case '12':
+                level =  'Ensino Superior (Cursando)'
+                break
+
+            case '13':
+                level =  'Ensino Superior (Completo)'
+                break
+            
+            default:
+                level = 'Not defined'
+                break
+        }
+
+        return level
+    }
 
 }

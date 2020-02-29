@@ -4,7 +4,7 @@
 :root {
     --orange-color: #fe5f55;
     --blue-color: rgb(18, 52, 89);
-    --purple-color: #420039;
+    --purple-color: #a0238f;
     --cream-color: #f7fff7;
     --yellow-color: #eef5db;
     --golden-color: rgb(255, 217, 0);
@@ -15,6 +15,7 @@
     margin: 0;
     padding: 0;
     border: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -128,6 +129,8 @@ header {
     padding: 10px;
     border-radius: 10px;
     width: 79%;
+    min-height: 200px;
+    min-width: 240px;
 }
 
 .personal_info {
@@ -313,6 +316,7 @@ tbody tr:last-child td {
     border-bottom: none;
 }
 
+.table-container a,
 tbody a {
     text-decoration: none;
     color: white;
@@ -323,7 +327,17 @@ tbody a {
     font-weight: bolder;
 }
 
+.table-container a:hover,
 tbody a:hover{
     background-color: rgb(255, 51, 0);
 }
 
+.create a {
+    background-color: var(--purple-color);
+    color: white;
+    margin-bottom: 30px;
+}
+
+.create a:hover{
+    background-color: #6e1162;
+}
