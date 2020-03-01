@@ -48,7 +48,7 @@ exports.show = function(req, res) {
 
     const student = {
         ...foundStudent,
-        birth: age(foundStudent.birth),
+        birth: date(foundStudent.birth).birthDay,
         gender: '',
         created_at: new Intl.DateTimeFormat('pt-BR').format(foundStudent.created_at),
         scholarship: school(foundStudent.scholarship)
@@ -71,7 +71,7 @@ exports.edit = function(req, res){
 
     const student = {
         ...foundStudent,
-        birth: date(foundStudent.birth),
+        birth: date(foundStudent.birth).iso,
     }
 
     return res.render('students/edit', { student })

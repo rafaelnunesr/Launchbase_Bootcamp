@@ -249,6 +249,12 @@ input::placeholder{
     background: #ff5100;
 }
 
+.edit-button {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
 .form-delete button {
     background-color: red;
 }

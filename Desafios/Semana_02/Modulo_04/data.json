@@ -1,18 +1,6 @@
 {
   "students": [
     {
-      "id": 1,
-      "name": "Helena",
-      "avatar_url": "https://images.pexels.com/photos/594610/pexels-photo-594610.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "gender": "F",
-      "birth": 968198400000,
-      "introduction": "                sjnsjasa",
-      "created_at": 1582998612522,
-      "email": "",
-      "scholarship": "0",
-      "hour_week": ""
-    },
-    {
       "id": 2,
       "introduction": "jshd",
       "avatar_url": "https://avatars3.githubusercontent.com/u/42895506?s=460&v=4",
