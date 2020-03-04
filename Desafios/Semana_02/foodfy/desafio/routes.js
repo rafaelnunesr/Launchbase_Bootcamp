@@ -2,12 +2,13 @@ const express = require('express')
 const recipes = require('./controllers/recipes')
 const routes = express.Router()
 
+// Public
 routes.get('/', recipes.index)
 routes.get('/recipes', recipes.recipes)
+routes.get('/about', recipes.about)
 
-
-
-routes.get('/admin/index', recipes.admin_index)
+// Admin
+routes.get('/admin', recipes.admin)
 //routes.get("/admin/index", recipes.index); // Mostrar a lista de receitas
 /*
 routes.get("/admin/recipes/create", recipes.create); // Mostrar formulário de nova receita
