@@ -37,6 +37,21 @@ header a {
     color: var(--color-gray_1);
 }
 
+nav .admin {
+    display: unset;
+    position: relative;
+    border: 1px solid black;
+    color: black;
+    padding: 3px 10px;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+nav .admin:hover{
+    background: black;
+    color: white;
+}
+
 header .header_box {
     position: absolute;
     left: 14%;
@@ -135,7 +150,7 @@ footer p {
 /* === RECIPES PAGE === */
 .recipe-complete {
     position: absolute;
-    top: 70px;
+    top: 130px;
     left: 14%;
     right: 14%;
 }
@@ -275,4 +290,103 @@ footer p {
 .admin_header a img{
     margin-top: 20px;
     margin-left: 14%;
+}
+
+.admin_manager_h1 {
+    font-size: 12px;
+    margin-left: 14%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.admin_recipes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+    text-align: center;
+    margin: 0 auto;
+    margin-left: 14%;
+}
+
+.admin_recipe {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+}
+
+.admin_img img{
+    width: 100%;
+    height: 70px;
+    border-radius: 20px;
+}
+
+.admin_img img:hover{
+    cursor: pointer;
+    
+}
+
+.admin_info {
+    width: 100%;
+    margin-left: 20px;
+    text-align: left;
+}
+
+.admin_recipe_description {
+    width: 200%;
+}
+
+.admin_author {
+    font-size: 13px;
+}
+
+.admin_edit{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.admin_edit a{
+    text-decoration: none;
+    padding: 3px 10px;
+    background-color: purple;
+    color: white;
+    position: absolute;
+    right: 20%;
+    bottom: 2px;
+    border-radius: 5px;
+    transition: 0.2ms;
+}
+
+.admin_edit a:hover{
+    background-color: rgb(153, 55, 153);
+}
+
+.subheader {
+    margin-left: 14%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 20px;
+    position: relative;
+}
+
+.admin_recipe_info {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+.admin_recipe_edit a {
+    text-decoration: none;
+    padding: 3px 10px;
+    background: royalblue;
+    color: white;
+    position: absolute;
+    right: 17%;
+    border-radius: 5px;
+}
+
+.admin_recipe_edit a:hover {
+    background: rgb(40, 74, 177);
 }
