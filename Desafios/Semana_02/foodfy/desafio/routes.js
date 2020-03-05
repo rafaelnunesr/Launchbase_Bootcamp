@@ -29,6 +29,7 @@ routes.get('/about', function(req, res) {
 routes.get('/admin', adminRecipes.admin)
 routes.get('/admin/index', adminRecipes.index)
 routes.get('/admin/recipes/:id', adminRecipes.show)
+routes.get('/admin/recipes/:id/edit', adminRecipes.edit)
 //routes.get("/admin/index", recipes.index); // Mostrar a lista de receitas
 /*
 routes.get("/admin/recipes/create", recipes.create); // Mostrar formulário de nova receita

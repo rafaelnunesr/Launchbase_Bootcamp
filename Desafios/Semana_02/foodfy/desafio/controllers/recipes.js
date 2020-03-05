@@ -24,3 +24,7 @@ exports.show = function(req, res){
 
     return res.render('admin/show', {recipe})
 }
+
+exports.edit = function(req, res){
+    return res.render('admin/edit')
+}

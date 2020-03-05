@@ -390,3 +390,50 @@ footer p {
 .admin_recipe_edit a:hover {
     background: rgb(40, 74, 177);
 }
+
+/* === EDIT === */
+.submenu_edit {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 20px;
+    margin-left: 14%;
+    position: relative;
+}
+
+.submenu_edit h1 {
+    font-size: 32px;
+}
+
+.submenu_edit .links button{
+    position: relative;
+    padding: 3px 10px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+}
+
+.submenu_edit .links button:nth-child(1){
+    position: absolute;
+    background: tomato;
+    color: white;
+    transition: 0.2s;
+    right: 30%;
+}
+
+.submenu_edit .links button:nth-child(1):hover{
+    background: rgb(223, 54, 24);
+}
+
+.submenu_edit .links button:nth-child(2){
+    position: absolute;
+    background: royalblue;
+    color: white;
+    transition: 0.2s;
+    top: 0;
+    right: 14%;
+}
+
+.submenu_edit .links button:nth-child(2):hover{
+    background: rgb(22, 65, 194);
+}
