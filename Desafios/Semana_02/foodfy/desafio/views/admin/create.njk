@@ -3,18 +3,14 @@
 {% block content %}
 
     <div class="submenu_edit">
-        <h1>Editando receita</h1>
-        <form method='POST' action="/admin/recipes"></form>
-            <div class="links">
-                <button type='submit'>Salvar receita</button>
-            </div>
-        </form>
-    </div>
+        <h1>Criando nova receita</h1>
+    </div> 
 
-    <form action="">
+    <form method='POST' action="/admin/recipes">
         <div class="save_form">
+            <button type='submit'>Salvar receita</button>
 
-        {% include 'admin/fields.njk' %}
+            {% include 'admin/fields.njk' %}
 
         </div>
     </form>
