@@ -14,6 +14,9 @@ exports.create = function(req, res) {
 }
 
 exports.post = function(req, res){
+
+    console.log(req.body)
+    
     const keys = Object.keys(req.body)
 
     for (key of keys){
@@ -22,7 +25,7 @@ exports.post = function(req, res){
         }
     }
 
-    return res.send('todos os campos foram preenchidos')
+    return res.redirect('admin/index')
 }
 
 exports.show = function(req, res){
