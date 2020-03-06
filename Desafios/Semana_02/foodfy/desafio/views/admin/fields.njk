@@ -1,0 +1,52 @@
+<div class="item">
+    <div class="img_url">
+        <h1>Imagem da receita</h1>
+        <input type="text" 
+               placeholder="Insert the url address" 
+               value={{recipe.img_url}}>
+    </div>
+</div>
+
+<div class="item">
+    <div class="ingredients">
+            <h1>Ingredients</h1>
+            <div class="ingredient">
+                {% if recipe.ingredients %}
+                    {% for ingredient in recipe.ingredients %}
+                        <input type="text" placeholder="Ingredients" value="{{ingredient}}">
+                    {% endfor %}
+                {% else %}
+                    <input type="text" placeholder="Ingredients">
+                {% endif %}
+            </div>
+            <button type='button' class='add-ingredient'>Add ingrediente</button>
+    </div>
+</div>
+
+<div class="item">
+    <div class="preparations">
+            <h1>Modo de preparo</h1>
+            <div class="preparation">
+                {% if recipe.preparation %}
+                    {% for prep in recipe.preparation %}
+                        <input type="text" placeholder="Modo de preparo" value="{{prep}}">
+                    {% endfor %}
+                {% else %}
+                    <input type="text" placeholder="Modo de preparo">
+                {% endif %}
+            </div>
+            <button type='button' class='add-preparation'>Add preparo</button>
+    </div>
+</div>
+
+<div class="item">
+        <div class="information">
+            <h1>Informações adicionais</h1>
+            <textarea name="information">{{recipe.information}}</textarea>
+        </div>
+</div>
+
+<input 
+    type='hidden'
+    id='id'
+    value={{recipe.id}}>

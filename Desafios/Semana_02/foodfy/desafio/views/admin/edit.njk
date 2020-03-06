@@ -12,5 +12,13 @@
         </div>
     </div>
 
+    <form method='POST' action="/admin?_method=PUT">
+        <div class="edit_form">
+
+        {% include 'admin/fields.njk' %}
+
+        </div>
+    </form>
+
 
 {% endblock %}
