@@ -424,31 +424,17 @@ footer p {
     outline: none;
 }
 
-.submenu_edit .links button:nth-child(1){
+.submenu_edit .links button:nth-child(2){
     position: absolute;
     background: tomato;
     color: white;
     transition: 0.2s;
-    right: 30%;
-}
-
-.submenu_edit .links button:nth-child(1):hover{
-    background: rgb(223, 54, 24);
-}
-
-.save_form button:nth-child(1),
-.submenu_edit .links button:nth-child(2){
-    position: absolute;
-    background: royalblue;
-    color: white;
-    transition: 0.2s;
     top: 0;
-    right: 14%;
+    right: 27%;
 }
 
-.save_form button:nth-child(1):hover,
 .submenu_edit .links button:nth-child(2):hover{
-    background: rgb(22, 65, 194);
+    background: rgb(255, 38, 0);
 }
 
 .save_form button:nth-child(1) {
@@ -457,6 +443,19 @@ footer p {
     border: 0;
     padding: 5px 10px;
     border-radius: 5px;
+}
+
+.save_form button:nth-child(1),
+.edit_button {
+    padding: 5px 10px;
+    background: royalblue;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    position: absolute;
+    top: 90px;
+    right: 14%;
+    font-size: 12px;
 }
 
 .save_form,
@@ -493,6 +492,7 @@ footer p {
     font-size: 16px;
 }
 
+.save_button button,
 .save_form .item button,
 .edit_form .item button {
     font-size: 12px;

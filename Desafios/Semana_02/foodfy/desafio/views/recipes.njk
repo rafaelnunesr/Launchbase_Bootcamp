@@ -77,7 +77,7 @@
     {% else %}
         <div class="recipes-page">
             {% for rec in recipe %}
-                <div class="recipe" id='{{loop.index}}'>
+                <div class="recipe" id={{rec.id}}>
                     <div class="image_recipe">
                         <img src="{{rec.image}}" alt="Image of {{rec.title}}">
                     </div>

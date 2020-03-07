@@ -6,13 +6,12 @@
         <h1>Criando nova receita</h1>
     </div> 
 
-    <form method='POST' action="/admin/recipes">
-        <div class="save_form">
-            <button type='submit'>Salvar receita</button>
-
-            {% include 'admin/fields.njk' %}
-
+    <form class="save_form" method="POST" action="/admin">
+        <div class="save_button">
+            <button type="submit">Salvar receita</button>
         </div>
+        {% include 'admin/fields.njk' %}
+
     </form>
 
 

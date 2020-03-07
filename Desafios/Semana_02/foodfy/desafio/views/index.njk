@@ -30,7 +30,7 @@
     <div class="recipes">
 
         {% for recipe in recipes %}
-        <div class="recipe" id='{{loop.index}}'>
+        <div class="recipe" id={{recipe.id}}>
             <div class="recipe-img">
                 <img src="{{recipe.image}}" alt="Image of {{recipe.title}}">
             </div>

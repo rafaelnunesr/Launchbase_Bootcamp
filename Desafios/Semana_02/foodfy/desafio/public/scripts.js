@@ -4,7 +4,7 @@ const fullRecipe = document.querySelectorAll('.part')
 for(let recipe of recipes) {
     recipe.addEventListener('click', function() {
         const recipeIndex = recipe.getAttribute('id')
-        window.location.href = `/recipes?id=${recipeIndex - 1}`       
+        window.location.href = `/recipes?id=${recipeIndex}`       
     })
 }
 
@@ -32,7 +32,8 @@ if (addNewIngredient){
         const ingredient = document.querySelector('.ingredient')
         const new_input = document.createElement('input')
 
-        new_input.placeholder = 'Ingredientes'
+        new_input.name = 'ingredients'
+        new_input.placeholder = 'Ingrediente'
 
         ingredient.appendChild(new_input)
     })
@@ -43,6 +44,7 @@ if (addNewPreparation){
         const preparation = document.querySelector('.preparation')
         const new_input = document.createElement('input')
 
+        new_input.name = 'preparation'
         new_input.placeholder = 'Modo de preparo'
 
         preparation.appendChild(new_input)
