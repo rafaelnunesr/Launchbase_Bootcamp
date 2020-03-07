@@ -152,22 +152,6 @@
       ],
       "preparation": "oven for 30 min",
       "information": ""
-    },
-    {
-      "id": 8,
-      "author": "Helena",
-      "title": "American cake",
-      "image": "https://images.unsplash.com/photo-1559620192-032c4bc4674e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=670&q=80",
-      "ingredients": [
-        "farinha",
-        "ovos",
-        "manteiga"
-      ],
-      "preparation": [
-        "forno 30 graus",
-        "liquidifcarr"
-      ],
-      "information": ""
     }
   ]
 }
