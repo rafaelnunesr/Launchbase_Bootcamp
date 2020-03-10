@@ -1,0 +1,138 @@
+<div class="avatar">
+    {% if teacher.avatar_url %}
+        <img src="{{teacher.avatar_url}}" alt="profile photo">
+    {% else %}
+        <img src="../img/noprofile.png" alt="profile photo">
+    {% endif %}
+</div>
+
+<div class="introduction">
+    <h3>Detalhes sobre você</h3>
+    <textarea name="introduction" cols="45" rows="10">{{ teacher.introduction }}</textarea>
+</div>
+
+<div class="personal_info">
+    <div class="item">
+        <div class="avatar_url">
+            <h3>Avatar URL</h3>
+            <div>
+                <input type="text" 
+                    name="avatar_url"
+                    placeholder="https://" 
+                    value={{ teacher.avatar_url }}>
+            </div>
+        </div>
+    </div>
+
+    <div class="item">
+        <div class="name">
+            <h3>Nome</h3>
+            <div>
+                <input type="text" name="name" placeholder="Nome Completo" value={{ teacher.name }}>
+            </div>
+        </div>
+    </div>
+
+    <div class="item">
+        <div class="gender">
+            <h3>Sexo</h3>
+            <div>
+                <span>
+                    <input type="radio" name="gender" value="F" {% if teacher.gender == "F" %} checked {% endif %}>Feminino
+                </span>
+
+                <span>
+                    <input type="radio" name="gender" value="M" {% if teacher.gender == "M"%} checked {% endif %}>Masculino
+                </span>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="item">
+        <div class="birth">
+            <h3>Data de Nascimento</h3>
+            <div>
+                <input type="date" name="birth" value={{ teacher.birth }}>
+            </div>
+        </div>
+    </div>
+
+    <div class="item">
+        <div class="education">
+            <h3>Escolaridade</h3>
+            <div>
+                <select name="education">
+
+                    <option 
+                        value="secondary_education"
+                        {% if teacher.education == 'secondary_education' %}
+                        selected {% endif %}>Ensino Médio Completo
+                    </option>
+
+                    <option 
+                        value="graduated"
+                        {% if teacher.education == 'graduated' %}
+                        selected {% endif %}>Ensino Superior Completo
+                    </option>
+
+                    <option 
+                        value="post_graduated"
+                        {% if teacher.education == 'post_graduated' %}
+                        selected {% endif %}>Mestrado
+                    </option>
+
+                    <option 
+                        value="doctorate"
+                        {% if teacher.education == 'doctorate' %}
+                        selected {% endif %}>Doutorado
+                    </option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="item">
+        <div class="class_type">
+            <h3>Tipo de Aula</h3>
+            <div>
+                <select name="class_type">
+
+                    <option 
+                        value="presential"
+                        {% if teacher.class_type == 'presential' %}
+                        selected {% endif %}>Presencial
+                    </option>
+
+                    <option 
+                        value="ead"
+                        {% if teacher.class_type == 'ead' %}
+                        selected {% endif %}>EAD
+                    </option>
+
+                    <option 
+                        value="presential_ead"
+                        {% if teacher.class_type == 'presential_ead' %}
+                        selected {% endif %}>Presencial / EAD
+                    </option>
+
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="item">
+        <div class="lectures">
+            <h3>Área de Atuação</h3>
+            <div>
+                <input type="text" name="lectures" placeholder="Separe as matérias com virgulas" value={{ teacher.lectures }}>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="save">
+    <button type="submit">Salvar</button>
+</div>
