@@ -1,10 +1,13 @@
-const { age, education, class_t, date, school } = require('../../lib/utils')
+const { age, education, class_t, date, school } = require('../lib/utils')
+const Teacher = require('../models/Teacher')
 
 
 module.exports = {
 
     index(req, res){
-        return res.render('teachers/index')
+        Teacher.all(function(teachers){
+            return res.render('teachers/index', { teachers })
+        })
     },
     create(req, res){
         return res.render('teachers/create')
@@ -18,13 +21,31 @@ module.exports = {
             }
         }
 
-        return
+        Teacher.create(req.body, function(teacher){
+            return res.render(`/teachers/${teacher.id}`)
+        })
     },
     show(req, res){
-        return
+        Teacher.find(req.params.id, function(teacher){
+            if(!teacher) return res.send('Teacher not found!')
+
+            teacher.birth = age(teacher.birth)
+            teacher.lectures = teacher.lectures.split(',')
+            teacher.education = education(teacher.education)
+            teacher.class_type = class_t(teacher.class_type)
+            teacher.created_at = date(teacher.created_at).year
+
+            return res.render('teachers/show', { teacher })
+        })
     },
     edit(req, res){
-        return
+        Teacher.update(req.params.id, function(teacher){
+            if(!teacher) return res.send('Teacher not found!')
+
+            
+
+            return res.render('/teachers/edit', { teacher })
+        })
     },
     put(req, res){
         return

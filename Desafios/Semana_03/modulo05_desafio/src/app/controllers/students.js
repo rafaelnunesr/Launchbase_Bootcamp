@@ -1,4 +1,4 @@
-const { age, education, class_t, date, school } = require('../../lib/utils')
+const { age, education, class_t, date, school } = require('../lib/utils')
 
 
 module.exports = {
