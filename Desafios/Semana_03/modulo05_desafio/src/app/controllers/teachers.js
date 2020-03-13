@@ -22,7 +22,7 @@ module.exports = {
         }
 
         Teacher.create(req.body, function(teacher){
-            return res.render(`/teachers/${teacher.id}`)
+            return res.redirect(`/teachers/${teacher.id}`)
         })
     },
     show(req, res){
@@ -39,18 +39,30 @@ module.exports = {
         })
     },
     edit(req, res){
-        Teacher.update(req.params.id, function(teacher){
+        Teacher.find(req.params.id, function(teacher){
             if(!teacher) return res.send('Teacher not found!')
 
-            
+            teacher.birth = date(teacher.birth).iso
 
-            return res.render('/teachers/edit', { teacher })
+            return res.render('teachers/edit', { teacher })
         })
     },
     put(req, res){
-        return
+        const keys = Object.keys(req.body)
+
+        for(key of keys){
+            if(req.body[key] == ''){
+                return res.send('Please fill all the fields!')
+            }
+        }
+
+        Teacher.update(req.body, function(){
+            return res.redirect(`/teachers/${req.body.id}`)
+        })
     },
     delete(req, res){
-        return
+        Teacher.delete(req.body.id, function(){
+            return res.redirect('/teachers')
+        })
     }
 }

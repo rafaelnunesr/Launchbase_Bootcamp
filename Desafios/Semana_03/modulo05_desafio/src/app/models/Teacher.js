@@ -55,6 +55,7 @@ module.exports = {
 
     },
     update(data, callback){
+
         const query = `UPDATE teachers SET
                             avatar_url = ($1),
                             name = ($2),
@@ -82,6 +83,13 @@ module.exports = {
             if(err) throw `Database error! ${err}`
 
             callback()
+        })
+    },
+    delete(id, callback){
+        db.query(`DELETE FROM teachers WHERE id = $1`, [id], function(err, results){
+            if(err) throw `Database Error! ${err}`
+
+            return callback()
         })
     }
 }
