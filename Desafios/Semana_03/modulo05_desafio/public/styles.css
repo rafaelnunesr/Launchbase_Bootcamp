@@ -76,7 +76,7 @@ header {
     margin: 0 auto;
     margin-top: 40px;
     width: 600px;
-    height: 500px;
+    height: 550px;
     border: 1px solid var(--blue-color);
     box-shadow: 5px 6px 3px 0px rgba(18, 52, 89, 0.5);
     border-radius: 20px;
@@ -239,7 +239,20 @@ input::placeholder{
     color: white;
     border-radius: 5px;
     position: absolute;
-    bottom: 15px;
+    bottom: 20px;
+    right: 30px;
+    text-decoration: none;
+}
+
+.create button{
+    font-size: 20px;
+    font-weight: bolder;
+    padding: 5px 10px;
+    background: var(--orange-color);
+    color: white;
+    border-radius: 5px;
+    position: absolute;
+    bottom: -50px;
     right: 30px;
     text-decoration: none;
 }
@@ -346,4 +359,40 @@ tbody a:hover{
 
 .create a:hover{
     background-color: #6e1162;
+}
+
+/*=== FILTERS ===*/
+.header{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.header input {
+    width: 180px;
+    height: 35px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+
+.header input:focus{
+    border: 1px solid rgb(18, 52, 89);
+}
+
+.header input::placeholder{
+    color: rgba(18, 52, 89, 0.4);
+}
+
+.header button{
+    font-family: 'Quicksand', sans-serif;
+    background-color: rgba(18, 52, 89, 0.5);
+    color: white;
+    padding: 6px 10px;
+    font-size: 17px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.header button:hover{
+    background-color: rgba(18, 52, 89, 0.9);
 }

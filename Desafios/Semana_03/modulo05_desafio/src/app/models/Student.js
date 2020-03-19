@@ -12,6 +12,7 @@ module.exports = {
                   })
     },
     create(data, callback){
+        console.log(data)
         const query = `
             INSERT INTO students(
                 avatar_url,
@@ -21,9 +22,10 @@ module.exports = {
                 birth,
                 school_level,
                 weekly_hours,
-                about, 
+                about,
+                teacher_id,
                 created_at)
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
             RETURNING id`
 
         const values = [
@@ -32,9 +34,10 @@ module.exports = {
             data.email,
             data.gender,
             date(data.birth).iso,
-            data.school_level,
-            data.weekly_hours,
+            data.scholarship,
+            data.hour_week,
             data.about,
+            data.teacher_id,
             date(Date.now()).iso
         ]
 
@@ -64,8 +67,9 @@ module.exports = {
                             birth = ($5),
                             school_level = ($6),
                             weekly_hours = ($7),
-                            about = ($8)
-                        WHERE id = $9`
+                            about = ($8),
+                            teacher_id = ($9)
+                        WHERE id = $10`
 
         const values = [
             data.avatar_url,
@@ -76,6 +80,7 @@ module.exports = {
             data.school_level,
             data.weekly_hours,
             data.about,
+            data.teacher_id,
             data.id
         ]
 
@@ -90,6 +95,13 @@ module.exports = {
             if(err) throw `Database Error! ${err}`
 
             return callback()
+        })
+    },
+    teacherSelectOptions(callback){
+        db.query(`SELECT name, id FROM teachers`, function(err, results){
+            if(err) throw `Database Error! ${err}`
+
+            callback(results.rows)
         })
     }
 }

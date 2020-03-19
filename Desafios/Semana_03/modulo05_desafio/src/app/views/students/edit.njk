@@ -3,7 +3,6 @@
 {% block content %}
 
     <div class="card">
-        <section>
             <form class="form-edit" method="POST" action="/students?_method=PUT">
                 {% include 'students/fields.njk' %}
                 <input type="hidden" name="id" value={{ student.id }}>
@@ -13,7 +12,6 @@
                 <input type="hidden" name="id" value={{ student.id }}>
                 <button class="delete_button" type='submit'>Deletar</button>
             </form>
-        </section>
     </div>
 
 {% endblock %}

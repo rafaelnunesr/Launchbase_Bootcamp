@@ -6,8 +6,19 @@
 
 {% block content %}
     <div class="card table-container">
-        <div class="create">
-            <a href="/teachers/create">Novo</a>
+        <div class="header">
+            <div class="create">
+                <a href="/teachers/create">Novo</a>
+            </div>
+
+            <form action="/instructors" method="GET">
+                <input type="text"
+                       name="filter"
+                       placeholder="Nome ou atributo"
+                       value={{filter}}>
+                <button type="submit">Filtrar</button>
+            </form>
+    
         </div>
         <table>
             <thead>
@@ -15,6 +26,7 @@
                     <th></th>
                     <th>Nome Completo</th>
                     <th>Acompanhamento</th>
+                    <th>Alunos</th>
                     <th>Ação</th>
                 </tr>
             </thead>
@@ -26,6 +38,7 @@
                         </td>
                         <td>{{ teacher.name }}</td>
                         <td>{{ teacher.lectures }}</td>
+                        <td>{{ teacher.total_students }}</td>
                         <td><a href="/teachers/{{ teacher.id }}">ver</a></td>
                     </tr>
                 {% endfor %}
