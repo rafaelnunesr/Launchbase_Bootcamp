@@ -35,6 +35,7 @@ module.exports = {
             student.birth = age(student.birth)
             student.created_at = date(student.created_at).year
             student.school_level = school(student.school_level)
+            
 
             return res.render('students/show', { student })
         })
