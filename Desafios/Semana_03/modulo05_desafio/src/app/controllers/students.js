@@ -32,10 +32,9 @@ module.exports = {
         Student.find(req.params.id, function(student){
             if(!student) return res.send('Student not found!')
 
-            student.birth = age(student.birth)
+            student.birth = date(student.birth).birthDay
             student.created_at = date(student.created_at).year
-            student.school_level = school(student.school_level)
-            
+            student.school_level = school(student.school_level)        
 
             return res.render('students/show', { student })
         })
@@ -45,8 +44,10 @@ module.exports = {
             if(!student) return res.send('Student not found!')
 
             student.birth = date(student.birth).iso
-
-            return res.render('students/edit', { student })
+            
+            Student.teacherSelectOptions(function(options){
+                return res.render('students/edit', { student, teacherOptions: options })
+            })
         })
     },
     put(req, res){

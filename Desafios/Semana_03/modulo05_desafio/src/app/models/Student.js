@@ -12,7 +12,6 @@ module.exports = {
                   })
     },
     create(data, callback){
-        console.log(data)
         const query = `
             INSERT INTO students(
                 avatar_url,
@@ -48,9 +47,10 @@ module.exports = {
         })
     },
     find(id, callback){
-        db.query(`SELECT *
+        db.query(`SELECT students.*, teachers.name AS teacher_name
                        FROM students
-                       WHERE id = $1`, [id], function(err, results){
+                       LEFT JOIN teachers ON (students.teacher_id = teachers.id)
+                       WHERE students.id = $1`, [id], function(err, results){
                            if (err) throw `Database error! ${err}`
 
                            callback(results.rows[0])
