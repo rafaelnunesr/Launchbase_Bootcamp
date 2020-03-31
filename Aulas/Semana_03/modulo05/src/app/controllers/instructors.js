@@ -15,6 +15,12 @@ module.exports = {
             limit,
             offset,
             callback(instructors){
+
+                const pagination = {
+                    filter,
+                    total,
+                    page
+                }
                 return res.render("instructors/index", { instructors, filter })
             }
         }
