@@ -4,6 +4,7 @@
     <title>Homepage |</title>
 {% endblock %}
 
+
 {% block content %}
     <div class="card table-container">
         <div class="header">
@@ -44,6 +45,12 @@
                 {% endfor %}
             </tbody>
         </table>
+
+        <div class="pagination"
+            data-page={{pagination.page}}
+            data-total={{pagination.total}}
+            data-filter={{filter}}>
+        </div>
 
     </div>
 {% endblock %}

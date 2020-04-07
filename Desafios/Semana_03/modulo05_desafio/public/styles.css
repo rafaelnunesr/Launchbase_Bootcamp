@@ -396,3 +396,34 @@ tbody a:hover{
 .header button:hover{
     background-color: rgba(18, 52, 89, 0.9);
 }
+
+/*===PAGINATION===*/
+.table-container {
+    display: grid;
+    grid-template: 64px 1fr 16px / 1fr;
+}
+
+.table-container .header {
+    margin: 0;
+    align-self: start;
+}
+
+.table-container .pagination {
+    margin: 0;
+    align-self: end;
+    justify-self: center;
+}
+
+.pagination a,
+.pagination span {
+    color: var(--blue-color);
+    text-decoration: none;
+    margin-right: 16px;
+    background: none;
+}
+
+.pagination a:hover {
+    filter: brightness(0.3);
+    border-bottom: 1px solid var(--blue-color);
+    background: none;
+}

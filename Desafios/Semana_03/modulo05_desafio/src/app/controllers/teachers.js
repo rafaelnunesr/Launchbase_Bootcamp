@@ -17,6 +17,7 @@ module.exports = {
             limit,
             offset,
             callback(teachers){
+
                 const pagination = {
                     total: Math.ceil(teachers[0].total / limit),
                     page
