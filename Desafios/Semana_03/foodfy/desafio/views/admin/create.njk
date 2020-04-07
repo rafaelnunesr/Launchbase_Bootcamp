@@ -1,0 +1,18 @@
+{% extends 'admin_layout.njk' %}
+
+{% block content %}
+
+    <div class="submenu_edit">
+        <h1>Criando nova receita</h1>
+    </div> 
+
+    <form class="save_form" method="POST" action="/admin">
+        <div class="save_button">
+            <button type="submit">Salvar receita</button>
+        </div>
+        {% include 'admin/fields.njk' %}
+
+    </form>
+
+
+{% endblock %}

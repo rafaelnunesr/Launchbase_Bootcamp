@@ -1,0 +1,95 @@
+{% extends 'layout.njk' %}
+
+{% block title %}
+    {% if item %}
+        <title>Foodfy |
+            {{item.title}}</title>
+    {% else %}
+        <title>Foodfy | Receitas
+        </title>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+    {% if item %}
+        <div class="recipe-complete">
+            <div class="recipe-img">
+                <img src="{{item.image}}" alt="Image of {{item.title}}">
+            </div>
+
+            <div class="recipe-description">
+                <h1>{{item.title}}</h1>
+            </div>
+
+            <div class="recipe-author">
+                <h2>por
+                    {{item.author}}</h2>
+            </div>
+
+            <div class="part">
+                <div class="subtitle-head">
+                    <div class="subtitle-title">Ingredientes</div>
+                    <div class="subtitle-option">
+                        <a class='hide'>ESCONDER</a>
+                    </div>
+                </div>
+
+                <div class="wrapper" id="ingredients">
+                    <ul>
+                        {% for ingredient in item.ingredients%}
+                            <li>{{ingredient}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="part">
+                <div class="subtitle-head">
+                    <div class="subtitle-title">Modo de Preparo</div>
+                    <div class="subtitle-option">
+                        <a class='hide'>ESCONDER</a>
+                    </div>
+                </div>
+
+                <div class="wrapper" id="preparation">
+                    {% for step in item.preparation %}
+                        <p>{{step}}</p>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+            <div class="part">
+                <div class="subtitle-head">
+                    <div class="subtitle-title">Informaçōes Adicionais</div>
+                    <div class="subtitle-option">
+                        <a class='hide'>ESCONDER</a>
+                    </div>
+                </div>
+
+                <div class="wrapper" id='info'>
+                    <p>{{item.information}}</p>
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+        <div class="recipes-page">
+            {% for rec in recipe %}
+                <div class="recipe" id={{rec.id}}>
+                    <div class="image_recipe">
+                        <img src="{{rec.image}}" alt="Image of {{rec.title}}">
+                    </div>
+                    <div class="description_recipe">
+                        <p>{{rec.title}}</p>
+                    </div>
+                    <div class="author">
+                        por {{rec.author}}
+                    </div>
+                </div>
+            {% endfor%}
+        </div>
+    {% endif %}
+
+{% endblock %}

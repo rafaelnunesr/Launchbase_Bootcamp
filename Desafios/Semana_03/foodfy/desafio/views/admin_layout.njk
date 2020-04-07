@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block title %}
+            <title>Foodfy | Admin</title>
+        {% endblock %}
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+        <header class='admin_header'>
+            <a href="/">
+                <img src="/assets/logo_white.png" alt="Logo Foodfy">
+            </a>
+        </header>
+        {% block content %}
+        {% endblock %}
+
+        <script src="/scripts.js"></script>
+    </body>
+</html>
