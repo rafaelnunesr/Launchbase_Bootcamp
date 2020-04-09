@@ -1,9 +1,11 @@
+/*=== DEFAULT === */
+
 @import url('href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"');
 
 :root {
     --gray1-color: rgb(63, 63, 63);
     --gray2-color: rgb(184, 184, 184);
-    --purple-color: rgb(105, 86, 192);
+    --purple-color: rgb(124, 107, 199);
 }
 
 *{
@@ -18,6 +20,8 @@ body {
     font-family: 'Roboto', sans-serif;
     color: var(--gray1-color);
 }
+
+/*=== LAYOUT === */
 
 nav {
     margin-top: 30px;
@@ -52,6 +56,10 @@ nav .default_link_display {
 .search input{
     border: 1px solid var(--gray2-color);
     padding: 5px 10px;
+    width: 200px;
+    height: 20px;
+    border-radius: 5px;
+    outline: none;
 }
 
 .search button{
@@ -59,4 +67,72 @@ nav .default_link_display {
     color: white;
     background: var(--purple-color);
     font-size: 15px;
+    height: 30px;
+    border-radius: 5px;
+    outline: none;
 }
+
+footer{
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;  
+    margin-top: 20px; 
+}
+
+footer .foot{
+    background: rgb(235, 235, 235);
+    width: 100%;
+    height: 100%;
+}
+
+footer .foot p {
+    color: var(--gray2-color);
+    text-align: center;
+    line-height: 50px;
+}
+
+/*=== INDEX ===*/
+
+.banner {
+    margin-top: 20px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    background: rgb(250, 223, 219);
+
+    border-radius: 30px;
+
+    width: 100%;
+    height: 300px;
+}
+
+.banner-description {
+    align-content: center;
+    text-align: justify;
+    margin-left: 14%;
+    font-size: 13px;
+    margin-top: 20%;
+}
+
+.banner-description p {
+    font-size: 15px;
+    margin-top: 10px;
+    line-height: 20px;
+    width: 70%;
+}
+
+.banner-img {
+    position: relative;
+    text-align: center;
+    width: 60%;
+}
+
+.banner-img img {
+    height: 230px;
+    position: absolute;
+    bottom: 0;
+}
+
