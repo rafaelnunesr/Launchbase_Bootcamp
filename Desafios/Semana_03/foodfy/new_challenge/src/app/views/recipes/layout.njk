@@ -12,33 +12,36 @@
 
     <body>
 
-        <nav>
-            <div class="default_link_display">
-            
-                <div class="logo">
-                    <a href="/">
-                        <img src="./assets/logo.png" alt="Foodfy logo">
-                    </a>
+        <div class="body-content">
+        
+            <nav>
+                <div class="default_link_display">
+                
+                    <div class="logo">
+                        <a href="/">
+                            <img src="./assets/logo.png" alt="Foodfy logo">
+                        </a>
+                    </div>
+
+                    <div class="links">
+                        <a href="/about">Sobre</a>
+                        <a href="/recipes">Receitas</a>
+                        <a href="/chefs">Chefs</a>
+                    </div>
                 </div>
 
-                <div class="links">
-                    <a href="/about">Sobre</a>
-                    <a href="/recipes">Receitas</a>
-                    <a href="/chefs">Chefs</a>
+                <div class="search">
+                    <input 
+                        type="text"
+                        placeholder="Buscar uma receita">
+                    <button type="submit">Buscar</button>
                 </div>
-            </div>
 
-            <div class="search">
-                <input 
-                    type="text"
-                    placeholder="Buscar uma receita">
-                <button type="submit">Buscar</button>
-            </div>
+            </nav>
 
-        </nav>
-
-        {% block content %}
-        {% endblock %}
+            {% block content %}
+            {% endblock %}
+        </div>
 
         {% block footer %}
             <footer>

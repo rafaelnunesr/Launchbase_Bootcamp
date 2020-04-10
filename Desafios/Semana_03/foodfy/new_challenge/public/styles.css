@@ -15,10 +15,13 @@
 }
 
 body {
-    margin-left: 14%;
-    margin-right: 14%;
     font-family: 'Roboto', sans-serif;
     color: var(--gray1-color);
+}
+
+.body-content {
+    margin-left: 14%;
+    margin-right: 14%;
 }
 
 /*=== LAYOUT === */
@@ -74,11 +77,9 @@ nav .default_link_display {
 
 footer{
     position: relative;
-    bottom: 0;
-    left: 0;
     width: 100%;
     height: 50px;  
-    margin-top: 20px; 
+    margin-top: 20px;
 }
 
 footer .foot{
@@ -136,3 +137,39 @@ footer .foot p {
     bottom: 0;
 }
 
+.default-title h1 {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.index-recipes {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+
+    width: 100%;
+}
+
+.recipe {
+    width: 100%;
+}
+
+.recipe-img img {
+    width: 100%;
+    border-radius: 10px;
+
+    min-width: 200px;
+}
+
+.recipe-img img:hover {
+    filter: brightness(120%);
+}
+
+.recipe-name h2 {
+    font-size: 14px;
+}
+
+.recipe-chef-name p {
+    font-size: 12px;
+}
