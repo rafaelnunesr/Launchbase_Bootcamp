@@ -9,11 +9,15 @@
     </head>
 
     <body>
-
         <header>
-            <a href="/admin">
-                <img src="./assets/logo_white.png" alt="Foodfy logo">
-            </a>
+            <div class="links">
+                <a href="/admin">
+                    <img src="../assets/logo_white.png" alt="Foodfy logo">
+                </a>
+
+                <a href="/admin/recipes">Receitas</a>
+                <a href="/admin/chefs">Chefs</a>
+            </div>
         </header>
 
         <div class="body-content">
@@ -23,7 +27,11 @@
                     <h1>Gerenciar receitas</h1>
                 </div>
 
-                <div class="add-recipe">
+                <div class="add-button">
+                    <a href="/admin/chefs/new_chef">Add chef</a>
+                </div>
+
+                <div class="add-button">
                     <a href="/admin/recipes/create">Add receita</a>
                 </div>
 
@@ -32,6 +40,8 @@
             {% block content %}
             {% endblock %}
         </div>
+
+        <script src="/scripts.js"></script>
     </body>
 
 </html>

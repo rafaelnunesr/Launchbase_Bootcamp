@@ -36,6 +36,9 @@ body {
 }
 
 /*=== LAYOUT === */
+.links a.active {
+    font-weight: bolder;
+}
 
 nav {
     margin-top: 30px;
@@ -71,7 +74,7 @@ nav .default_link_display {
     border: 1px solid var(--gray2-color);
     padding: 5px 10px;
     width: 200px;
-    height: 20px;
+    height: 30px;
     border-radius: 5px;
 }
 
@@ -82,6 +85,10 @@ nav .default_link_display {
     font-size: 15px;
     height: 30px;
     border-radius: 5px;
+}
+
+.search button:hover {
+    background: black;
 }
 
 /*=== FOOTER ===*/
@@ -247,18 +254,31 @@ header img {
     margin-top: 10px;
 }
 
-.admin-subheader{
-    display: grid;
-    grid-template-columns: 1fr 100px;
+header a + a{
+    text-decoration: none;
+    color: rgb(189, 189, 189);
+    margin-left: 10px;
+    line-height: 50px;
 }
 
-.add-recipe {
+header a + a:hover {
+    color: white;
+}
+
+
+
+.admin-subheader{
+    display: grid;
+    grid-template-columns: 1fr 100px 100px;
+}
+
+.add-button {
     margin-top: 20px;
     padding-bottom: 20px;
     position: relative;
 }
 
-.add-recipe a {
+.add-button a {
     position: absolute;
     right: 0;
     background: var(--purple-color);
@@ -270,8 +290,8 @@ header img {
     text-decoration: none;
 }
 
-.add-recipe a:hover {
-    background: var(--purple-color-dark);
+.add-button a:hover {
+    background: black;
 }
 
 .admin-recipes {
