@@ -6,7 +6,7 @@
     --gray1-color: rgb(63, 63, 63);
     --gray1-color-dark: rgb(29, 29, 29);
     --gray2-color: rgb(136, 136, 136);
-    --purple-color: rgb(124, 107, 199);
+    --purple-color: rgb(84, 64, 175);
     --purple-color-dark: rgb(84, 69, 151);
 }
 
@@ -272,13 +272,13 @@ header a + a:hover {
     grid-template-columns: 1fr 100px 100px;
 }
 
-.add-button {
+.admin-button {
     margin-top: 20px;
     padding-bottom: 20px;
     position: relative;
 }
 
-.add-button a {
+.admin-button a {
     position: absolute;
     right: 0;
     background: var(--purple-color);
@@ -290,7 +290,7 @@ header a + a:hover {
     text-decoration: none;
 }
 
-.add-button a:hover {
+.admin-button a:hover {
     background: black;
 }
 

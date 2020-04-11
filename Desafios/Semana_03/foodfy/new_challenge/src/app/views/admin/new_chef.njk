@@ -6,29 +6,36 @@
 
 {% block content %}
 
-    <div class="field-component">
-        <div class="field-title">
-            <h1>Nome</h1>
+    <form action="/admin" method="POST">
+
+        <div class="admin-button">
+            <a href="{{pageInfo.save_button.link}}">{{pageInfo.save_button.description}}</a>
         </div>
 
-        <div class="field-input">
-            <div class="field-chef-name">
-                <input 
-                    type="text">
+        <div class="field-component">
+            <div class="field-title">
+                <h1>Nome</h1>
+            </div>
+
+            <div class="field-input">
+                <div class="field-chef-name">
+                    <input 
+                        type="text">
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="field-component">
-        <div class="field-title">
-            <h1>Avatar</h1>
-        </div>
+        <div class="field-component">
+            <div class="field-title">
+                <h1>Avatar</h1>
+            </div>
 
-        <div class="field-input">
-            <div class="field-chef-avatar">
-                <input 
-                    type="text">
+            <div class="field-input">
+                <div class="field-chef-avatar">
+                    <input 
+                        type="text">
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 {% endblock %}
