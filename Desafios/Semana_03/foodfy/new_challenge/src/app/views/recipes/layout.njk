@@ -30,13 +30,15 @@
                     </div>
                 </div>
 
-                <div class="search">
-                    <input 
-                        type="text"
-                        placeholder="Buscar uma receita">
-                    <button type="submit">Buscar</button>
-                </div>
-
+                {% block search %}
+                    <div class="search">
+                        <input 
+                            type="text"
+                            placeholder="Buscar uma receita">
+                        <button type="submit">Buscar</button>
+                    </div>
+                {% endblock %}
+                
             </nav>
 
             {% block content %}

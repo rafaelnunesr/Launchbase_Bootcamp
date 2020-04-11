@@ -4,14 +4,22 @@
 
 :root {
     --gray1-color: rgb(63, 63, 63);
-    --gray2-color: rgb(184, 184, 184);
+    --gray1-color-dark: rgb(29, 29, 29);
+    --gray2-color: rgb(136, 136, 136);
     --purple-color: rgb(124, 107, 199);
+    --purple-color-dark: rgb(84, 69, 151);
 }
 
 *{
     margin: 0;
     padding: 0;
     border: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
 }
 
 body {
@@ -22,6 +30,9 @@ body {
 .body-content {
     margin-left: 14%;
     margin-right: 14%;
+    min-height: 100%;
+    overflow: auto;
+    padding-bottom: 50px;
 }
 
 /*=== LAYOUT === */
@@ -62,7 +73,6 @@ nav .default_link_display {
     width: 200px;
     height: 20px;
     border-radius: 5px;
-    outline: none;
 }
 
 .search button{
@@ -72,14 +82,16 @@ nav .default_link_display {
     font-size: 15px;
     height: 30px;
     border-radius: 5px;
-    outline: none;
 }
+
+/*=== FOOTER ===*/
 
 footer{
     position: relative;
     width: 100%;
     height: 50px;  
-    margin-top: 20px;
+    margin-top: -50px;
+    clear: both;
 }
 
 footer .foot{
@@ -144,6 +156,7 @@ footer .foot p {
 
 .index-recipes {
     margin-top: 20px;
+    margin-bottom: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
@@ -172,4 +185,173 @@ footer .foot p {
 
 .recipe-chef-name p {
     font-size: 12px;
+}
+
+/*=== ABOUT ===*/
+.about-wrapper {
+    margin-top: 20px;
+}
+
+.about-wrapper h2 {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.about-wrapper p {
+    margin-top: 10px;
+    font-size: 15px;
+    text-align: justify;
+}
+
+/*=== CHEFS ===*/
+.chefs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.chef {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 90px 1fr;
+}
+
+.chef img {
+    width: 70px;
+    height: 70px;
+    border-radius: 70px;  
+}
+
+.chef-info{
+    margin-top: 20px;
+}
+
+.chef-info h2 {
+    font-size: 16px;
+}
+
+.chef-qtt-recipes p {
+    font-size: 12px;
+}
+
+/*=== ADMIN INDEX */
+header {
+    width: 100%;
+    height: 50px;
+    background: black;
+}
+
+header img {
+    margin-left: 14%;
+    margin-top: 10px;
+}
+
+.admin-subheader{
+    display: grid;
+    grid-template-columns: 1fr 100px;
+}
+
+.add-recipe {
+    margin-top: 20px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.add-recipe a {
+    position: absolute;
+    right: 0;
+    background: var(--purple-color);
+    padding: 5px 10px;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.add-recipe a:hover {
+    background: var(--purple-color-dark);
+}
+
+.admin-recipes {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.admin-recipe {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.admin-recipe-img img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.admin-recipe-img img:hover {
+    filter: brightness(120%);
+}
+
+.admin-recipe-info {
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.admin-recipe-name h2 {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.admin-recipe-chef p {
+    font-size: 14px;
+    margin-top: 3px;
+    color: var(--gray2-color);
+}
+
+.admin-recipe-view{
+    margin-top: 10px;
+}
+
+.admin-recipe-view a {
+    text-decoration: none;
+    font-size: 16px;
+    color: blue;
+}
+
+.admin-recipe-view a:hover{
+    color: rgb(63, 63, 63);
+}
+
+/*=== ADMIN FIELDS ===*/
+.recipe-fields {
+    margin-top: 20px;
+}
+
+.field-component {
+    margin-top: 20px;
+}
+
+.field-title h1 {
+    font-size: 14px;
+}
+
+.field-input input {
+    margin-top: 5px;
+    border: 1px solid var(--gray2-color);
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.field-input textarea {
+    margin-top: 5px;
+    width: 100%;
+    border: 1px solid var(--gray2-color);
+    border-radius: 5px;
+    padding: 5px;
 }
