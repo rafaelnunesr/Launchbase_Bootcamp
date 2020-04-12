@@ -5,7 +5,7 @@ module.exports = {
     create(data, callback){
 
         const query = `
-            INSERT INTO chefs (
+            INSERT INTO chefs(
                 name,
                 avatar_url,
                 created_at
@@ -14,8 +14,8 @@ module.exports = {
 
         
         const values = [
-            data.name,
-            data.avatar_url,
+            data.chef_name,
+            data.chef_avatar,
             date(Date.now()).iso
         ]
 

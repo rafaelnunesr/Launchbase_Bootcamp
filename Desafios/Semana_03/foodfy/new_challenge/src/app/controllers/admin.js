@@ -16,13 +16,13 @@ module.exports = {
 
         return res.render('admin/index', {pageInfo})
     },
-    create(req, res){
+    createRecipe(req, res){
 
         const pageInfo = {
-            default_title: 'Adicionar nova receita',
+            default_title: 'Adicionar nova receita'
         }
 
-        return res.render('admin/create', {pageInfo})
+        return res.render('admin/new_recipe', {pageInfo})
     },
     recipes(req, res) {
         const pageInfo = {
@@ -68,6 +68,15 @@ module.exports = {
         Chef.create(req.body, function(chef){
             return res.send(req.body)
         })
+    },
+    postRecipe(req, res){
+        const keys = Object.keys(req.body)
 
+        for (key of keys){
+            if (req.body[key] == '')
+            {
+                return res.send('Please, fill all the fields')
+            }
+        }
     }
 }

@@ -92,7 +92,6 @@ nav .default_link_display {
 }
 
 /*=== FOOTER ===*/
-
 footer{
     position: relative;
     width: 100%;
@@ -114,7 +113,6 @@ footer .foot p {
 }
 
 /*=== INDEX ===*/
-
 .banner {
     margin-top: 20px;
 
@@ -265,8 +263,6 @@ header a + a:hover {
     color: white;
 }
 
-
-
 .admin-subheader{
     display: grid;
     grid-template-columns: 1fr 100px 100px;
@@ -375,10 +371,28 @@ header a + a:hover {
     padding: 5px;
 }
 
+.field-input select{
+    margin-top: 5px;
+    width: 100%;
+    height: 30px;
+    background: white;
+    border: 1px solid var(--gray2-color);
+}
+
 .field-input textarea {
     margin-top: 5px;
     width: 100%;
     border: 1px solid var(--gray2-color);
     border-radius: 5px;
     padding: 5px;
+}
+
+/*=== ADMIN CREATE RECIPES ===*/
+.add-field button {
+    color: blue;
+    cursor: pointer;
+}
+
+.add-field button:hover{
+    color: rgb(8, 8, 151);
 }

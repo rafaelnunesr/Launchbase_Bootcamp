@@ -10,10 +10,14 @@ routes.get('/recipes', recipes.all)
 routes.get('/chefs', recipes.chefs)
 
 routes.get('/admin', admin.index)
-routes.get('/admin/recipes/create', admin.create)
+routes.get('/admin/recipes/create', admin.createRecipe)
 routes.get('/admin/recipes', admin.recipes)
 routes.get('/admin/chefs', admin.chefs)
 routes.get('/admin/chefs/new_chef', admin.createChef)
 routes.post('/admin', admin.postChef)
+routes.post('/admin/recipes', admin.postRecipe)
+
+
+routes.use(recipes.not_found)
 
 module.exports = routes
