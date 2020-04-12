@@ -6,5 +6,23 @@
 
 {% block content %}
 
-    {% include 'admin/fields.njk' %}
+    <form action="/admin/recipes" method="POST">
+
+        <div class="admin-subheader">
+            <div class="default-title">
+                <h1>{{pageInfo.default_title}}</h1>
+            </div>
+
+            <div class="admin-button">
+                <a href="#" hidden="hidden"></a>
+            </div>
+
+            <div class="admin-button">
+                <button type="submit">Salvar</button>
+            </div>
+        </div>
+
+        {% include 'admin/fields.njk' %}
+
+    </form>
 {% endblock %}

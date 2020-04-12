@@ -1,0 +1,23 @@
+<div class="admin-subheader">
+    <div class="default-title">
+        <h1>{{pageInfo.default_title}}</h1>
+    </div>
+
+    {% if pageInfo.second_button %}
+        <div class="admin-button">
+            <a href="{{pageInfo.first_button.link}}">{{pageInfo.first_button.description}}</a>
+        </div>
+
+        <div class="admin-button">
+            <a href="{{pageInfo.second_button.link}}">{{pageInfo.second_button.description}}</a>
+        </div>
+    {% else %}
+        <div class="admin-button">
+            <a href="#" hidden="hidden"></a>
+        </div>
+
+        <div class="admin-button">
+            <a href="{{pageInfo.first_button.link}}">{{pageInfo.first_button.description}}</a>
+        </div>
+    {% endif %}
+</div>

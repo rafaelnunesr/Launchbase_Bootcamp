@@ -1,4 +1,4 @@
-//const Chef = require('../models/Chef')
+const Chef = require('../models/Chef')
 
 module.exports = {
     index(req, res){
@@ -19,12 +19,9 @@ module.exports = {
     create(req, res){
 
         const pageInfo = {
-            default_title: 'Criar nova receita',
-            first_button: {
-                link: '/admin/recipes',
-                description: 'Salvar'
-            }
+            default_title: 'Adicionar nova receita',
         }
+
         return res.render('admin/create', {pageInfo})
     },
     recipes(req, res) {
@@ -51,29 +48,26 @@ module.exports = {
         return res.render('admin/chefs', {pageInfo})
     },
     createChef(req, res){
+
         const pageInfo = {
-            default_title: 'Criar Novo Chef',
-            first_button: {
-                link: '/admin/chefs',
-                description: 'Salvar'
-            }
+            default_title: 'Criar novo chef',
         }
 
         return res.render('admin/new_chef', {pageInfo})
     },
     postChef(req, res){
-        const keys = Object.keys(req.body)
+        const keys = Object.keys(req.body) 
 
-        for (key of keys){
-            if (req.body[key] == ''){
-                return res.send("Please, fill all the fields!")
+        for (key of keys) {
+            if (req.body[key] == '') 
+            {
+                return res.send('Please, fill all the fields!')
             }
         }
 
-        /*
-        Chefs.create(req.body, function(chef){
-            return res.redirect(`/admin/chefs/${chef.id}`)
+        Chef.create(req.body, function(chef){
+            return res.send(req.body)
         })
-        */
+
     }
 }

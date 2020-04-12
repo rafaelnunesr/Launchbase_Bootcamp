@@ -8,8 +8,18 @@
 
     <form action="/admin" method="POST">
 
-        <div class="admin-button">
-            <a href="{{pageInfo.save_button.link}}">{{pageInfo.save_button.description}}</a>
+        <div class="admin-subheader">
+            <div class="default-title">
+                <h1>{{pageInfo.default_title}}</h1>
+            </div>
+
+            <div class="admin-button">
+                <a href="#" hidden="hidden"></a>
+            </div>
+
+            <div class="admin-button">
+                <button type="submit">Salvar</button>
+            </div>
         </div>
 
         <div class="field-component">
@@ -20,7 +30,8 @@
             <div class="field-input">
                 <div class="field-chef-name">
                     <input 
-                        type="text">
+                        type="text"
+                        name="chef_name">
                 </div>
             </div>
         </div>
@@ -33,7 +44,8 @@
             <div class="field-input">
                 <div class="field-chef-avatar">
                     <input 
-                        type="text">
+                        type="text"
+                        name="chef_avatar">
                 </div>
             </div>
         </div>

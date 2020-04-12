@@ -14,5 +14,6 @@ routes.get('/admin/recipes/create', admin.create)
 routes.get('/admin/recipes', admin.recipes)
 routes.get('/admin/chefs', admin.chefs)
 routes.get('/admin/chefs/new_chef', admin.createChef)
+routes.post('/admin', admin.postChef)
 
 module.exports = routes
