@@ -3,6 +3,7 @@ const routes = express.Router()
 
 const recipes = require('./app/controllers/recipes')
 const admin = require('./app/controllers/admin')
+const general = require('./app/controllers/general')
 
 routes.get('/', recipes.index)
 routes.get('/about', recipes.about)
@@ -18,6 +19,6 @@ routes.post('/admin', admin.postChef)
 routes.post('/admin/recipes', admin.postRecipe)
 
 
-routes.use(recipes.not_found)
+routes.use(general.not_found)
 
 module.exports = routes
