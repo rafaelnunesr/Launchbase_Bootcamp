@@ -322,6 +322,7 @@ button.delete:hover{
 .admin-recipe-img img {
     width: 100%;
     border-radius: 10px;
+    min-height: 100%;
 }
 
 .admin-recipe-img img:hover {

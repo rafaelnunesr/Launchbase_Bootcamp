@@ -7,13 +7,14 @@
 
         <div class="field-input">
             <div class="field-recipe-chef">
-                <select name="chef">
+                <select name="chef_id">
                     {% for chef in chefOptions %}
                         <option 
                             value="{{chef.id}}"
                             {%if recipes.chef_id == chef.id%} selected {%endif%}>{{chef.name}}</option>
                     {% endfor %}
                 </select>
+            </div>
         </div>
     </div>
     
@@ -29,6 +30,21 @@
                     type="text"
                     name="name"
                     value={{ recipe.name }}>
+            </div>
+        </div>
+    </div>
+
+    <div class="field-component">
+        <div class="field-title">
+            <h1>Imagem da receita</h1>
+        </div>
+
+        <div class="field-input">
+            <div class="field-recipe-photo">
+                <input 
+                    type="url"
+                    name="photo"
+                    value={{ recipe.photo }}>
             </div>
         </div>
     </div>
@@ -66,18 +82,18 @@
         </div>
 
         <div class="field-input">
-            <div class="field-recipe-step">
+            <div class="field-recipe-preparation">
                 {% if recipe.steps %}
-                    {% for step in recipe.steps %}
+                    {% for prep in recipe.preparation %}
                         <input 
                             type="text"
-                            name="preparation"
-                            value="{{ step }}">
+                            name="prep"
+                            value="{{ prep }}">
                     {% endfor %}
                 {% else %}
                     <input 
                         type="text"
-                        name="step">
+                        name="prep">
                 {% endif %}
             </div>
         </div>
@@ -93,11 +109,12 @@
         </div>
 
         <div class="field-input">
-            <div class="field-recipe-additional-info">
+            <div class="field-recipe-information">
                 <textarea 
-                    name="additional-info"
+                    name="information"
                     cols="30" 
-                    rows="10"></textarea>
+                    rows="10"
+                    value="{{recipe.information}}"></textarea>
             </div>
         </div>
     </div>

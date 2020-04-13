@@ -34,9 +34,9 @@ if (addNewIngredient) {
 
 if (addNewStep) {
     addNewStep.addEventListener('click', function(){
-        const step = document.querySelector('.field-recipe-step')
+        const step = document.querySelector('.field-recipe-preparation')
 
-        const steps = document.querySelectorAll('input[name="step"]')
+        const steps = document.querySelectorAll('input[name="prep"]')
         const lastStep = steps[steps.length - 1].value
 
         if (lastStep == ''){
@@ -45,7 +45,7 @@ if (addNewStep) {
 
             const new_input = document.createElement('input')
 
-            new_input.name = 'step'
+            new_input.name = 'prep'
         
             step.appendChild(new_input)
         }

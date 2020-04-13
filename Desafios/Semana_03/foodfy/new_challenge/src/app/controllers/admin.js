@@ -15,7 +15,9 @@ module.exports = {
             }
         }
 
-        return res.render('admin/index', {pageInfo})
+        Recipe.allRecipes(function(allRecipes){
+            return res.render('admin/index', {recipes: allRecipes, pageInfo})
+        })
     },
     createRecipe(req, res){
 
@@ -37,7 +39,9 @@ module.exports = {
             }
         }
 
-        return res.render('admin/recipes', {pageInfo})
+        Recipe.allRecipes(function(allRecipes){
+            return res.render('admin/index', {recipes: allRecipes, pageInfo})
+        })
     },
     chefs(req, res){
 
@@ -102,8 +106,6 @@ module.exports = {
         const total_recipes = function(){
             Chef.allRecipes(id)
         }
-
-        console.log(`total recipes = ${total_recipes}`)
 
         if (total > 1){
             Chef.delete(id, function(){
