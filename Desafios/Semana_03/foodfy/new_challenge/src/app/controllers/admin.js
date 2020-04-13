@@ -1,4 +1,5 @@
 const Chef = require('../models/Chef')
+const Recipe = require('../models/Recipe')
 
 module.exports = {
     index(req, res){
@@ -22,7 +23,10 @@ module.exports = {
             default_title: 'Adicionar nova receita'
         }
 
-        return res.render('admin/new_recipe', {pageInfo})
+        Recipe.chefSelectOptions(function(options){
+            return res.render('admin/new_recipe', {chefOptions: options, pageInfo})
+        })
+
     },
     recipes(req, res) {
         const pageInfo = {
@@ -77,6 +81,34 @@ module.exports = {
             {
                 return res.send('Please, fill all the fields')
             }
+        }
+
+        Recipe.create(req.body, function(recipe){
+            return res.send(req.body)
+        })
+    },
+    editChef(req, res){
+        Chef.find(req.params.id, function(chef){
+            if (!chef) return res.send('Chef not found!')
+
+            return res.render('admin/edit_chef', { chef })
+        })
+    },
+    deleteChef(req, res){
+
+        const id = req.body.id
+        let total = 0
+
+        const total_recipes = function(){
+            Chef.allRecipes(id)
+        }
+
+        console.log(`total recipes = ${total_recipes}`)
+
+        if (total > 1){
+            Chef.delete(id, function(){
+                return res.redirect(`/admin`)
+            })
         }
     }
 }

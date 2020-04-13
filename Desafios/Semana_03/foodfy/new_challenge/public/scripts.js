@@ -52,3 +52,21 @@ if (addNewStep) {
 
     })
 }
+
+//DELETE
+const deleteButton = document.querySelector('.delete')
+const form = document.querySelector('form')
+
+if(deleteButton){
+    deleteButton.addEventListener('click', function(){
+        form.addEventListener('submit', function(event){
+            const confirmation = confirm('Deseja Deletar?')
+            if(!confirmation){
+                event.preventDefault()
+            }else{
+                form.action = '/admin?_method=DELETE'
+            }
+        })
+
+    })
+}

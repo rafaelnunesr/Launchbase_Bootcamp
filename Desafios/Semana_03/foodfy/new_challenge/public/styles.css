@@ -281,6 +281,7 @@ header a + a:hover {
 
 .admin-button button,
 .admin-button a {
+    min-width: 90%;
     position: absolute;
     right: 0;
     background: var(--purple-color);
@@ -295,6 +296,14 @@ header a + a:hover {
 .admin-button button:hover,
 .admin-button a:hover {
     background: black;
+}
+
+button.delete {
+    background: red;
+}
+
+button.delete:hover{
+    background: rgb(196, 2, 2);
 }
 
 .admin-recipes {

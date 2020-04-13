@@ -25,5 +25,33 @@ module.exports = {
             callback(results.rows[0])
         })
 
+    },
+    find(id, callback){
+        db.query(`
+            SELECT *
+            FROM chefs
+            WHERE id = $1`, [id], function(err, results){
+                if (err) throw `Dababase Error! ${err}`
+
+                callback(results.rows[0])
+            })
+    },
+    delete(id, callback){
+
+        db.query(`DELETE FROM chefs WHERE id = $1`, [id], function(err, results){
+            if (err) throw `Database error! ${err}`
+
+            return callback()
+        })
+    },
+    allRecipes(id, callback){
+
+        db.query(`SELECT *
+                  FROM recipes
+                  WHERE recipes.chef_id = $1`, [id], function(err, results){
+                      if (err) throw `Database error! ${err}`
+                      console.log(results.rows)
+                      callback(results.rows)
+                  })
     }
 }

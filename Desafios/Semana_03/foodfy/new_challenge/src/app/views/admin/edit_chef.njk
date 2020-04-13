@@ -1,23 +1,24 @@
 {% extends './layout.njk' %}
 
 {% block header %}
-    <title>Foodfy | Novo Chef</title>
+    <title>Foodfy | Editar Chef</title>
 {% endblock %}
 
 {% block content %}
 
-    <form action="/admin" method="POST">
+    <form action="/admin" method="POST" id='form'>
 
         <div class="admin-subheader">
             <div class="default-title">
-                <h1>{{pageInfo.default_title}}</h1>
+                <h1>Editar Chef</h1>
             </div>
 
-            <div class="admin-button">
-                <a href="#" hidden="hidden"></a>
+            <div class="admin-button" id='delete'>
+                <button type="submit" class='delete'>Deletar</button>
+                <input type="hidden" name='id' value={{chef.id}}>
             </div>
 
-            <div class="admin-button">
+            <div class="admin-button" id='save'>
                 <button type="submit">Salvar</button>
             </div>
         </div>

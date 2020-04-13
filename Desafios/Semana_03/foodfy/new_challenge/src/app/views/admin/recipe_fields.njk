@@ -7,9 +7,12 @@
 
         <div class="field-input">
             <div class="field-recipe-chef">
-                <select name="">
-                    <option value="">Rafael Nunes</option>
-                    <option value="">Helena Lima</option>
+                <select name="chef">
+                    {% for chef in chefOptions %}
+                        <option 
+                            value="{{chef.id}}"
+                            {%if recipes.chef_id == chef.id%} selected {%endif%}>{{chef.name}}</option>
+                    {% endfor %}
                 </select>
         </div>
     </div>
@@ -23,7 +26,9 @@
         <div class="field-input">
             <div class="field-recipe-name">
                 <input 
-                    type="text">
+                    type="text"
+                    name="name"
+                    value={{ recipe.name }}>
             </div>
         </div>
     </div>
@@ -35,9 +40,18 @@
 
         <div class="field-input">
             <div class="field-recipe-ingredient">
-                <input 
-                    type="text"
-                    name='ingredient'>
+                {% if recipe.ingrients %}
+                    {% for ingredient in recipe.ingredients %}
+                        <input 
+                            type="text"
+                            name='ingredient'
+                            value="{{ ingredient }}">
+                    {% endfor %}
+                {% else %}
+                    <input 
+                        type="text"
+                        name='ingredient'>
+                {% endif %}
             </div>
         </div>
 
@@ -53,9 +67,18 @@
 
         <div class="field-input">
             <div class="field-recipe-step">
-                <input 
-                    type="text"
-                    name='step'>
+                {% if recipe.steps %}
+                    {% for step in recipe.steps %}
+                        <input 
+                            type="text"
+                            name="preparation"
+                            value="{{ step }}">
+                    {% endfor %}
+                {% else %}
+                    <input 
+                        type="text"
+                        name="step">
+                {% endif %}
             </div>
         </div>
 
