@@ -13,144 +13,23 @@
 
         <div class="chefs">
 
-            <div class="chef">
-                <div class="chef-photo">
-                    <img src=https://images.pexels.com/photos/428333/pexels-photo-428333.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940 alt="Chef photo">
-                </div>
-
-                <div class="chef-info">
-                    <div class="chef-name">
-                        <h2>Rafael Nunes</h2>
+            {% for chef in chefs %}
+                <div class="chef">
+                    <div class="chef-photo">
+                        <img src={{chef.photo}} alt="Foto de {{chef.name}}">
                     </div>
 
-                    <div class="chef-qtt-recipes">
-                        <p>3 receitas</p>
-                    </div>
+                    <div class="chef-info">
+                        <div class="chef-name">
+                            <h2>{{chef.name}}</h2>
+                        </div>
+
+                        <div class="chef-qtt-recipes">
+                            <p>{{chef.qtt_recipes}}</p>
+                        </div>
+                    </div>    
                 </div>
-            
-            </div>
-
-            <div class="chef">
-                <div class="chef-photo">
-                    <img src=https://images.pexels.com/photos/428333/pexels-photo-428333.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940 alt="Chef photo">
-                </div>
-
-                <div class="chef-info">
-                    <div class="chef-name">
-                        <h2>Rafael Nunes</h2>
-                    </div>
-
-                    <div class="chef-qtt-recipes">
-                        <p>3 receitas</p>
-                    </div>
-                </div>
-            
-            </div>
-
-            <div class="chef">
-                <div class="chef-photo">
-                    <img src=https://images.pexels.com/photos/428333/pexels-photo-428333.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940 alt="Chef photo">
-                </div>
-
-                <div class="chef-info">
-                    <div class="chef-name">
-                        <h2>Rafael Nunes</h2>
-                    </div>
-
-                    <div class="chef-qtt-recipes">
-                        <p>3 receitas</p>
-                    </div>
-                </div>
-            
-            </div>
-
-            <div class="chef">
-                <div class="chef-photo">
-                    <img src=https://images.pexels.com/photos/428333/pexels-photo-428333.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940 alt="Chef photo">
-                </div>
-
-                <div class="chef-info">
-                    <div class="chef-name">
-                        <h2>Rafael Nunes</h2>
-                    </div>
-
-                    <div class="chef-qtt-recipes">
-                        <p>3 receitas</p>
-                    </div>
-                </div>
-            
-            </div>
-
-            <div class="chef">
-                <div class="chef-photo">
-                    <img src=https://images.pexels.com/photos/428333/pexels-photo-428333.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940 alt="Chef photo">
-                </div>
-
-                <div class="chef-info">
-                    <div class="chef-name">
-                        <h2>Rafael Nunes</h2>
-                    </div>
-
-                    <div class="chef-qtt-recipes">
-                        <p>3 receitas</p>
-                    </div>
-                </div>
-            
-            </div>
-
-
-            <div class="chef">
-                <div class="chef-photo">
-                    <img src=https://images.pexels.com/photos/428333/pexels-photo-428333.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940 alt="Chef photo">
-                </div>
-
-                <div class="chef-info">
-                    <div class="chef-name">
-                        <h2>Rafael Nunes</h2>
-                    </div>
-
-                    <div class="chef-qtt-recipes">
-                        <p>3 receitas</p>
-                    </div>
-                </div>
-            
-            </div>
-
-
-            <div class="chef">
-                <div class="chef-photo">
-                    <img src=https://images.pexels.com/photos/428333/pexels-photo-428333.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940 alt="Chef photo">
-                </div>
-
-                <div class="chef-info">
-                    <div class="chef-name">
-                        <h2>Rafael Nunes</h2>
-                    </div>
-
-                    <div class="chef-qtt-recipes">
-                        <p>3 receitas</p>
-                    </div>
-                </div>
-            
-            </div>
-
-
-            <div class="chef">
-                <div class="chef-photo">
-                    <img src=https://images.pexels.com/photos/428333/pexels-photo-428333.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940 alt="Chef photo">
-                </div>
-
-                <div class="chef-info">
-                    <div class="chef-name">
-                        <h2>Rafael Nunes</h2>
-                    </div>
-
-                    <div class="chef-qtt-recipes">
-                        <p>3 receitas</p>
-                    </div>
-                </div>
-            
-            </div>
+            {% endfor %}
 
         </div>
 

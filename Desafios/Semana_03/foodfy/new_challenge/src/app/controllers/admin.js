@@ -2,11 +2,13 @@ const Chef = require('../models/Chef')
 const Recipe = require('../models/Recipe')
 
 module.exports = {
+
+    // RECIPES
     index(req, res){
         const pageInfo = {
             default_title: 'Gerenciar Receitas',
             first_button: {
-                link: '/admin/chefs/new_chef',
+                link: '/admin/chefs/create',
                 description: 'Novo Chef'
             },
             second_button: {
@@ -30,7 +32,21 @@ module.exports = {
         })
 
     },
-    recipes(req, res) {
+    postRecipe(req, res){
+        const keys = Object.keys(req.body)
+
+        for (key of keys){
+            if (req.body[key] == '' && key != 'information')
+            {
+                return res.send('Please, fill all the fields')
+            }
+        }
+
+        Recipe.create(req.body, function(recipe){
+            return res.send(req.body)
+        })
+    },
+    showRecipes(req, res) {
         const pageInfo = {
             default_title: 'Gerenciar Receitas',
             first_button: {
@@ -43,21 +59,17 @@ module.exports = {
             return res.render('admin/index', {recipes: allRecipes, pageInfo})
         })
     },
-    chefs(req, res){
-
-        const pageInfo = {
-            default_title: 'Gerenciar Chefs',
-            first_button: {
-                link: '/admin/chefs/new_chef',
-                description: 'Novo Chef'
-            }
-        }
-
-        Chef.allChefs(function(allChefs){
-            return res.render('admin/chefs/chefs', {chefs: allChefs, pageInfo})
-        })
-
+    editRecipe(req, res){
+        return res.send('edit')
     },
+    putRecipe(req, res){
+        return res.send('put')
+    },
+    deleteRecipe(req, res){
+        return res.send('post')
+    },
+
+    //CHEFS
     createChef(req, res){
 
         const pageInfo = {
@@ -77,22 +89,40 @@ module.exports = {
         }
 
         Chef.create(req.body, function(chef){
-            return res.send(req.body)
+            return res.redirect('/admin/chefs')
         })
     },
-    postRecipe(req, res){
-        const keys = Object.keys(req.body)
+    showChefs(req, res){
 
-        for (key of keys){
-            if (req.body[key] == '')
-            {
-                return res.send('Please, fill all the fields')
+        if(req.params.id){
+            const pageInfo = {
+                default_title: '',
+                first_button: {
+                    link: '/admin/chefs/create',
+                    description: 'Editar'
+                }
             }
+
+            Chef.find(req.params.id, function(chef){
+                if (!chef) return res.send('Chef not found!')
+                pageInfo.default_title = 'Chef: ' + chef.name
+
+                return res.render('admin/chefs/chef', {chef, pageInfo})
+            })
+        } else {
+            const pageInfo = {
+                default_title: 'Gerenciar Chefs',
+                first_button: {
+                    link: '/admin/chefs/create',
+                    description: 'Novo Chef'
+                }
+            }
+
+            Chef.allChefs(function(allChefs){
+                return res.render('admin/chefs/chefs', {chefs: allChefs, pageInfo})
+            })
         }
 
-        Recipe.create(req.body, function(recipe){
-            return res.send(req.body)
-        })
     },
     editChef(req, res){
         Chef.find(req.params.id, function(chef){
@@ -100,6 +130,9 @@ module.exports = {
 
             return res.render('admin/chefs/edit', { chef })
         })
+    },
+    putChef(req, res){
+        return res.send('put')
     },
     deleteChef(req, res){
 
@@ -115,24 +148,5 @@ module.exports = {
                 return res.redirect(`/admin`)
             })
         }
-    },
-    chef(req, res){
-
-        const pageInfo = {
-            default_title: '',
-            first_button: {
-                link: '/admin/chefs/new_chef',
-                description: 'Editar'
-            }
-        }
-
-        Chef.find(req.params.id, function(chef){
-            if (!chef) return res.send('Chef not found!')
-
-            pageInfo.default_title = 'Chef: ' + chef.name
-
-            return res.render('admin/chefs/chef', {chef, pageInfo})
-        })
-
     }
 }

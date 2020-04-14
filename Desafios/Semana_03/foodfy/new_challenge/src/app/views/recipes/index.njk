@@ -24,89 +24,21 @@
 
         <div class="index-recipes">
 
-            <div class="recipe">
-                <div class="recipe-img">
-                    <img src="./assets/burger.png" alt="burger">
-                </div>
+            {% for recipe in recipes%}
+                <div class="recipe">
+                    <div class="recipe-img">
+                        <img src="{{recipe.photo}}" alt="Foto de {{recipe.name}}">
+                    </div>
 
-                <div class="recipe-name">
-                    <h2>Triplo bancon burguer</h2>
-                </div>
+                    <div class="recipe-name">
+                        <h2>{{recipe.name}}</h2>
+                    </div>
 
-                <div class="recipe-chef-name">
-                    <p>Por Jorge relato</p>
+                    <div class="recipe-chef-name">
+                        <p>Por {{recipe.chef_name}}</p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="recipe">
-                <div class="recipe-img">
-                    <img src="./assets/burger.png" alt="burger">
-                </div>
-
-                <div class="recipe-name">
-                    <h2>Triplo bancon burguer</h2>
-                </div>
-
-                <div class="recipe-chef-name">
-                    <p>Por Jorge relato</p>
-                </div>
-            </div>
-
-            <div class="recipe">
-                <div class="recipe-img">
-                    <img src="./assets/burger.png" alt="burger">
-                </div>
-
-                <div class="recipe-name">
-                    <h2>Triplo bancon burguer</h2>
-                </div>
-
-                <div class="recipe-chef-name">
-                    <p>Por Jorge relato</p>
-                </div>
-            </div>
-
-            <div class="recipe">
-                <div class="recipe-img">
-                    <img src="./assets/burger.png" alt="burger">
-                </div>
-
-                <div class="recipe-name">
-                    <h2>Triplo bancon burguer</h2>
-                </div>
-
-                <div class="recipe-chef-name">
-                    <p>Por Jorge relato</p>
-                </div>
-            </div>
-
-            <div class="recipe">
-                <div class="recipe-img">
-                    <img src="./assets/burger.png" alt="burger">
-                </div>
-
-                <div class="recipe-name">
-                    <h2>Triplo bancon burguer</h2>
-                </div>
-
-                <div class="recipe-chef-name">
-                    <p>Por Jorge relato</p>
-                </div>
-            </div>
-
-            <div class="recipe">
-                <div class="recipe-img">
-                    <img src="./assets/burger.png" alt="burger">
-                </div>
-
-                <div class="recipe-name">
-                    <h2>Triplo bancon burguer</h2>
-                </div>
-
-                <div class="recipe-chef-name">
-                    <p>Por Jorge relato</p>
-                </div>
-            </div>
+            {% endfor %}
 
         </div>
     </main>
