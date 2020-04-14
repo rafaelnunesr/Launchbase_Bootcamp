@@ -1,4 +1,4 @@
-{% extends './layout.njk' %}
+{% extends '../layout.njk' %}
 
 {% block header %}
     <title>Foodfy | Nova receita</title>
@@ -22,7 +22,7 @@
             </div>
         </div>
 
-        {% include 'admin/recipe_fields.njk' %}
+        {% include 'admin/recipes/fields.njk' %}
 
     </form>
 {% endblock %}

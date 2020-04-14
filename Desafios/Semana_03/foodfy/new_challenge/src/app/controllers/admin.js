@@ -26,7 +26,7 @@ module.exports = {
         }
 
         Recipe.chefSelectOptions(function(options){
-            return res.render('admin/new_recipe', {chefOptions: options, pageInfo})
+            return res.render('admin/recipes/create', {chefOptions: options, pageInfo})
         })
 
     },
@@ -53,7 +53,10 @@ module.exports = {
             }
         }
 
-        return res.render('admin/chefs', {pageInfo})
+        Chef.allChefs(function(allChefs){
+            return res.render('admin/chefs/chefs', {chefs: allChefs, pageInfo})
+        })
+
     },
     createChef(req, res){
 
@@ -61,7 +64,7 @@ module.exports = {
             default_title: 'Criar novo chef',
         }
 
-        return res.render('admin/new_chef', {pageInfo})
+        return res.render('admin/chefs/create', {pageInfo})
     },
     postChef(req, res){
         const keys = Object.keys(req.body) 
@@ -95,7 +98,7 @@ module.exports = {
         Chef.find(req.params.id, function(chef){
             if (!chef) return res.send('Chef not found!')
 
-            return res.render('admin/edit_chef', { chef })
+            return res.render('admin/chefs/edit', { chef })
         })
     },
     deleteChef(req, res){
@@ -112,5 +115,24 @@ module.exports = {
                 return res.redirect(`/admin`)
             })
         }
+    },
+    chef(req, res){
+
+        const pageInfo = {
+            default_title: '',
+            first_button: {
+                link: '/admin/chefs/new_chef',
+                description: 'Editar'
+            }
+        }
+
+        Chef.find(req.params.id, function(chef){
+            if (!chef) return res.send('Chef not found!')
+
+            pageInfo.default_title = 'Chef: ' + chef.name
+
+            return res.render('admin/chefs/chef', {chef, pageInfo})
+        })
+
     }
 }

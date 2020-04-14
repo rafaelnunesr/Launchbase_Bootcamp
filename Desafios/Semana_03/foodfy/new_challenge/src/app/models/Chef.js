@@ -2,12 +2,22 @@ const db = require ('../../config/db')
 const { date } = require('../../lib/utils')
 
 module.exports = {
+    allChefs(callback){
+        db.query(`SELECT *
+                  FROM chefs
+                  ORDER BY chefs.name`, function(err, results){
+                      if (err) throw `Database error! ${err}`
+
+                      callback(results.rows)
+                  })
+
+    },
     create(data, callback){
 
         const query = `
             INSERT INTO chefs(
                 name,
-                avatar_url,
+                photo,
                 created_at
             ) VALUES ($1, $2, $3)
             RETURNING id`
@@ -15,7 +25,7 @@ module.exports = {
         
         const values = [
             data.chef_name,
-            data.chef_avatar,
+            data.chef_photo,
             date(Date.now()).iso
         ]
 

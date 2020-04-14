@@ -1,0 +1,23 @@
+<div class="chefs">
+
+    {% for chef in chefs %}
+
+        <div class="chef">
+            <div class="admin-chef-img">
+                <img src="{{chef.photo}}" alt="{{chef.name}}">
+            </div>
+
+            <div class="chef-info">
+                <div class="admin-chef-name">
+                    <h2>{{chef.name}}</h2>
+                </div>
+
+                <div class="admin-chef-view">
+                    <a href="#">Visualizar</a>
+                </div>
+            </div>
+
+        </div>
+    {% endfor %}
+
+</div>

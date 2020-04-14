@@ -319,10 +319,18 @@ button.delete:hover{
     gap: 10px;
 }
 
+.admin-recipe-img{
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    overflow: hidden;
+}
+
 .admin-recipe-img img {
     width: 100%;
+    height: 100%;
+    max-height: 100%;
     border-radius: 10px;
-    min-height: 100%;
 }
 
 .admin-recipe-img img:hover {
@@ -353,6 +361,10 @@ button.delete:hover{
     text-decoration: none;
     font-size: 16px;
     color: blue;
+}
+
+.admin-recipe-view a + a {
+    margin-left: 10px;
 }
 
 .admin-recipe-view a:hover{
@@ -434,4 +446,13 @@ button.delete:hover{
     position: absolute;
     top: 25%;
     left: 20%;
+}
+
+/*=== ADMIN CHEFS */
+.admin-chef-view a{
+    text-decoration: none;
+}
+
+.admin-chef-view a:hover {
+    color: rgb(6, 6, 153);
 }
