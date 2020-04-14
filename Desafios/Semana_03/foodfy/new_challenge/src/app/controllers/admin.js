@@ -47,17 +47,34 @@ module.exports = {
         })
     },
     showRecipes(req, res) {
-        const pageInfo = {
-            default_title: 'Gerenciar Receitas',
-            first_button: {
-                link: '/admin/recipes/create',
-                description: 'Nova receita'
-            }
-        }
 
-        Recipe.allRecipes(function(allRecipes){
-            return res.render('admin/index', {recipes: allRecipes, pageInfo})
-        })
+        if(req.params.id) {
+
+            const pageInfo = {
+                default_title: 'Receita: ',
+                first_button: {
+                    link: `/admin/recipes`,
+                    description: 'Editar'
+                }
+            }
+
+            Recipe.find(req.params.id, function(recipe){
+                return res.render('admin/recipes/recipe', {recipe})
+            })
+            
+        } else {
+            const pageInfo = {
+                default_title: 'Gerenciar Receitas',
+                first_button: {
+                    link: '/admin/recipes/create',
+                    description: 'Nova receita'
+                }
+            }
+
+            Recipe.allRecipes(function(allRecipes){
+                return res.render('admin/index', {recipes: allRecipes, pageInfo})
+            })
+        }
     },
     editRecipe(req, res){
         return res.send('edit')

@@ -178,6 +178,7 @@ footer .foot p {
     border-radius: 10px;
 
     min-width: 200px;
+    min-height: 130px;
 }
 
 .recipe-img img:hover {
