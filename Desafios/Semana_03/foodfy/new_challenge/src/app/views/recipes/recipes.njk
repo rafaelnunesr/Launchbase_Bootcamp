@@ -12,11 +12,11 @@
             {% for recipe in recipes %}
                 <div class="recipe">
                     <div class="recipe-img">
-                        <img src="{{recipe.photo}}" alt="Foto de {{recipe.name}}">
+                        <a href="recipes/{{recipe.id}}"><img src="{{recipe.photo}}" alt="Foto de {{recipe.name}}"></a>
                     </div>
 
                     <div class="recipe-name">
-                        <h2>{{recipe.name}}r</h2>
+                        <h2>{{recipe.name}}</h2>
                     </div>
 
                     <div class="recipe-chef-name">

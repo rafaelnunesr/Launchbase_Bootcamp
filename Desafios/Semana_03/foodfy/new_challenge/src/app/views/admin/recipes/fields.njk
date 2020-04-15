@@ -56,7 +56,7 @@
 
         <div class="field-input">
             <div class="field-recipe-ingredient">
-                {% if recipe.ingrients %}
+                {% if recipe.ingredients %}
                     {% for ingredient in recipe.ingredients %}
                         <input 
                             type="text"
@@ -83,7 +83,7 @@
 
         <div class="field-input">
             <div class="field-recipe-preparation">
-                {% if recipe.steps %}
+                {% if recipe.preparation %}
                     {% for prep in recipe.preparation %}
                         <input 
                             type="text"

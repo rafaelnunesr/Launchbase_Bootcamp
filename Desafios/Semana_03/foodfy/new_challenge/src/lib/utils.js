@@ -13,5 +13,20 @@ module.exports = {
             iso: `${year}-${month}-${day}`,
             format: `${day}/${month}/${year}`
         }
+    },
+    list(string){
+
+        if(string){
+
+            let cleanInit = string.replace('{"', '')
+            let cleanEnd = cleanInit.replace('"}', '')
+
+            let cleanString = cleanEnd.split('","')
+
+            return cleanString
+        }
+
+        return string
+        
     }
 }

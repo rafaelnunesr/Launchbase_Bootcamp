@@ -60,7 +60,6 @@ module.exports = {
                   FROM recipes
                   WHERE recipes.chef_id = $1`, [id], function(err, results){
                       if (err) throw `Database error! ${err}`
-                      console.log(results.rows)
                       callback(results.rows)
                   })
     }

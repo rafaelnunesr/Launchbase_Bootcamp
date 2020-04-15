@@ -58,11 +58,24 @@ module.exports = {
     find(id, callback){
         db.query(`
             SELECT *
+            FROM recipes as Recipe
+            JOIN (SELECT id AS chef_id,chefs.name AS chef_name
+                FROM chefs) AS Chef
+            ON Recipe.chef_id = Chef.chef_id
+            WHERE id = $1`, [id], function(err, results){
+                if (err) throw `Dababase Error! ${err}`
+
+                callback(results.rows[0])
+            })
+    }/*
+    find(id, callback){
+        db.query(`
+            SELECT *
             FROM recipes
             WHERE id = $1`, [id], function(err, results){
                 if (err) throw `Dababase Error! ${err}`
 
                 callback(results.rows[0])
             })
-    }
+    }*/
 }

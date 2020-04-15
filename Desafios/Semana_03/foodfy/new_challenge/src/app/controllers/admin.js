@@ -1,5 +1,6 @@
 const Chef = require('../models/Chef')
 const Recipe = require('../models/Recipe')
+const {list} = require('../../lib/utils')
 
 module.exports = {
 
@@ -59,6 +60,14 @@ module.exports = {
             }
 
             Recipe.find(req.params.id, function(recipe){
+
+                recipe.ingredients = list(recipe.ingredients)
+                recipe.preparation = list(recipe.preparation)
+
+                if(recipe.information){
+                    recipe.information = list(recipe.information)
+                }
+
                 return res.render('admin/recipes/recipe', {recipe})
             })
             
@@ -77,7 +86,25 @@ module.exports = {
         }
     },
     editRecipe(req, res){
-        return res.send('edit')
+        Recipe.find(req.params.id, function(recipe){
+            if (!recipe) {
+                return res.send('Recipe not found!')
+            }
+
+            const recipeInfo = {
+                id: recipe.id,
+                chef_id: recipe.chef_id,
+                photo: recipe.photo,
+                name: recipe.name,
+                ingredients: list(recipe.ingredients),
+                preparation: list(recipe.preparation),
+                information: list(recipe.information)
+            }
+
+            recipe = recipeInfo
+
+            return res.render('admin/recipes/edit', {recipe})
+        })
     },
     putRecipe(req, res){
         return res.send('put')

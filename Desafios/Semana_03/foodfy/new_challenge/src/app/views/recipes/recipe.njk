@@ -1,4 +1,4 @@
-{% extends '../layout.njk' %}
+{% extends './layout.njk' %}
 
 {% block header %}
     <title>Foodfy | {{recipe.name}}</title>
@@ -24,7 +24,8 @@
 
             <div class="show_recipe_div">
                 <div class="show_recipe_div_title">
-                    <h1>Ingredients</h1>
+                    <h1 class='side'>Ingredients</h1>
+                    <a class='side ingredients' onClick="hide_showIngredients()">ESCONDER</a>
                 </div>
 
                 <div class="show_recipe_ingredients">
@@ -37,7 +38,8 @@
 
             <div class="show_recipe_div">
                 <div class="show_recipe_div_title">
-                    <h1>Modo de preparo</h1>
+                    <h1 class='side'>Modo de Preparo</h1>
+                    <a class='side preparation' onClick="hide_showPreparation()">ESCONDER</a>
                 </div>
 
                 <div class="show_recipe_preparation">
@@ -49,10 +51,11 @@
 
             <div class="show_recipe_div">
                 <div class="show_recipe_div_title">
-                    <h1>Informaçōes adicionais</h1>
+                    <h1 class='side'>Informaçōes adicionais</h1>
+                    <a class='side information' onClick="hide_showInformation()">ESCONDER</a>
                 </div>
 
-                <div class="show_recipe_ingredients">
+                <div class="show_recipe_information">
                 
                     {% for info in recipe.information %}
                         <p class='info'>{{ info }}</p>

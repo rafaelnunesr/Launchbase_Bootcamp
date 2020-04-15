@@ -70,3 +70,49 @@ if(deleteButton){
 
     })
 }
+
+//HIDE OR SHOW RECIPE PARTS
+function hide_showIngredients(){
+    const ingredientsButton = document.querySelector('a.information')
+    const ingredients = document.querySelector('.show_recipe_ingredients')
+    
+    const status = ingredientsButton.innerHTML
+
+    if (status === 'MOSTRAR'){
+        ingredientsButton.innerText = 'ESCONDER'
+        ingredients.style.display = 'block'
+    } else {
+        ingredientsButton.innerText = 'MOSTRAR'
+        ingredients.style.display = 'none'
+    }
+}
+
+function hide_showPreparation(){
+    const preparationButton = document.querySelector('a.preparation')
+    const preparation = document.querySelector('.show_recipe_preparation')
+    
+    const status = preparationButton.innerHTML
+
+    if (status === 'MOSTRAR'){
+        preparationButton.innerText = 'ESCONDER'
+        preparation.style.display = 'block'
+    } else {
+        preparationButton.innerText = 'MOSTRAR'
+        preparation.style.display = 'none'
+    }
+}
+
+function hide_showInformation(){
+    const informationButton = document.querySelector('a.information')
+    const information = document.querySelector('.show_recipe_information')
+    
+    const status = informationButton.innerHTML
+
+    if (status === 'MOSTRAR'){
+        informationButton.innerText = 'ESCONDER'
+        information.style.display = 'block'
+    } else {
+        informationButton.innerText = 'MOSTRAR'
+        information.style.display = 'none'
+    }
+}

@@ -1,0 +1,9 @@
+{% extends '../layout.njk' %}
+
+{% block header %}
+    <title>Foodfy | {{recipe.name}}</title>
+{% endblock %}
+
+{% block content %}
+    {% include './fields.njk' %}
+{% endblock %}

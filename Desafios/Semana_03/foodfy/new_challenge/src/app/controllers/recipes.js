@@ -1,5 +1,6 @@
 const Chef = require('../models/Chef')
 const Recipe = require('../models/Recipe')
+const {list} = require('../../lib/utils')
 
 module.exports = {
     index(req, res){
@@ -19,5 +20,22 @@ module.exports = {
         Chef.allChefs(function(allChefs){
             return res.render('recipes/chefs', {chefs: allChefs})
         })
+    },
+    showRecipes(req, res){
+        if(req.params.id) {
+
+            Recipe.find(req.params.id, function(recipe){
+
+                recipe.ingredients = list(recipe.ingredients)
+                recipe.preparation = list(recipe.preparation)
+
+                if(recipe.information){
+                    recipe.information = list(recipe.information)
+                }
+
+                return res.render('recipes/recipe', {recipe})
+            })
+            
+        }
     }
 }
