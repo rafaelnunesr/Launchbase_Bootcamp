@@ -4,7 +4,7 @@ const {list} = require('../../lib/utils')
 
 module.exports = {
     index(req, res){
-        Recipe.allRecipes(function(allRecipes){
+        Recipe.recipesMostAccessed(function(allRecipes){
             return res.render('recipes/index', {recipes: allRecipes})
         })
     },
@@ -24,7 +24,12 @@ module.exports = {
     showRecipes(req, res){
         if(req.params.id) {
 
-            Recipe.find(req.params.id, function(recipe){
+            const id = req.params.id
+
+            Recipe.addVisitToRecipe(id, function(){
+            })
+
+            Recipe.find(id, function(recipe){
 
                 recipe.ingredients = list(recipe.ingredients)
                 recipe.preparation = list(recipe.preparation)
