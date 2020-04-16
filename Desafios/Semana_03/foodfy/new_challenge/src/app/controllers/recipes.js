@@ -12,9 +12,28 @@ module.exports = {
         return res.render('recipes/about')
     },
     all(req, res){
-        Recipe.allRecipes(function(allRecipes){
-            return res.render('recipes/recipes', {recipes: allRecipes})
-        })
+
+        let { filter, page, limit } = req.query
+
+        page = page || 1
+        limit = limit || 9
+        offset = limit * (page - 1)
+
+        const params = {
+            filter,
+            page,
+            limit,
+            offset,
+            callback(recipes){
+                const pagination = {
+                    total: Math.ceil(recipes[0].total / limit),
+                    page
+                }
+
+                return res.render('recipes/recipes', {recipes, filter, pagination})
+            }
+        }
+        Recipe.paginate(params)
     },
     chefs(req, res){
         Chef.allChefs(function(allChefs){

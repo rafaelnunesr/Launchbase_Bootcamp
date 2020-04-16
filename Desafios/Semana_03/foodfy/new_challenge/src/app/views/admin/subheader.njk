@@ -5,11 +5,17 @@
 
     {% if pageInfo.second_button %}
         <div class="admin-button">
-            <a href="{{pageInfo.first_button.link}}">{{pageInfo.first_button.description}}</a>
+            <a 
+                href="{{pageInfo.first_button.link}}">
+                    {{pageInfo.first_button.description}}
+            </a>
         </div>
 
         <div class="admin-button">
-            <a href="{{pageInfo.second_button.link}}">{{pageInfo.second_button.description}}</a>
+            <a 
+                href="{{pageInfo.second_button.link}}">
+                    {{pageInfo.second_button.description}}
+            </a>
         </div>
     {% else %}
         <div class="admin-button">
@@ -17,7 +23,10 @@
         </div>
 
         <div class="admin-button">
-            <a href="{{pageInfo.first_button.link}}">{{pageInfo.first_button.description}}</a>
+            <a 
+                href="{{pageInfo.first_button.link}}">
+                    {{pageInfo.first_button.description}}
+            </a>
         </div>
     {% endif %}
 </div>

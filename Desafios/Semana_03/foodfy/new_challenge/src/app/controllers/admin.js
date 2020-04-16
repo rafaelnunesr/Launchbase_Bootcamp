@@ -6,21 +6,42 @@ module.exports = {
 
     // RECIPES
     index(req, res){
-        const pageInfo = {
-            default_title: 'Gerenciar Receitas',
-            first_button: {
-                link: '/admin/chefs/create',
-                description: 'Novo Chef'
-            },
-            second_button: {
-                link: '/admin/recipes/create',
-                description: 'Nova receita'
+
+        let { filter, page, limit } = req.query
+
+        page = page || 1
+        limit = limit || 10
+        offset = limit * (page - 1)
+
+        const params = {
+            filter,
+            page,
+            limit,
+            offset,
+            callback(recipes){
+
+                const pageInfo = {
+                    default_title: 'Gerenciar Receitas',
+                    first_button: {
+                        link: '/admin/chefs/create',
+                        description: 'Novo Chef'
+                    },
+                    second_button: {
+                        link: '/admin/recipes/create',
+                        description: 'Nova receita'
+                    }
+                }
+
+                const pagination = {
+                    total: Math.ceil(recipes[0].total / limit),
+                    page
+                }
+
+                return res.render('admin/index', {recipes, pageInfo, filter, pagination})
             }
         }
 
-        Recipe.allRecipes(function(allRecipes){
-            return res.render('admin/index', {recipes: allRecipes, pageInfo})
-        })
+        Recipe.paginate(params)
     },
     createRecipe(req, res){
 
@@ -44,7 +65,7 @@ module.exports = {
         }
 
         Recipe.create(req.body, function(recipe){
-            return res.send(req.body)
+            return res.redirect(`/admin/recipes/${recipe.id}`)
         })
     },
     showRecipes(req, res) {
@@ -52,9 +73,9 @@ module.exports = {
         if(req.params.id) {
 
             const pageInfo = {
-                default_title: 'Receita: ',
+                default_title: '',
                 first_button: {
-                    link: `/admin/recipes`,
+                    link: '',
                     description: 'Editar'
                 }
             }
@@ -68,21 +89,45 @@ module.exports = {
                     recipe.information = list(recipe.information)
                 }
 
-                return res.render('admin/recipes/recipe', {recipe})
+                pageInfo.first_button.link = `/admin/recipes/${recipe.id}/edit`
+                pageInfo.default_title = `Receita: ${recipe.name}`
+
+                return res.render('admin/recipes/recipe', {recipe, pageInfo})
             })
             
         } else {
-            const pageInfo = {
-                default_title: 'Gerenciar Receitas',
-                first_button: {
-                    link: '/admin/recipes/create',
-                    description: 'Nova receita'
+
+            let { filter, page, limit } = req.query
+
+            page = page || 1
+            limit = limit || 10
+            offset = limit * (page - 1)
+
+            const params = {
+                filter,
+                page,
+                limit,
+                offset,
+                callback(recipes){
+
+                    const pageInfo = {
+                        default_title: 'Gerenciar Receitas',
+                        first_button: {
+                            link: '/admin/recipes/create',
+                            description: 'Nova receita'
+                        }
+                    }
+
+                    const pagination = {
+                        total: Math.ceil(recipes[0].total / limit),
+                        page
+                    }
+    
+                    return res.render('admin/index', {recipes, pageInfo, filter, pagination})
+
                 }
             }
-
-            Recipe.allRecipes(function(allRecipes){
-                return res.render('admin/index', {recipes: allRecipes, pageInfo})
-            })
+            Recipe.paginate(params)
         }
     },
     editRecipe(req, res){
@@ -103,14 +148,21 @@ module.exports = {
 
             recipe = recipeInfo
 
-            return res.render('admin/recipes/edit', {recipe})
+            Recipe.recipeSelectOptions(function(options){
+                return res.render('admin/recipes/edit', {recipe, chefOptions: options})
+            })
+
         })
     },
     putRecipe(req, res){
         return res.send('put')
     },
     deleteRecipe(req, res){
-        return res.send('post')
+        const id = req.body.id
+
+        Recipe.delete(id, function(){
+            return res.redirect(`/admin`)
+        })
     },
 
     //CHEFS
@@ -194,3 +246,66 @@ module.exports = {
         }
     }
 }
+
+
+/*
+
+NOVOOOOOOOOO
+
+let { filter, page, limit } = req.query
+
+        page = page || 1
+        limit = limit || 9
+        offset = limit * (page - 1)
+
+        const params = {
+            filter,
+            page,
+            limit,
+            offset,
+            callback(recipes){
+
+                const pageInfo = {
+                    default_title: 'Gerenciar Receitas',
+                    first_button: {
+                        link: '/admin/chefs/create',
+                        description: 'Novo Chef'
+                    },
+                    second_button: {
+                        link: '/admin/recipes/create',
+                        description: 'Nova receita'
+                    }
+                }
+
+                const pagination = {
+                    total: Math.ceil(recipes[0].total / limit),
+                    page
+                }
+
+                return res.render('admin/index', {recipes, pageInfo, filter, pagination})
+            }
+        }
+*/
+
+/*
+VELHOOOO
+
+const pageInfo = {
+            default_title: 'Gerenciar Receitas',
+            first_button: {
+                link: '/admin/chefs/create',
+                description: 'Novo Chef'
+            },
+            second_button: {
+                link: '/admin/recipes/create',
+                description: 'Nova receita'
+            }
+        }
+
+        Recipe.allRecipes(function(allRecipes){
+
+            return res.render('admin/index', {recipes: allRecipes, pageInfo})
+        })
+
+
+*/

@@ -17,6 +17,13 @@
 
                 <a href="/admin/recipes">Receitas</a>
                 <a href="/admin/chefs">Chefs</a>
+
+                <form action="">
+                    <input 
+                        type="text"
+                        placeholder="Buscar por receita ou chef">
+                    <button>Filtrar</button>
+                </form>
             </div>
         </header>
 
@@ -30,6 +37,12 @@
 
             {% endblock %}
         </div>
+
+        <div class="pagination"
+            data-page={{pagination.page}}
+            data-total={{pagination.total}}
+            data-filter={{filter}}
+        ></div>
 
         <script src="/scripts.js"></script>
     </body>

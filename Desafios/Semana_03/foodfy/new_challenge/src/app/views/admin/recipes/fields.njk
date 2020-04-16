@@ -11,7 +11,7 @@
                     {% for chef in chefOptions %}
                         <option 
                             value="{{chef.id}}"
-                            {%if recipes.chef_id == chef.id%} selected {%endif%}>{{chef.name}}</option>
+                            {% if recipe.chef_id == chef.id %} selected {% endif %}>{{chef.name}}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -29,7 +29,7 @@
                 <input 
                     type="text"
                     name="name"
-                    value={{ recipe.name }}>
+                    value="{{ recipe.name }}">
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@
                 <input 
                     type="url"
                     name="photo"
-                    value={{ recipe.photo }}>
+                    value="{{ recipe.photo }}">
             </div>
         </div>
     </div>
@@ -113,8 +113,8 @@
                 <textarea 
                     name="information"
                     cols="30" 
-                    rows="10"
-                    value="{{recipe.information}}"></textarea>
+                    rows="10">
+                    {{recipe.information}}</textarea>
             </div>
         </div>
     </div>
