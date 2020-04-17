@@ -20,7 +20,7 @@ module.exports = {
             offset,
             callback(recipes){
 
-                const pageInfo = {
+                let pageInfo = {
                     default_title: 'Gerenciar Receitas',
                     first_button: {
                         link: '/admin/chefs/create',
@@ -35,6 +35,16 @@ module.exports = {
                 const pagination = {
                     total: Math.ceil(recipes[0].total / limit),
                     page
+                }
+
+                if(filter){
+                    pageInfo = {
+                        default_title: `Buscando por "${filter}"`,
+                        first_button: {
+                            link: '/admin/recipes/create',
+                            description: 'Nova receita'
+                        }
+                    }
                 }
 
                 return res.render('admin/index', {recipes, pageInfo, filter, pagination})
@@ -206,19 +216,38 @@ module.exports = {
                 return res.render('admin/chefs/chef', {chef, pageInfo})
             })
         } else {
-            const pageInfo = {
-                default_title: 'Gerenciar Chefs',
-                first_button: {
-                    link: '/admin/chefs/create',
-                    description: 'Novo Chef'
+
+
+            let { page, limit } = req.query
+
+            page = page || 1
+            limit = limit || 32
+            offset = limit * (page - 1)
+
+            const params = {
+                page,
+                limit,
+                offset,
+                callback(chefs){
+
+                    const pageInfo = {
+                        default_title: 'Gerenciar Chefs',
+                        first_button: {
+                            link: '/admin/chefs/create',
+                            description: 'Novo Chef'
+                        }
+                    }
+                    
+                    const pagination = {
+                        total: Math.ceil(chefs[0].total / limit),
+                        page
+                    }
+                    
+                    return res.render('admin/chefs/chefs', {chefs, pageInfo, pagination})
                 }
             }
-
-            Chef.allChefs(function(allChefs){
-                return res.render('admin/chefs/chefs', {chefs: allChefs, pageInfo})
-            })
-        }
-
+            Chef.paginate(params)
+        }   
     },
     editChef(req, res){
         Chef.find(req.params.id, function(chef){

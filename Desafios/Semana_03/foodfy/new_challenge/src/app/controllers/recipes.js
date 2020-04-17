@@ -30,15 +30,37 @@ module.exports = {
                     page
                 }
 
-                return res.render('recipes/recipes', {recipes, filter, pagination})
+                const searching_subheader = {
+                    header: filter
+                }
+
+                return res.render('recipes/recipes', {recipes, filter, pagination, searching_subheader})
             }
         }
         Recipe.paginate(params)
     },
     chefs(req, res){
-        Chef.allChefs(function(allChefs){
-            return res.render('recipes/chefs', {chefs: allChefs})
-        })
+
+        let { page, limit } = req.query
+
+        page = page || 1
+        limit = limit || 32
+        offset = limit * (page - 1)
+
+        const params = {
+            page,
+            limit,
+            offset,
+            callback(chefs){
+                const pagination = {
+                    total: Math.ceil(chefs[0].total / limit),
+                    page
+                }
+
+                return res.render('recipes/chefs', {chefs, pagination})
+            }
+        }
+        Chef.paginate(params)
     },
     showRecipes(req, res){
         if(req.params.id) {

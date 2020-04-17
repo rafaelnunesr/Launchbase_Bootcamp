@@ -33,10 +33,14 @@
 
                     {% block search %}
                         <div class="search">
-                            <input 
-                                type="text"
-                                placeholder="Buscar uma receita">
-                            <button type="submit">Buscar</button>
+                            <form action="/recipes" method="GET">
+                                <input 
+                                    type="text"
+                                    name="filter"
+                                    placeholder="Buscar uma receita"
+                                    value="{{filter}}">
+                                <button type="submit">Buscar</button>
+                            </form>
                         </div>
                     {% endblock %}
                     

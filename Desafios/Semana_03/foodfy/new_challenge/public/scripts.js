@@ -73,7 +73,7 @@ if(deleteButton){
 
 //HIDE OR SHOW RECIPE PARTS
 function hide_showIngredients(){
-    const ingredientsButton = document.querySelector('a.information')
+    const ingredientsButton = document.querySelector('a.ingredients')
     const ingredients = document.querySelector('.show_recipe_ingredients')
     
     const status = ingredientsButton.innerHTML

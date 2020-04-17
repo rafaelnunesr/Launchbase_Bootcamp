@@ -25,13 +25,19 @@
                         </div>
 
                         <div class="chef-qtt-recipes">
-                            <p>{{chef.qtt_recipes}}</p>
+                            <p>{{chef.total_recipes}} receitas</p>
                         </div>
                     </div>    
                 </div>
             {% endfor %}
 
         </div>
+
+        <div class="pagination public"
+            data-page={{pagination.page}}
+            data-total={{pagination.total}}
+            data-filter={{filter}}
+        ></div>
 
     </main>
 

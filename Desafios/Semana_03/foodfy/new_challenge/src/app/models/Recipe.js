@@ -119,7 +119,7 @@ module.exports = {
 
         if(filter) {
             filterQuery = `
-                WHERE recipe.name ILIKE '%${filter}%'
+                WHERE recipes.name ILIKE '%${filter}%'
             `
 
             totalQuery = `(
@@ -134,6 +134,7 @@ module.exports = {
             JOIN (SELECT id AS chef_id,chefs.name AS chef_name
                 FROM chefs) AS Chef
             ON recipes.chef_id = Chef.chef_id
+            ${filterQuery}
             LIMIT $1 OFFSET $2
         `
 

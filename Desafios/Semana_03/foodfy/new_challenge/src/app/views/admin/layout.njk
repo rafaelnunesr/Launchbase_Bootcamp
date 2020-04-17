@@ -18,11 +18,13 @@
                 <a href="/admin/recipes">Receitas</a>
                 <a href="/admin/chefs">Chefs</a>
 
-                <form action="">
+                <form class="form-admin" action="/admin" method="GET">
                     <input 
                         type="text"
-                        placeholder="Buscar por receita ou chef">
-                    <button>Filtrar</button>
+                        placeholder="Buscar por receita ou chef"
+                        name="filter"
+                        value={{filter}}>
+                    <button type="submit">Filtrar</button>
                 </form>
             </div>
         </header>
