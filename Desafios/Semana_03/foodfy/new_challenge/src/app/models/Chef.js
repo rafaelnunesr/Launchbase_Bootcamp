@@ -1,5 +1,5 @@
 const db = require ('../../config/db')
-const { date } = require('../../lib/utils')
+const { date, groupRecipesbyChef } = require('../../lib/utils')
 
 module.exports = {
     allChefs(callback){
@@ -64,6 +64,39 @@ module.exports = {
                   })
     },
     paginate(params){
+        const { limit, offset, callback } = params
+
+        let query = '',
+            totalQuery = `(
+                SELECT count(*) FROM chefs
+            ) AS total`
+
+        query = `
+        SELECT *, ${totalQuery}
+        FROM chefs
+        JOIN (SELECT recipes.id AS recipe_id,
+                        recipes.name AS recipe_name,
+                        recipes.photo AS recipe_photo,
+                        recipes.chef_id,
+                        recipes.ingredients,
+                        recipes.preparation,
+                        recipes.information
+        FROM recipes
+            GROUP BY recipes.id) AS Recipe
+        ON chefs.id = Recipe.chef_id
+        ORDER BY chefs.name LIMIT $1 OFFSET $2
+    `
+
+        db.query(query, [limit, offset], function(err, results){
+            if(err) throw `Database error! ${err}`
+            
+
+            groupRecipesbyChef(results.rows)
+            callback(results.rows)
+        })
+
+    },
+    paginate1(params){
         const { limit, offset, callback } = params
 
         let query = '',
