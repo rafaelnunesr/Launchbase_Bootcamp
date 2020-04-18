@@ -59,13 +59,15 @@ module.exports = {
 
                 chefs[item.id].chef_total_recipes = total_recipes
 
-                chefs[item.id].recipes[total_recipes] = ({
+                /*
+                chefs[item.id].recipes[total_recipes].push({
                     recipe_id: item.recipe_id,
                     recipe_name: item.recipe_name,
                     recipe_ingredients: item.ingredients,
                     recipe_preparation: item.preparation,
                     recipe_information: item.information
                 })
+                */
             }else {
 
                 const tmp = {
@@ -73,13 +75,14 @@ module.exports = {
                     chef_name: item.name,
                     chef_photo: item.photo,
                     chef_total_recipes: 1,
-                    recipes:
+                    recipes: [
                         {recipe_id: item.recipe_id,
-                            recipe_name: item.recipe_name,
-                            recipe_ingredients: item.ingredients,
-                            recipe_preparation: item.preparation,
-                            recipe_information: item.information
+                         recipe_name: item.recipe_name,
+                         recipe_ingredients: item.ingredients,
+                         recipe_preparation: item.preparation,
+                         recipe_information: item.information
                         }
+                    ]
                     }
                 
                 chefs[item.id] = tmp
@@ -87,6 +90,7 @@ module.exports = {
             }
 
         }     
-            console.log(chefs)
+        
+        console.log(chefs)
     }
 }
