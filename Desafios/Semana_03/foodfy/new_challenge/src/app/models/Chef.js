@@ -64,12 +64,18 @@ module.exports = {
                   })
     },
     paginate(params){
-        const { limit, offset, callback } = params
+        const { limit, offset, callback, id } = params
 
         let query = '',
             totalQuery = `(
                 SELECT count(*) FROM chefs
-            ) AS total`
+            ) AS total`,
+            filterId = ''
+
+        if (id){
+            filterId = `
+            WHERE chefs.id = ${id}`
+        }
 
         query = `
         SELECT *, ${totalQuery}
@@ -84,9 +90,10 @@ module.exports = {
         FROM recipes
             GROUP BY recipes.id) AS Recipe
         ON chefs.id = Recipe.chef_id
+        ${filterId}
         ORDER BY chefs.name LIMIT $1 OFFSET $2
     `
-
+        
         db.query(query, [limit, offset], function(err, results){
             if(err) throw `Database error! ${err}`
             
@@ -115,6 +122,8 @@ module.exports = {
 
             callback(results.rows)
         })
+
+        
 
     }
 }

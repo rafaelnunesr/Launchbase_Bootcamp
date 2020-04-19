@@ -16,16 +16,18 @@
             {% for chef in chefs %}
                 <div class="chef">
                     <div class="chef-photo">
-                        <img src={{chef.photo}} alt="Foto de {{chef.name}}">
+                        <a href="/chefs/{{chef.chef_id}}">
+                            <img src={{chef.chef_photo}} alt="Foto de {{chef.chef_name}}">
+                        </a>
                     </div>
 
                     <div class="chef-info">
                         <div class="chef-name">
-                            <h2>{{chef.name}}</h2>
+                            <h2>{{chef.chef_name}}</h2>
                         </div>
 
                         <div class="chef-qtt-recipes">
-                            <p>{{chef.total_recipes}} receitas</p>
+                            <p>{{chef.chef_total_recipes}} receitas</p>
                         </div>
                     </div>    
                 </div>

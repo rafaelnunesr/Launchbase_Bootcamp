@@ -41,27 +41,107 @@ module.exports = {
     },
     chefs(req, res){
 
-        let { page, limit } = req.query
+        if(req.params.id){
 
-        page = page || 1
-        limit = limit || 32
-        offset = limit * (page - 1)
+            let { page, limit } = req.query
+            const id = req.params.id
 
-        const params = {
-            page,
-            limit,
-            offset,
-            callback(chefs){
+            page = page || 1
+            limit = limit || 6
+            offset = limit * (page - 1)
 
-                const pagination = {
-                    total: Math.ceil(chefs[0].total / limit),
-                    page
+            const params = {
+                page,
+                limit,
+                offset,
+                id,
+                callback(Chef){
+
+                    const pageInfo = {
+                        default_title: '',
+                        first_button: {
+                            link: '/admin/chefs/create',
+                            description: 'Editar'
+                        }
+                    }
+
+                    let pagination = {}
+
+                    if (id){
+
+                        pagination = {
+                            total: Math.ceil(Chef[0].chef_total_recipes / limit),
+                            page
+                        }
+                    }else {
+                        pagination = {
+                            total: Math.ceil(Chef[0].total / limit),
+                            page
+                        }
+                    }
+
+                    pageInfo.default_title = 'Chef: ' + Chef[0].chef_name
+
+                    let recipes = []
+
+                    for (recipe of Chef[0].recipes){
+                        recipes.push({
+                            id: recipe.recipe_id,
+                            name: recipe.recipe_name,
+                            photo: recipe.recipe_photo,
+                            ingredients: recipe.recipe_ingredients,
+                            preparation: recipe.recipe_preparation,
+                            information: recipe.recipe_information
+                        })
+                    }
+
+                    let chef = {
+                        name: Chef[0].chef_name,
+                        photo: Chef[0].chef_photo,
+                        total_recipes: Chef[0].chef_total_recipes,
+                        recipes: recipes
+                    }
+
+                    return res.render('recipes/chef', {chef, pageInfo, pagination})
+
                 }
-
-                return res.render('recipes/chefs', {chefs, pagination})
+                
             }
+            Chef.paginate(params)
+        } else {
+
+            let { page, limit } = req.query
+
+            page = page || 1
+            limit = limit || 32
+            offset = limit * (page - 1)
+
+            const params = {
+                page,
+                limit,
+                offset,
+                callback(chefs){
+
+                    const pageInfo = {
+                        default_title: 'Gerenciar Chefs',
+                        first_button: {
+                            link: '/admin/chefs/create',
+                            description: 'Novo Chef'
+                        }
+                    }
+                
+                    const pagination = {
+                        total: Math.ceil(chefs[0].total / limit),
+                        page
+                    }
+
+                    console.log(chefs)
+                    
+                    return res.render('recipes/chefs', {chefs, pageInfo, pagination})
+                }
+            }
+            Chef.paginate(params)
         }
-        Chef.paginate(params)
     },
     showRecipes(req, res){
         if(req.params.id) {
@@ -86,3 +166,30 @@ module.exports = {
         }
     }
 }
+
+/*
+chefs(req, res){
+
+        let { page, limit } = req.query
+
+        page = page || 1
+        limit = limit || 32
+        offset = limit * (page - 1)
+
+        const params = {
+            page,
+            limit,
+            offset,
+            callback(chefs){
+
+                const pagination = {
+                    total: Math.ceil(chefs[0].total / limit),
+                    page
+                }
+
+                return res.render('recipes/chefs', {chefs, pagination})
+            }
+        }
+        Chef.paginate(params)
+    },
+*/

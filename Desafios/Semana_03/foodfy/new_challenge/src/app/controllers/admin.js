@@ -201,23 +201,72 @@ module.exports = {
     showChefs(req, res){
 
         if(req.params.id){
-            
-            const pageInfo = {
-                default_title: '',
-                first_button: {
-                    link: '/admin/chefs/create',
-                    description: 'Editar'
+
+            let { page, limit } = req.query
+            const id = req.params.id
+
+            page = page || 1
+            limit = limit || 6
+            offset = limit * (page - 1)
+
+            const params = {
+                page,
+                limit,
+                offset,
+                id,
+                callback(Chef){
+
+                    const pageInfo = {
+                        default_title: '',
+                        first_button: {
+                            link: '/admin/chefs/create',
+                            description: 'Editar'
+                        }
+                    }
+
+                    let pagination = {}
+
+                    if (id){
+
+                        pagination = {
+                            total: Math.ceil(Chef[0].chef_total_recipes / limit),
+                            page
+                        }
+                    }else {
+                        pagination = {
+                            total: Math.ceil(Chef[0].total / limit),
+                            page
+                        }
+                    }
+
+                    pageInfo.default_title = 'Chef: ' + Chef[0].chef_name
+
+                    let recipes = []
+
+                    for (recipe of Chef[0].recipes){
+                        recipes.push({
+                            id: recipe.recipe_id,
+                            name: recipe.recipe_name,
+                            photo: recipe.recipe_photo,
+                            ingredients: recipe.recipe_ingredients,
+                            preparation: recipe.recipe_preparation,
+                            information: recipe.recipe_information
+                        })
+                    }
+
+                    let chef = {
+                        name: Chef[0].chef_name,
+                        photo: Chef[0].chef_photo,
+                        total_recipes: Chef[0].chef_total_recipes,
+                        recipes: recipes
+                    }
+
+                    return res.render('admin/chefs/chef', {chef, pageInfo, pagination})
+
                 }
+                
             }
-
-            Chef.find(req.params.id, function(chef){
-                if (!chef) return res.send('Chef not found!')
-                pageInfo.default_title = 'Chef: ' + chef.name
-
-                console.log(chef)
-
-                return res.render('admin/chefs/chef', {chef, pageInfo})
-            })
+            Chef.paginate(params)
         } else {
 
             let { page, limit } = req.query
