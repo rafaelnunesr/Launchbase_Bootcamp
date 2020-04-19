@@ -52,6 +52,7 @@ module.exports = {
             limit,
             offset,
             callback(chefs){
+
                 const pagination = {
                     total: Math.ceil(chefs[0].total / limit),
                     page

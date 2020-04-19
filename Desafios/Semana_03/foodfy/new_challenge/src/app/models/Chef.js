@@ -90,9 +90,8 @@ module.exports = {
         db.query(query, [limit, offset], function(err, results){
             if(err) throw `Database error! ${err}`
             
-
-            groupRecipesbyChef(results.rows)
-            callback(results.rows)
+            const chef = groupRecipesbyChef(results.rows)
+            callback(chef)
         })
 
     },

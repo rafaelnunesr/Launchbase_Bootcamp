@@ -201,6 +201,7 @@ module.exports = {
     showChefs(req, res){
 
         if(req.params.id){
+            
             const pageInfo = {
                 default_title: '',
                 first_button: {
@@ -213,10 +214,11 @@ module.exports = {
                 if (!chef) return res.send('Chef not found!')
                 pageInfo.default_title = 'Chef: ' + chef.name
 
+                console.log(chef)
+
                 return res.render('admin/chefs/chef', {chef, pageInfo})
             })
         } else {
-
 
             let { page, limit } = req.query
 
@@ -237,7 +239,7 @@ module.exports = {
                             description: 'Novo Chef'
                         }
                     }
-                    
+                
                     const pagination = {
                         total: Math.ceil(chefs[0].total / limit),
                         page
