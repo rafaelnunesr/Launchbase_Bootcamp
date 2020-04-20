@@ -219,7 +219,7 @@ module.exports = {
                     const pageInfo = {
                         default_title: '',
                         first_button: {
-                            link: '/admin/chefs/create',
+                            link: `/admin/chefs/${id}/edit`,
                             description: 'Editar'
                         }
                     }
@@ -303,12 +303,21 @@ module.exports = {
     editChef(req, res){
         Chef.find(req.params.id, function(chef){
             if (!chef) return res.send('Chef not found!')
-
             return res.render('admin/chefs/edit', { chef })
         })
     },
     putChef(req, res){
-        return res.send('put')
+        
+        const keys = Object.keys(req.body)
+
+        for (key of keys){
+            if(req.body[key] == ''){
+                return res.send('Please, fill all the fields!')
+            }
+        }
+        Chef.update(req.body, function(){
+            return res.redirect(`/admin/chefs/${req.body.id}`)
+        })
     },
     deleteChef(req, res){
 

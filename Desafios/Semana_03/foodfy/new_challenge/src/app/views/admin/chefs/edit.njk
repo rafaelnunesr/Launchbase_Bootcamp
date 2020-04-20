@@ -1,4 +1,4 @@
-{% extends './layout.njk' %}
+{% extends '../layout.njk' %}
 
 {% block header %}
     <title>Foodfy | Editar Chef</title>
@@ -6,7 +6,7 @@
 
 {% block content %}
 
-    <form action="/admin" method="POST" id='form'>
+    <form action="/admin/chefs?_method=PUT" method="POST" id='form'>
 
         <div class="admin-subheader">
             <div class="default-title">
@@ -23,6 +23,6 @@
             </div>
         </div>
 
-        {% include 'admin/chef_fields.njk' %}
+        {% include 'admin/chefs/fields.njk' %}
     </form>
 {% endblock %}

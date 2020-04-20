@@ -134,8 +134,6 @@ module.exports = {
                         total: Math.ceil(chefs[0].total / limit),
                         page
                     }
-
-                    console.log(chefs)
                     
                     return res.render('recipes/chefs', {chefs, pageInfo, pagination})
                 }
