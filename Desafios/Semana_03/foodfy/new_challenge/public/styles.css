@@ -531,6 +531,22 @@ button.delete:hover{
     padding: 5px;
 }
 
+.chefWithRecipes {
+    border: 1px solid red;
+    width: 100%;
+    height: 60px;
+    padding: 5px;
+    border-radius: 5px;
+    background: red;
+}
+
+.chefWithRecipes p {
+    font-size: 30px;
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+}
+
 /*=== ADMIN CREATE RECIPES ===*/
 .add-field button {
     color: blue;

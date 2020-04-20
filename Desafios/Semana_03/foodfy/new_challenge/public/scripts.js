@@ -58,16 +58,22 @@ const deleteButton = document.querySelector('.delete')
 const form = document.querySelector('form')
 
 if(deleteButton){
-    deleteButton.addEventListener('click', function(){
-        form.addEventListener('submit', function(event){
-            const confirmation = confirm('Deseja Deletar?')
-            if(!confirmation){
-                event.preventDefault()
-            }else{
-                form.action = '/admin?_method=DELETE'
-            }
-        })
+    deleteButton.addEventListener('click', function(event){
+        const confirmation = confirm('Deseja Deletar?')
+        if(!confirmation){
+            event.preventDefault()
+        }else{
 
+            if (currentPage.includes('chefs')){
+                form.action = '/admin/chefs?_method=DELETE'
+                form.method = 'POST'
+            }else {
+                form.action = '/admin/recipes?_method=DELETE'
+                form.method = 'POST'
+            }
+            
+
+        }
     })
 }
 

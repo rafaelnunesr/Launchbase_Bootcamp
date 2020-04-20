@@ -21,7 +21,7 @@ routes.post('/admin/recipes', admin.postRecipe)
 routes.get('/admin/recipes/:id', admin.showRecipes)
 routes.get('/admin/recipes/:id/edit', admin.editRecipe)
 routes.put('/admin/recipes', admin.putRecipe)
-routes.delete('/admin', admin.deleteRecipe)
+routes.delete('/admin/recipes', admin.deleteRecipe)
 
 
 //ADMIN CHEFS
@@ -31,7 +31,7 @@ routes.get('/admin/chefs/:id', admin.showChefs)
 routes.get('/admin/chefs', admin.showChefs)
 routes.get('/admin/chefs/:id/edit', admin.editChef)
 routes.put('/admin/chefs', admin.putChef)
-routes.delete('/admin', admin.deleteChef)
+routes.delete('/admin/chefs', admin.deleteChef)
 
 
 routes.use(general.not_found)

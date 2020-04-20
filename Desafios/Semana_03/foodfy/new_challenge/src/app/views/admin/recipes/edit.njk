@@ -4,8 +4,11 @@
     <title>Foodfy | {{recipe.name}}</title>
 {% endblock %}
 
+{% block search %}
+{% endblock %}
+
 {% block content %}
-    <form action="/admin" method="POST" id='form'>
+    <form action="/admin/recipes?_method=PUT" method="POST" id='form'>
 
         <div class="admin-subheader">
             <div class="default-title">

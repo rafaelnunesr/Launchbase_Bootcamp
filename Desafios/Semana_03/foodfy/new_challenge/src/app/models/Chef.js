@@ -2,14 +2,27 @@ const db = require ('../../config/db')
 const { date, groupRecipesbyChef } = require('../../lib/utils')
 
 module.exports = {
-    allChefs(callback){
-        db.query(`SELECT *
-                  FROM chefs
-                  ORDER BY chefs.name`, function(err, results){
-                      if (err) throw `Database error! ${err}`
+    allChefs(params){
 
-                      callback(results.rows)
-                  })
+        const { limit, offset, callback } = params
+
+        let query = '',
+            totalQuery = `(
+                SELECT count(*) FROM chefs
+            ) AS total`
+
+        query = `
+        SELECT *, ${totalQuery}
+        FROM chefs
+        ORDER BY chefs.name LIMIT $1 OFFSET $2
+    `
+        
+        db.query(query, [limit, offset], function(err, results){
+            if(err) throw `Database error! ${err}`
+
+            const chefs = groupRecipesbyChef(results.rows)
+            callback(chefs)
+        })
 
     },
     create(data, callback){
@@ -38,11 +51,13 @@ module.exports = {
     },
     find(id, callback){
         db.query(`
-            SELECT *
+            SELECT chefs.*, count(recipes) AS total_recipes
             FROM chefs
-            WHERE id = $1`, [id], function(err, results){
+            LEFT JOIN recipes ON (chefs.id = recipes.chef_id)
+            WHERE chefs.id = $1
+            GROUP BY chefs.id`, [id], function(err, results){
                 if (err) throw `Dababase Error! ${err}`
-
+                
                 callback(results.rows[0])
             })
     },
@@ -98,7 +113,24 @@ module.exports = {
             if(err) throw `Database error! ${err}`
             
             const chef = groupRecipesbyChef(results.rows)
-            callback(chef)
+
+            if (chef.length == 0){
+
+                db.query(`
+                    SELECT id AS chef_id,
+                        name AS chef_name,
+                        photo as chef_photo,
+                        $1 AS chef_total_recipes
+                    FROM chefs
+                    WHERE id = $2`, [0, id], function(err, results){
+                        if (err) throw `Dababase Error! ${err}`
+                        
+                        callback(results.rows)
+                })
+            }else {
+                callback(chef)
+            }
+            
         })
 
     },
@@ -112,8 +144,8 @@ module.exports = {
         `
 
         const values = [
-            data.name,
-            data.photo,
+            data.chef_name,
+            data.chef_photo,
             data.id
         ]
 

@@ -9,7 +9,7 @@
                 type="text" 
                 name="chef_name" 
                 placeholder="Nome completo"
-                value = {{chef.name}}>
+                value ="{{chef.name}}">
         </div>
     </div>
 </div>
@@ -25,7 +25,15 @@
                 type="url" 
                 name="chef_photo" 
                 placeholder="https://"
-                value= {{chef.photo}}>
+                value="{{chef.photo}}">
         </div>
     </div>
 </div>
+
+{% if chef.total_recipes > 0 %}
+    <div class="field-component">
+        <div class="chefWithRecipes">
+        <p>Este chef possui receitas. Sua exclusão não é possivel no momento.</p>
+        </div>
+    </div>
+{% endif %}

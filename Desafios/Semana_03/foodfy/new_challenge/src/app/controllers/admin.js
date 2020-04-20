@@ -165,7 +165,16 @@ module.exports = {
         })
     },
     putRecipe(req, res){
-        return res.send('put')
+        const keys = Object.keys(req.body)
+
+        for (key of keys){
+            if(req.body[key] == ''){
+                return res.send('Please, fill all the fields!')
+            }
+        }
+        Recipe.update(req.body, function(){
+            return res.redirect(`/admin/recipes/${req.body.id}`)
+        })
     },
     deleteRecipe(req, res){
         const id = req.body.id
@@ -214,7 +223,7 @@ module.exports = {
                 limit,
                 offset,
                 id,
-                callback(Chef){
+                callback(Chef_){
 
                     const pageInfo = {
                         default_title: '',
@@ -229,35 +238,37 @@ module.exports = {
                     if (id){
 
                         pagination = {
-                            total: Math.ceil(Chef[0].chef_total_recipes / limit),
+                            total: Math.ceil(Chef_[0].chef_total_recipes / limit),
                             page
                         }
                     }else {
                         pagination = {
-                            total: Math.ceil(Chef[0].total / limit),
+                            total: Math.ceil(Chef_[0].total / limit),
                             page
                         }
                     }
 
-                    pageInfo.default_title = 'Chef: ' + Chef[0].chef_name
+                    pageInfo.default_title = 'Chef: ' + Chef_[0].chef_name
 
                     let recipes = []
 
-                    for (recipe of Chef[0].recipes){
-                        recipes.push({
-                            id: recipe.recipe_id,
-                            name: recipe.recipe_name,
-                            photo: recipe.recipe_photo,
-                            ingredients: recipe.recipe_ingredients,
-                            preparation: recipe.recipe_preparation,
-                            information: recipe.recipe_information
-                        })
+                    if (Chef_[0].recipes){
+                        for (recipe of Chef_[0].recipes){
+                            recipes.push({
+                                id: recipe.recipe_id,
+                                name: recipe.recipe_name,
+                                photo: recipe.recipe_photo,
+                                ingredients: recipe.recipe_ingredients,
+                                preparation: recipe.recipe_preparation,
+                                information: recipe.recipe_information
+                            })
+                        }
                     }
 
                     let chef = {
-                        name: Chef[0].chef_name,
-                        photo: Chef[0].chef_photo,
-                        total_recipes: Chef[0].chef_total_recipes,
+                        name: Chef_[0].chef_name,
+                        photo: Chef_[0].chef_photo,
+                        total_recipes: Chef_[0].chef_total_recipes,
                         recipes: recipes
                     }
 
@@ -297,13 +308,15 @@ module.exports = {
                     return res.render('admin/chefs/chefs', {chefs, pageInfo, pagination})
                 }
             }
-            Chef.paginate(params)
+            Chef.allChefs(params)
         }   
     },
     editChef(req, res){
         Chef.find(req.params.id, function(chef){
             if (!chef) return res.send('Chef not found!')
+            
             return res.render('admin/chefs/edit', { chef })
+
         })
     },
     putChef(req, res){
@@ -324,15 +337,16 @@ module.exports = {
         const id = req.body.id
         let total = 0
 
-        const total_recipes = function(){
-            Chef.allRecipes(id)
-        }
-
-        if (total > 1){
-            Chef.delete(id, function(){
-                return res.redirect(`/admin`)
-            })
-        }
+        Chef.allRecipes(id, function(chef){
+            total = chef.length
+            if (total > 0){
+                return res.redirect('/admin/chefs')
+            }else{
+                Chef.delete(id, function(){
+                    return res.redirect(`/admin/chefs`)
+                })
+            }
+        })
     }
 }
 
