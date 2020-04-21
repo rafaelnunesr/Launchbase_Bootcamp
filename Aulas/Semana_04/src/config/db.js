@@ -7,3 +7,5 @@ module.exports = new Pool({
     port: 5432, //porta padrão do postgres,
     database: 'launchstoredb'
 })
+
+// >>> pg_ctl -D /usr/local/var/postgres start
