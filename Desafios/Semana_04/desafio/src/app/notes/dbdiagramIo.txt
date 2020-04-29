@@ -1,0 +1,74 @@
+Table customers {
+  id int [pk, increment]
+  name text [not null]
+  birth timestamp [not null]
+  cpf int [not null]
+  email text [not null]
+  gender text [not null]
+  tel int [not null]
+  cnh int [not null]
+  cnh_category text [not null]
+  cep int [not null]
+  address text [not null]
+  city text [not null]
+  country text [not null]
+  created_at timestamp [default: `now()`]
+}
+
+Table agencies {
+  id int [pk, increment]
+  name text [not null]
+  tel int [not null]
+  whatsapp int
+  email text [not null]
+  created_at timestamp [default: `now()`]
+}
+
+Table addesses {
+  id int [pk, increment]
+  agency_id int [not null]
+  cep int [not null]
+  adress text [not null]
+  city text [not null]
+  country text [not null]
+}
+
+Table cars {
+  id int [pk, increment]
+  agency_id int [not null]
+  color text [not null]
+  plate text [not null]
+  year int [not null]
+}
+
+Table models {
+  id int [pk, increment]
+  car_id int [not null]
+  manufacturer text [not null]
+  model text [not null]
+  category text [not null]
+  doors int [not null]
+  passengers int [not null]
+  air_conditioning int [not null]
+  trunk int [not null]
+  gas_type text [not null]
+}
+
+Table orders {
+  id int [pk, increment]
+  customer_id int [not null]
+  agency_id int [not null]
+  car_id int [not null]
+  model_id int [not null]
+  rent_start timestamp [not null]
+  rent_end timestamp [not null]
+  total int [not null]
+}
+
+Ref: addesses.agency_id > agencies.id
+Ref: cars.agency_id > agencies.id
+Ref: models.car_id > cars.id
+Ref: orders.customer_id > customers.id
+Ref: orders.agency_id > agencies.id
+Ref: orders.car_id > cars.id
+Ref: orders.model_id > models.id
