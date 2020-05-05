@@ -16,6 +16,7 @@ module.exports = {
         }).catch(function(err){ // If error
             throw new Error(err)
         })
+        
     },
     async post(req, res){
         // Logica de salvar
