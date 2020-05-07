@@ -1,7 +1,7 @@
 const Category = require('../../app/models/Category')
 const Product = require('../../app/models/Product')
 const File = require('../../app/models/File')
-const { formatPrice } = require('../../lib/utils')
+const { formatPrice, date } = require('../../lib/utils')
 
 module.exports = {
     create(req, res){
@@ -38,11 +38,32 @@ module.exports = {
         const filesPromise = req.files.map(file => File.create({...file, product_id: productId}))
         await Promise.all(filesPromise) // espera um array de promises
 
-        return res.redirect(`/products/${productId}/edit`)
+        return res.redirect(`/products/${productId}`)
 
     },
-    show(req, res) {
-        return res.render('products/show')
+    async show(req, res) {
+        let results = await Product.find(req.params.id)
+        const product = results.rows[0]
+
+        if(!product) return res.send('Product not found!')
+
+        const { minutes, hour, day, month } = date(product.updated_at)
+
+        product.published = {
+            day: `${day}/${month}`,
+            hour: `${hour}:${minutes}`
+        }
+
+        product.oldPrice = formatPrice(product.old_price)
+        product.price = formatPrice(product.price)
+
+        results = await Product.files(product.id)
+        const files = results.rows.map(file => ({
+            ...file,
+            src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+        }))
+
+        return res.render('products/show', { product, files })
     },
     async edit(req, res){
 
@@ -50,9 +71,6 @@ module.exports = {
         const product = results.rows[0]
 
         if(!product) return res.send('Product not found!')
-
-        product.old_price = formatPrice(product.old_price)
-        product.price = formatPrice(product.price)
 
         // get categories
         results = await Category.all()
@@ -103,7 +121,7 @@ module.exports = {
 
         await Product.update(req.body)
 
-        return res.redirect(`/products/${req.body.id}/edit`)
+        return res.redirect(`/products/${req.body.id}`)
     },
     async delete (req, res){
         await Product.delete(req.body.id)
