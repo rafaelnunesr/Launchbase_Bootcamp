@@ -1,0 +1,60 @@
+{% extends './layout.njk' %}
+
+{% block header %}
+    <title>Foodfy | {{chef.name}}</title>
+{% endblock %}
+
+{% block content %}
+
+    <main>
+        <div class="recipe-chef">
+
+            <div class="recipe-chef-info">
+                <div class="chef_photo">
+                    <img src="{{chef.photo}}" alt="Foto de {{chef.name}}">
+                </div>
+
+                <div class="chef_name">
+                    <h1>{{chef.name}}</h1>
+                </div>
+
+                <div class="chef_qtt_recipes">
+                    <p>{{chef.total_recipes}} receitas</p>
+                </div>
+            </div>
+
+            <div class="chef_recipes">
+                <h1>Receitas</h1>
+            </div>
+
+            <div class="chef-recipes">
+                {% for recipe in chef.recipes %}
+                    <div class="admin-recipe">
+                        <div class="admin-recipe-img">
+                            <a href="/recipes/{{recipe.id}}">
+                                <img src="{{recipe.photo}}" alt="{{recipe.name}}">
+                            </a>
+                        </div>
+
+                        <div class="admin-recipe-info">
+                            <div class="admin-recipe-name">
+                                <h2>{{recipe.name}}</h2>
+                            </div>
+
+                            <div class="admin-recipe-chef">
+                                <p>Por {{chef.name}}</p>
+                            </div>
+
+                            <div class="admin-recipe-view">
+                                <a href="/recipes/{{recipe.id}}">Visualizar</a>
+                            </div>
+                        </div>
+
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </main>
+
+{% endblock %}

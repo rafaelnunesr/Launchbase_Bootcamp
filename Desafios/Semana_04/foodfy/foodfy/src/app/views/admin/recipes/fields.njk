@@ -1,0 +1,122 @@
+<div class="recipe-fields">
+
+    <div class="field-component">
+        <div class="field-title">
+            <h1>Chef</h1>
+        </div>
+
+        <div class="field-input">
+            <div class="field-recipe-chef">
+                <select name="chef_id">
+                    {% for chef in chefOptions %}
+                        <option 
+                            value="{{chef.id}}"
+                            {% if recipe.chef_id == chef.id %} selected {% endif %}>{{chef.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="field-component">
+        <div class="field-title">
+            <h1>Nome da receita</h1>
+        </div>
+
+        <div class="field-input">
+            <div class="field-recipe-name">
+                <input 
+                    type="text"
+                    name="name"
+                    value="{{ recipe.name }}">
+            </div>
+        </div>
+    </div>
+
+    <div class="field-component">
+        <div class="field-title">
+            <h1>Imagem da receita</h1>
+        </div>
+
+        <div class="field-input">
+            <div class="field-recipe-photo">
+                <input 
+                    type="url"
+                    name="photo"
+                    value="{{ recipe.photo }}">
+            </div>
+        </div>
+    </div>
+
+    <div class="field-component">
+        <div class="field-title">
+            <h1>Ingredientes</h1>
+        </div>
+
+        <div class="field-input">
+            <div class="field-recipe-ingredient">
+                {% if recipe.ingredients %}
+                    {% for ingredient in recipe.ingredients %}
+                        <input 
+                            type="text"
+                            name='ingredient'
+                            value="{{ ingredient }}">
+                    {% endfor %}
+                {% else %}
+                    <input 
+                        type="text"
+                        name='ingredient'>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="add-field">
+            <button type='button' class='add-ingredient'>Adicionar novo ingrediente</button>
+        </div>
+    </div>
+
+    <div class="field-component">
+        <div class="field-title">
+            <h1>Modo de preparo</h1>
+        </div>
+
+        <div class="field-input">
+            <div class="field-recipe-preparation">
+                {% if recipe.preparation %}
+                    {% for prep in recipe.preparation %}
+                        <input 
+                            type="text"
+                            name="prep"
+                            value="{{ prep }}">
+                    {% endfor %}
+                {% else %}
+                    <input 
+                        type="text"
+                        name="prep">
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="add-field">
+            <button type='button' class='add-step'>Adicionar novo passo</button>
+        </div>
+    </div>
+
+    <div class="field-component">
+        <div class="field-title">
+            <h1>Informaçōes adicionais</h1>
+        </div>
+
+        <div class="field-input">
+            <div class="field-recipe-information">
+                <textarea 
+                    name="information"
+                    cols="30" 
+                    rows="10">
+                    {{recipe.information}}</textarea>
+            </div>
+        </div>
+    </div>
+
+</div>

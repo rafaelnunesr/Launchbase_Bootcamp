@@ -1,0 +1,644 @@
+/*=== DEFAULT === */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"');
+
+:root {
+    --gray1-color: rgb(63, 63, 63);
+    --gray1-color-dark: rgb(29, 29, 29);
+    --gray2-color: rgb(136, 136, 136);
+    --purple-color: rgb(84, 64, 175);
+    --purple-color-dark: rgb(84, 69, 151);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--gray1-color);
+}
+
+.body-content {
+    margin-left: 14%;
+    margin-right: 14%;
+    min-height: 100%;
+    overflow: auto;
+    padding-bottom: 50px;
+}
+
+/*=== LAYOUT === */
+.links a.active {
+    font-weight: bolder;
+}
+
+nav {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+nav .default_link_display {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+
+.default_link_display .links a{
+    text-decoration: none;
+    color: var(--gray1-color);
+}
+
+.default_link_display .links a:hover{
+    color: var(--gray2-color);
+}
+
+.default_link_display .links a + a {
+    margin-left: 20px;
+}
+
+.search {
+    text-align: right;
+}
+
+.search input{
+    border: 1px solid var(--gray2-color);
+    padding: 5px 10px;
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.search button{
+    padding: 5px 10px;
+    color: white;
+    background: var(--purple-color);
+    font-size: 15px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.search button:hover {
+    background: black;
+}
+
+/*=== FOOTER ===*/
+footer{
+    position: relative;
+    width: 100%;
+    height: 50px;  
+    margin-top: -20px;
+    clear: both;
+}
+
+footer .foot{
+    background: rgb(235, 235, 235);
+    width: 100%;
+    height: 100%;
+}
+
+footer .foot p {
+    color: var(--gray2-color);
+    text-align: center;
+    line-height: 50px;
+}
+
+/*=== INDEX ===*/
+.banner {
+    margin-top: 20px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    background: rgb(250, 223, 219);
+
+    border-radius: 30px;
+
+    width: 100%;
+    height: 300px;
+}
+
+.banner-description {
+    align-content: center;
+    text-align: justify;
+    margin-left: 14%;
+    font-size: 13px;
+    margin-top: 20%;
+}
+
+.banner-description p {
+    font-size: 15px;
+    margin-top: 10px;
+    line-height: 20px;
+    width: 70%;
+}
+
+.banner-img {
+    position: relative;
+    text-align: center;
+    width: 60%;
+}
+
+.banner-img img {
+    height: 230px;
+    position: absolute;
+    bottom: 0;
+}
+
+.default-title h1 {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.index-recipes {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+
+    width: 100%;
+}
+
+.recipe {
+    width: 100%;
+}
+
+.recipe-img img {
+    width: 100%;
+    border-radius: 10px;
+
+    min-width: 200px;
+    min-height: 130px;
+
+    max-height: 130px;
+}
+
+.recipe-img img:hover {
+    filter: brightness(120%);
+}
+
+.recipe-name h2 {
+    font-size: 14px;
+}
+
+.recipe-chef-name p {
+    font-size: 12px;
+}
+
+/*=== ABOUT ===*/
+.about-wrapper {
+    margin-top: 20px;
+}
+
+.about-wrapper h2 {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.about-wrapper p {
+    margin-top: 10px;
+    font-size: 15px;
+    text-align: justify;
+}
+
+/*=== CHEFS ===*/
+.chefs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.chef {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 90px 1fr;
+}
+
+.chef img {
+    width: 70px;
+    height: 70px;
+    border-radius: 70px;  
+}
+
+.chef-info{
+    margin-top: 20px;
+}
+
+.chef-info h2 {
+    font-size: 16px;
+}
+
+.chef-qtt-recipes p {
+    font-size: 12px;
+    color: var(--gray2-color);
+}
+
+/*=== RECIPES ===*/
+.search_subheader h1{
+    font-size: 22px;
+    margin-top: 20px;
+}
+
+.show_recipe {
+    margin-top: 40px;
+}
+
+.show_recipe_photo img {
+    width: 100%;
+    height: 300px;
+    border-radius: 20px;
+}
+
+.show_recipe_info {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.show_recipe_info h1 {
+    font-size: 24px;
+}
+
+.show_recipe_info p{
+    font-size: 14px;
+    color: var(--gray2-color);
+}
+
+.show_recipe_div{
+    margin-top: 20px;
+}
+
+.side {
+    display: inline-block;
+}
+
+.show_recipe_div_title a {
+    margin-left: 5px;
+    text-decoration: none;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.show_recipe_div_title a:hover {
+    color: rgb(136, 136, 136);
+}
+
+.show_recipe_div h1{
+    font-size: 20px;
+    padding-bottom: 5px;
+}
+
+.show_recipe_div p {
+    margin-left: 5px;
+    text-align: justify;
+    font-size: 15px;
+}
+
+p.info + p{
+    margin-top: 10px;
+    padding-bottom: 20px;
+}
+
+
+
+/*=== ADMIN INDEX */
+header {
+    width: 100%;
+    height: 50px;
+    background: black;
+}
+
+header img {
+    margin-left: 14%;
+    margin-top: 10px;
+}
+
+header a + a{
+    text-decoration: none;
+    color: rgb(189, 189, 189);
+    margin-left: 10px;
+    line-height: 50px;
+}
+
+header a + a:hover {
+    color: white;
+}
+
+.form-admin{
+    position: absolute;
+    top: 7px;
+    right: 14%;
+}
+
+.form-admin input{
+    background: rgba(255, 255, 255, 0.3);
+    height: 30px;
+    margin-right: 5px;
+    border-radius: 5px;
+    padding: 6px;
+    width: 200px;
+    border: 1px solid black;
+    color: white;
+
+    font-size: 14px;
+}
+
+.form-admin input::placeholder{
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5) 
+}
+
+.form-admin input:focus{
+    border: 1px solid white;
+    background: rgba(134, 86, 245, 0.7);
+    
+}
+
+.form-admin button {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: bolder;
+    color: rgba(255, 255, 255, 0.5);
+    border: 1px solid black;
+}
+
+.form-admin button:hover {
+    background: rgba(134, 86, 245, 0.7);
+    border: 1px solid white;
+}
+
+.admin-subheader{
+    display: grid;
+    grid-template-columns: 1fr 100px 100px;
+}
+
+.admin-button {
+    margin-top: 20px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.admin-button button {
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.admin-button button,
+.admin-button a {
+    min-width: 90%;
+    position: absolute;
+    right: 0;
+    background: var(--purple-color);
+    padding: 5px 10px;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.admin-button a.delete{
+    background: red;
+}
+
+.admin-button button:hover,
+.admin-button a:hover {
+    background: black;
+}
+
+button.delete {
+    background: red;
+}
+
+button.delete:hover{
+    background: rgb(196, 2, 2);
+}
+
+.chef-recipes,
+.admin-recipes {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.admin-recipe {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.admin-recipe-img{
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+.admin-recipe-img img {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+}
+
+.admin-recipe-img img:hover {
+    filter: brightness(120%);
+}
+
+.admin-recipe-info {
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.admin-recipe-name h2 {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.admin-recipe-chef p {
+    font-size: 14px;
+    margin-top: 3px;
+    color: var(--gray2-color);
+}
+
+.admin-recipe-view{
+    margin-top: 10px;
+}
+
+.admin-recipe-view a {
+    text-decoration: none;
+    font-size: 16px;
+    color: blue;
+}
+
+.admin-recipe-view a + a {
+    margin-left: 10px;
+}
+
+.admin-recipe-view a:hover{
+    color: rgb(63, 63, 63);
+}
+
+/*=== ADMIN FIELDS ===*/
+.recipe-fields {
+    margin-top: 20px;
+}
+
+.field-component {
+    margin-top: 20px;
+}
+
+.field-title h1 {
+    font-size: 14px;
+}
+
+.field-input input {
+    margin-top: 5px;
+    border: 1px solid var(--gray2-color);
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.field-input select{
+    margin-top: 5px;
+    width: 100%;
+    height: 30px;
+    background: white;
+    border: 1px solid var(--gray2-color);
+}
+
+.field-input textarea {
+    margin-top: 5px;
+    width: 100%;
+    border: 1px solid var(--gray2-color);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.chefWithRecipes {
+    border: 1px solid red;
+    width: 100%;
+    height: 60px;
+    padding: 5px;
+    border-radius: 5px;
+    background: red;
+}
+
+.chefWithRecipes p {
+    font-size: 30px;
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/*=== ADMIN CREATE RECIPES ===*/
+.add-field button {
+    color: blue;
+    cursor: pointer;
+}
+
+.add-field button:hover{
+    color: rgb(8, 8, 151);
+}
+
+/*=== NOT FOUND ===*/
+.not-found img {
+    width: 100%;
+    height: 93vh;
+}
+
+.not-found-banner {
+    width: 100%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background: red;
+    height: 200px;
+}
+
+
+.not-found h1 {
+    color: white;
+    font-size: 70px;
+    text-align: center;
+
+    position: absolute;
+    top: 25%;
+    left: 20%;
+}
+
+/*=== ADMIN CHEFS */
+.admin-chef-view a{
+    text-decoration: none;
+}
+
+.admin-chef-view a:hover {
+    color: rgb(6, 6, 153);
+}
+
+/*=== ADMIN CHEF ===*/
+
+.chef_recipes h1 {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.recipe-chef-info,
+.admin-chef-info {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.recipe-chef-info img,
+.admin-chef-info img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-top: 20px;
+}
+.recipe-chef-info h1,
+.admin-chef-info h1 {
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.recipe-chef-info p,
+.admin-chef-info p {
+    color: var(--gray2-color);
+    font-size: 14px;
+}
+
+/*=== PAGINATION ===*/
+.pagination {
+    text-align: center;
+}
+
+.pagination a,
+.pagination span {
+    color: var(--purple-color);
+    text-decoration: none;
+    margin-right: 16px;
+}
+
+.pagination a:hover {
+    color: var(--purple-color-dark);
+    border-bottom: 1px solid var(--purple-color);
+}

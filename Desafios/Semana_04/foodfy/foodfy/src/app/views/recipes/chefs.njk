@@ -1,0 +1,47 @@
+{% extends './layout.njk' %}
+
+{% block header %}
+    <title>Foodfy | Chefs</title>
+{% endblock %}
+
+{% block search %}
+{% endblock %}
+
+{% block content %}
+
+    <main>
+
+        <div class="chefs">
+
+            {% for chef in chefs %}
+                <div class="chef">
+                    <div class="chef-photo">
+                        <a href="/chefs/{{chef.chef_id}}">
+                            <img src={{chef.chef_photo}} alt="Foto de {{chef.chef_name}}">
+                        </a>
+                    </div>
+
+                    <div class="chef-info">
+                        <div class="chef-name">
+                            <h2>{{chef.chef_name}}</h2>
+                        </div>
+
+                        <div class="chef-qtt-recipes">
+                            <p>{{chef.chef_total_recipes}} receitas</p>
+                        </div>
+                    </div>    
+                </div>
+            {% endfor %}
+
+        </div>
+
+        <div class="pagination public"
+            data-page={{pagination.page}}
+            data-total={{pagination.total}}
+            data-filter={{filter}}
+        ></div>
+
+    </main>
+
+
+{% endblock %}
