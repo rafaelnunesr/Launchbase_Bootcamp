@@ -1,0 +1,16 @@
+{% extends './layout.njk' %}
+
+{% block head %}
+    <title>Foodfy | Admin</title>
+{% endblock %}
+
+{% block content %}
+    <div class="admin-page-container">
+        <div class="admin-page-title">
+            <h1>Gerenciar receitas</h1>
+        </div>
+    </div>
+
+    {% include './parts/pagination.njk' %}
+    
+{% endblock %}
