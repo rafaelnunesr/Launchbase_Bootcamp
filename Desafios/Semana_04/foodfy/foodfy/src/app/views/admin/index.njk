@@ -5,12 +5,24 @@
 {% endblock %}
 
 {% block content %}
-    <div class="admin-page-container">
-        <div class="admin-page-title">
-            <h1>Gerenciar receitas</h1>
+    <div class="main-page">
+        <div class="admin-subheader">
+            <div class="admin-page-title">
+                <h1>Gerenciar receitas</h1>
+            </div>
+            
+            <a href="#" class="button">+ Receita</a>
+            <a href="#" class="button">+ Chef</a>
+            <i class="material-icons">search</i>
         </div>
-    </div>
 
-    {% include './parts/pagination.njk' %}
-    
+        <div class="admin-recipes-preview">
+            {% include './parts/recipe.njk' %}
+            {% include './parts/recipe.njk' %}
+            {% include './parts/recipe.njk' %}
+            {% include './parts/recipe.njk' %}
+        </div>
+
+        {% include './parts/pagination.njk' %}
+    </div>
 {% endblock %}
