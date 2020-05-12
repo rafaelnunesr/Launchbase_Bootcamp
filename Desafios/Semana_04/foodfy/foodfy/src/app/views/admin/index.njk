@@ -11,9 +11,18 @@
                 <h1>Gerenciar receitas</h1>
             </div>
             
-            <a href="#" class="button">+ Receita</a>
-            <a href="#" class="button">+ Chef</a>
-            <i class="material-icons">search</i>
+            <div class="admin-subheader-links">
+                <a href="admin/recipes/create" class="button">+ Receita</a>
+                <a href="admin/chefs/create" class="button">+ Chef</a>
+                <input 
+                    id="admin-search-input" 
+                    type="hidden" 
+                    name="admin-search-input"
+                    placeholder="Enter para pesquisar">
+                <a class="button-search">
+                    <i class="material-icons">search</i>
+                </a>
+            </div>
         </div>
 
         <div class="admin-recipes-preview">
@@ -21,8 +30,10 @@
             {% include './parts/recipe.njk' %}
             {% include './parts/recipe.njk' %}
             {% include './parts/recipe.njk' %}
+            {% include './parts/recipe.njk' %}
+            {% include './parts/recipe.njk' %}
         </div>
-
-        {% include './parts/pagination.njk' %}
     </div>
+
+    {% include './parts/pagination.njk' %}
 {% endblock %}

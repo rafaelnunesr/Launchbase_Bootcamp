@@ -6,6 +6,8 @@
     --third-gray-color: rgb(125, 125, 125);
     --primary-purple-color: rgb(81, 5, 168);
     --secondary-purple-color: rgb(53, 4, 110);
+    --primary-blue-color: rgb(32, 30, 204);
+    --secondary-blue-color: rgb(21, 19, 126);
 }
 
 * {
@@ -94,26 +96,51 @@ footer {
 /* ADMIN INDEX */
 .admin-subheader {
     margin: 20px auto;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
-.admin-subheader a.button {
-    background: var(--primary-purple-color);
-    color: white;
+.admin-subheader-links {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+a.button {
+    color: var(--primary-purple-color);
     padding: 5px 10px;
-    border-radius: 8px;
+    border-radius: 10px;
+
+    border: 1px solid var(--primary-purple-color);
 
     transition: 200ms;
+    margin-right: 8px;
 } 
 
-.admin-subheader a.button:hover {
-    background: var(--secondary-purple-color);
+a.button:hover {
+    background: var(--primary-purple-color);
+    color: white;
+}
+
+.admin-subheader-links input {
+    border: 1px solid var(--primary-purple-color);
+    margin-right: 8px;
+    border-radius: 10px;
+    padding: 5px;
 }
 
 .admin-subheader i {
     cursor: pointer;
+    color: var(--primary-purple-color);
+    padding: 2px 5px;
+    border-radius: 10px;
+
+    border: 1px solid var(--primary-purple-color);
+}
+
+.admin-subheader i:hover {
+    background: var(--primary-purple-color);
+    color: white;
 }
 
 .admin-page-title h1 {
@@ -171,4 +198,56 @@ footer {
     color: rgb(2, 2, 122);
 }
 
+.admin-pagination {
+   margin-top: auto;
+   padding: 20px;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+/* ADMIN CREATE RECIPE */
+form {
+    position: relative;
+}
+
+.save-button {
+    position: absolute;
+    right: 0;
+    top: -40px;
+
+    background: var(--primary-blue-color);
+    border: none;
+    color: white;
+
+    padding: 5px 10px;
+    border-radius: 10px;
+
+    transition: 200ms;
+}
+
+.save-button:hover {
+    background: var(--secondary-blue-color);
+}
+
+.admin-recipes-photos-preview {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+}
+
+.photo-box {
+    width: 150px;
+    height: 150px;
+    border: 1px solid var(--secondary-gray-color);
+
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-box i {
+    color: var(--secondary-gray-color);
+}
 
