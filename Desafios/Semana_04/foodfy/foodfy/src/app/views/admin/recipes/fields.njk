@@ -1,39 +1,29 @@
 <div class="admin-recipes-photos-preview">
     <div class="photo-box">
-        <a href="">
-            <i class="material-icons">add</i>
-        </a>
+        <input 
+            id="photos-recipe-upload"
+            type="file"
+            name="photos"
+            multiple
+            accept="image/*"
+            onchange="PhotosUpload.addPhotoRecipe()"
+            >
+            <i 
+                class="material-icons"
+                onclick="PhotosUpload.addPhotoRecipe()">add</i>
     </div>
 
-    <div class="photo-box">
-        <a href="">
-           <img src="../../assets/burger.png" alt="burger photo">
-        </a>
-    </div>
+    {% if files %}
+        {% for image in files %}
+            <div class="photo-box">
+                <a href="">
+                <img src="../../assets/burger.png" alt="burger photo">
+                </a>
+            </div>
+        {% endfor %}
+    {% endif %}
 
-    <div class="photo-box">
-        <a href="">
-           <img src="../../assets/chef.png" alt="burger photo">
-        </a>
-    </div>
-
-    <div class="photo-box">
-        <a href="">
-           <img src="../../assets/logo.png" alt="burger photo">
-        </a>
-    </div>
-
-    <div class="photo-box">
-        <a href="">
-           <img src="../../assets/burger.png" alt="burger photo">
-        </a>
-    </div>
-
-    <div class="photo-box">
-        <a href="">
-           <img src="../../assets/burger.png" alt="burger photo">
-        </a>
-    </div>
+   
 </div>
 
 <div class="fields-input">
@@ -44,17 +34,29 @@
     </div>
 
      <div class="input-item">
-        <h1>Ingredients</h1>
-        <input 
-            type="text">
-        <a class="add-component">Adicionar ingrediente</a>
+        <h1>Ingredientes</h1>
+        <div class="ingredients-fields">
+            <input 
+                type="text"
+                name="ingredient"
+                placeholder="Adicione um novo ingrediente">
+        </div>
+        <a 
+            class="add-ingredient"
+            onclick="AddComponentRecipe.addIngredient()">Adicionar ingrediente</a>
     </div>
 
     <div class="input-item">
         <h1>Preparo</h1>
-        <input 
-            type="text">
-        <a class="add-component">Adicionar preparo</a>
+        <div class="preparation-fields">
+            <input 
+                type="text"
+                name="preparation"
+                placeholder="Adicione um novo passo na preparação">
+        </div>
+        <a 
+            class="add-preparation"
+            onclick="AddComponentRecipe.addPreparation()">Adicionar preparo</a>
     </div>
 
     <div class="input-item">
