@@ -53,8 +53,10 @@ body {
     color: var(--secondary-gray-color);
     margin-left: 20px;
     font-weight: normal;
+    text-transform: uppercase;
 
     transition: 200ms;
+    font-size: 14px;
 }
 
 .admin-header .admin-nav nav a.active {
@@ -109,8 +111,8 @@ footer {
 
 a.button {
     color: var(--primary-purple-color);
-    padding: 5px 10px;
-    border-radius: 10px;
+    padding: 4px 8px;
+    border-radius: 4px;
 
     border: 1px solid var(--primary-purple-color);
 
@@ -220,8 +222,8 @@ form {
     border: none;
     color: white;
 
-    padding: 5px 10px;
-    border-radius: 10px;
+    padding: 4px 8px;
+    border-radius: 4px;
 
     transition: 200ms;
 }
@@ -236,12 +238,13 @@ form {
     gap: 6px;
 }
 
+.photo-box-upload,
 .photo-box {
     width: 150px;
     height: 150px;
     border: 1px solid var(--secondary-gray-color);
 
-    border-radius: 10px;
+    border-radius: 4px;
 
     display: flex;
     align-items: center;
@@ -251,6 +254,7 @@ form {
     position: relative;
 }
 
+.photo-box-upload input,
 .photo-box input {
     width: 150px;
     height: 150px;
@@ -259,28 +263,54 @@ form {
     position: absolute;
 }
 
+.photo-box-upload:hover,
 .photo-box:hover {
     box-shadow: 0px 0px 6px -2px rgba(0, 0, 0, 0.5);
 }
 
-.photo-box i {
+.photo-box-upload i {
     color: var(--secondary-gray-color);
     font-size: 60px;
     font-weight: 300;
 }
 
-.photo-box i:hover {
-    color: var(--primary-gray-color);
+.photo-box i {
+    position: absolute;
+    color: var(--secondary-gray-color);
+    font-size: 60px;
+    font-weight: 300;
+
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+
+    top: 0;
+    left: 0;
+
+    background: rgba(255, 255, 255, 0.8);
+    color: red;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 200ms;
+
+    cursor: pointer;
+    opacity: 0;
 }
 
-.photo-box a img {
-    width: 100%;
-    height: 150px;
+.photo-box i:hover {
+    opacity: 1;
+}
+
+.photo-box img {
+    height: 100%;
 
     object-fit: cover;
     transition: 200ms;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 4px;
 }
 
 /* ADMIN FIELDS */
@@ -291,6 +321,53 @@ form {
 .input-item {
     width: 100%;
     margin-top: 20px;
+}
+
+.input-chef-avatar {
+    margin-top: 20px;
+    width: 120px;
+    position: relative;
+}
+
+.input-chef-avatar p {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: var(--primary-blue-color);
+    color: white;
+
+    text-align: center;
+}
+
+.input-chef-avatar input {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+
+    cursor: pointer;
+}
+
+.chef_avatar {
+    width: 300px;
+    height: 300px;
+
+    margin: 20px auto;
+}
+
+.chef_avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.chef_avatar img:hover {
+    box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.5);
 }
 
 .input-item h1 {

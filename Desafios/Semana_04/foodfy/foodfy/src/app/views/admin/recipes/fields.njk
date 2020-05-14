@@ -1,24 +1,21 @@
 <div class="admin-recipes-photos-preview">
-    <div class="photo-box">
+    <div class="photo-box-upload">
         <input 
             id="photos-recipe-upload"
             type="file"
             name="photos"
             multiple
             accept="image/*"
-            onchange="PhotosUpload.addPhotoRecipe()"
+            onchange="PhotosUpload.AddRecipePhoto(event)"
             >
-            <i 
-                class="material-icons"
-                onclick="PhotosUpload.addPhotoRecipe()">add</i>
+            <i
+                class="material-icons">add</i>
     </div>
 
     {% if files %}
         {% for image in files %}
             <div class="photo-box">
-                <a href="">
-                <img src="../../assets/burger.png" alt="burger photo">
-                </a>
+                <img src="" alt="">
             </div>
         {% endfor %}
     {% endif %}

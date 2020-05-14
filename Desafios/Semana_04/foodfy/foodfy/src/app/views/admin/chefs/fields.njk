@@ -6,10 +6,18 @@
             placeholder="Nome do Chef">
     </div>
 
-    <div class="input-item">
-        <h1>Foto URL</h1>
+    <div class="input-chef-avatar">
+        <p>Enviar Avatar</p>
         <input 
-            type="text"
-            placeholder="http://">
+            id="photos-chef_avatar-upload"
+            type="file"
+            name="photos"
+            accept="image/*"
+            onchange="PhotosUpload.addChefAvatar(event)"
+            >
+    </div>
+
+    <div class="chef_avatar">
+        <img src="https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?cs=srgb&dl=woman-wearing-pink-collared-half-sleeved-top-1036623.jpg&fm=jpg" alt="">
     </div>
 </div>

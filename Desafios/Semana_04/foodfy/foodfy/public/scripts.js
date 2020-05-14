@@ -1,9 +1,9 @@
 const PhotosUpload = {
     input: "",
     preview: document.querySelector('.admin-recipes-photos-preview'), // div com todas as fotos do preview
-    upLoadLimit: 5,
+    upLoadLimit: 6,
     files: [],
-    handleFileInput(event){
+    AddRecipePhoto(event){
         const { files: fileList } = event.target
         PhotosUpload.input = event.target
 
@@ -40,12 +40,12 @@ const PhotosUpload = {
 
         const photosDiv = []
         preview.childNodes.forEach(item => {
-            if (item.classList && item.classList.value == "photo")
+            if (item.classList && item.classList.value == "photo-box")
                 photosDiv.push(item)
         })
 
         const totalPhotos = fileList.length + photosDiv.length
-        if(totalPhotos > uploadLimit) {
+        if(totalPhotos > upLoadLimit) {
             alert("Você atingiu o limite máximo de fotos")
             event.preventDefault()
             return true
@@ -63,7 +63,7 @@ const PhotosUpload = {
     },
     getContainer(image) {
         const div = document.createElement('div')
-        div.classList.add('photo')
+        div.classList.add('photo-box')
 
         div.onclick = PhotosUpload.removePhoto
 
