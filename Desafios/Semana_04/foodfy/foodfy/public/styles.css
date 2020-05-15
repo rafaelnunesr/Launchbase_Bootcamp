@@ -375,17 +375,23 @@ form {
     font-weight: 400;
 }
 
-.input-item input {
+.input-item select {
+    background: white;
+}
+
+.input-item input,
+.input-item select {
     margin-top: 5px;
     width: 100%;
     height: 30px;
-    border-radius: 10px;
+    border-radius: 4px;
     padding: 10px;
 
     border: 1px solid var(--secondary-gray-color);
 }
 
-.input-item input:focus {
+.input-item input:focus,
+.input-item select:focus {
     border: 2px solid var(--primary-gray-color);
 }
 
@@ -406,7 +412,7 @@ form {
     width: 100%;
     height: 200px;
     resize: none;
-    border-radius: 10px;
+    border-radius: 4px;
 
     padding: 10px;
 

@@ -14,10 +14,16 @@
 
     {% if files %}
         {% for image in files %}
-            <div class="photo-box">
-                <img src="" alt="">
+            <div class="photo-box" id={{image.id}}>
+                <img 
+                    src="{{image.src}}" 
+                    alt="{{image.name}}">
+                    <i 
+                        class="material-icons"
+                        onclick="PhotosUpload.removeOldPhoto(event)">close</i>
             </div>
         {% endfor %}
+        <input type="hidden" class="removed_files">
     {% endif %}
 
    
@@ -26,8 +32,15 @@
 <div class="fields-input">
     <div class="input-item">
         <h1>Chef</h1>
-        <input 
-            type="text">
+        <select name="chef_id">
+            {% for chef in chefOptions %}
+                <option 
+                    value="{{chef.id}}"
+                    {%if recipe.chef_id == chef.id%} selected {%endif%}>
+                    {{chef.name}}
+                </option>
+            {% endfor %}
+        </select>
     </div>
 
      <div class="input-item">
@@ -59,7 +72,6 @@
     <div class="input-item">
         <h1>Informações adicionais</h1>
         <textarea 
-            name=""></textarea>
-    </div>
+            name=""></textarea></div>
 
 </div>
