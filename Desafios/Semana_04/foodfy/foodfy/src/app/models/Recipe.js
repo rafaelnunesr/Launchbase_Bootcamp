@@ -28,10 +28,13 @@ module.exports = {
             data.ingredients,
             data.preparation,
             data.information,
-            date(Date.now().iso),
+            date(Date.now()).iso,
             recipeAccessed
         ]
 
         return db.query(query, values)
+    },
+    find(id){
+        return db.query(`SELECT * FROM recipes WHERE id = $1`, [id])
     }
 }

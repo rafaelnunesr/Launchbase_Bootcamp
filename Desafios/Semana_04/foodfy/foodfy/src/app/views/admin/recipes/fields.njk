@@ -43,13 +43,35 @@
         </select>
     </div>
 
+
+    <div class="input-item">
+        <h1>Nome da receita</h1>
+        <div class="recipe-title">
+            <input 
+                type="text"
+                name="name"
+                placeholder="Nome da receita">
+        </div>
+    </div>
+
+
      <div class="input-item">
         <h1>Ingredientes</h1>
         <div class="ingredients-fields">
-            <input 
-                type="text"
-                name="ingredient"
-                placeholder="Adicione um novo ingrediente">
+            {% if ingredients %}
+                {% for ingredient in ingredients %}
+                    <input 
+                        type="text"
+                        name="ingredients"
+                        placeholder="Adicione um novo ingrediente"
+                        value="{{ ingredient }}">
+                {% endfor %}
+            {% else %}
+                <input 
+                        type="text"
+                        name="ingredients"
+                        placeholder="Adicione um novo ingrediente">
+            {% endif %}
         </div>
         <a 
             class="add-ingredient"
@@ -59,10 +81,20 @@
     <div class="input-item">
         <h1>Preparo</h1>
         <div class="preparation-fields">
-            <input 
-                type="text"
-                name="preparation"
-                placeholder="Adicione um novo passo na preparação">
+            {% if preparation %}
+                {% for prep in preparation %}
+                    <input 
+                        type="text"
+                        name="preparation"
+                        placeholder="Adicione um novo passo na preparação"
+                        value="{{ prep }}">
+                {% endfor %}
+            {% else %}
+                    <input 
+                    type="text"
+                    name="preparation"
+                    placeholder="Adicione um novo passo na preparação">
+            {% endif %}
         </div>
         <a 
             class="add-preparation"
@@ -72,6 +104,6 @@
     <div class="input-item">
         <h1>Informações adicionais</h1>
         <textarea 
-            name=""></textarea></div>
+            name="information"></textarea></div>
 
 </div>

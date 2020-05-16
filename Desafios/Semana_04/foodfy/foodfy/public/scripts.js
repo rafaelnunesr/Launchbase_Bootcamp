@@ -1,7 +1,7 @@
 const PhotosUpload = {
     input: "",
     preview: document.querySelector('.admin-recipes-photos-preview'), // div com todas as fotos do preview
-    upLoadLimit: 6,
+    upLoadLimit: 5,
     files: [],
     AddRecipePhoto(event){
         const { files: fileList } = event.target
@@ -124,14 +124,14 @@ const Search = {
 
 const AddComponentRecipe = {
     addIngredient(){
-        const ingredients = document.querySelectorAll('input[name="ingredient"]')
+        const ingredients = document.querySelectorAll('input[name="ingredients"]')
         const lastIngredient = ingredients[ingredients.length - 1].value
 
         if(lastIngredient == ""){
             alert("Você já possui um campo vazio para adicionar um ingrediente!")
         } else {
             const new_input = document.createElement('input')
-            new_input.name = "ingredient"
+            new_input.name = "ingredients"
             new_input.placeholder = "Adicione um novo ingrediente"
             document.querySelector('.ingredients-fields').appendChild(new_input)
         }
