@@ -55,9 +55,25 @@ module.exports = {
 
         if(!recipe) return res.send('Produto não encontrado!')
 
-        results = await RecipeFiles.findRecipeInfo()
+        results = await RecipeFiles.findRecipeInfo(results.rows[0].id)
         .then((value) => {
-            console.log(value)
+            const fileId = value.rows[0].file_id
+            const recipeId = value.rows[0].recipe_id
+
+            let recipeInfo = Recipe.find(recipeId)
+            const chefOptions = Recipe.chefSelectOptions()
+            RecipeFiles.findFile(fileId)
+            .then((value) => {
+
+                let files = value.rows
+                files = files.map(file => ({
+                    ...file,
+                    src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+                }))
+
+                return res.render('admin/recipes/edit.njk', { files, chefOptions })
+            })
+            
         })
 
     },
@@ -65,3 +81,36 @@ module.exports = {
         return res.render('admin/chefs/create')
     }
 }
+
+/**
+ * async editRecipe(req, res){
+        let results = await Recipe.find(req.params.id)
+        const recipe = results.rows[0]
+
+        if(!recipe) return res.send('Produto não encontrado!')
+
+        results = await RecipeFiles.findRecipeInfo(results.rows[0].id)
+        .then((value) => {
+            const fileId = value.rows[0].file_id
+            const recipeId = value.rows[0].recipe_id
+
+            let recipeInfo = Recipe.find(recipeId)
+            const chefOptions = Recipe.chefSelectOptions()
+            RecipeFiles.findFile(fileId)
+            .then((value) => {
+
+                let files = value.rows
+                files = files.map(file => ({
+                    ...file,
+                    src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+                }))
+
+                return res.render('admin/recipes/edit.njk', { files, chefOptions })
+            })
+            
+        })
+
+    },
+ * 
+ * 
+ */

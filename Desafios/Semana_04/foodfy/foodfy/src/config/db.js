@@ -7,3 +7,5 @@ module.exports = new Pool ({
     port: 5432,
     database: 'foodfy'
 })
+
+// >>> pg_ctl -D /usr/local/var/postgres start
