@@ -16,7 +16,7 @@
         {% for image in files %}
             <div class="photo-box" id={{image.id}}>
                 <img 
-                    src="{{image.src}}" 
+                    src="{{image.path}}" 
                     alt="{{image.name}}">
                     <i 
                         class="material-icons"
@@ -50,7 +50,8 @@
             <input 
                 type="text"
                 name="name"
-                placeholder="Nome da receita">
+                placeholder="Nome da receita"
+                value="{{recipe.name}}">
         </div>
     </div>
 
@@ -58,8 +59,8 @@
      <div class="input-item">
         <h1>Ingredientes</h1>
         <div class="ingredients-fields">
-            {% if ingredients %}
-                {% for ingredient in ingredients %}
+            {% if recipe %}
+                {% for ingredient in recipe.ingredients %}
                     <input 
                         type="text"
                         name="ingredients"
@@ -81,8 +82,8 @@
     <div class="input-item">
         <h1>Preparo</h1>
         <div class="preparation-fields">
-            {% if preparation %}
-                {% for prep in preparation %}
+            {% if recipe %}
+                {% for prep in recipe.preparation %}
                     <input 
                         type="text"
                         name="preparation"
@@ -104,6 +105,6 @@
     <div class="input-item">
         <h1>Informações adicionais</h1>
         <textarea 
-            name="information"></textarea></div>
+            name="information">{{recipe.information}}</textarea></div>
 
 </div>
