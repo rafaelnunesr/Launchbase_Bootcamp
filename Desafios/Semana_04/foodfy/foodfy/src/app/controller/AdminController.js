@@ -61,25 +61,25 @@ module.exports = {
         if(!recipe) return res.send('Produto não encontrado!')
 
         const filesId = await RecipeFiles.findRecipeInfo(recipe.id).then((value) => {
+            
             return value.rows
         })
 
         let filesArray = []
 
         for (let i = 0; i < filesId.length; i++){
-            const file = await RecipeFiles.findFile(filesId[i].recipe_id).then((value) => {
-                let files = value
+            let files = ""
+            const file = await RecipeFiles.findFile(filesId[i].file_id).then((value) => {
+                files = value.rows
                 files = files.map(file => ({
                     ...file,
-                    path: `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`
+                    src: `${req.protocol}://${req.headers.host}${file.path.replace('public', "")}`
                 }))
-                filesArray.push(files)
-                return files
             })
+
+            filesArray.push(files[0])
             
         }
-
-        console.log(filesArray)
 
         const chefOptions = await Recipe.chefSelectOptions(recipe.chef_id).then((value) => {
             return value.rows
@@ -93,6 +93,35 @@ module.exports = {
 
         return res.render('admin/recipes/edit', { chefOptions, files: filesArray, recipe })
 
+    },
+    async RecipePut(req, res){
+        const keys = Object.keys(req.body)
+
+        for (key of keys){
+            if(req.body[key == '' || key != 'information'] && key != 'removed_files'){
+                return res.send('Por favor, preencha todos os campos')
+            }
+        }
+
+        if (req.files.length == 0){
+            return res.send('Por favor, envie pelo menos uma foto da receita.')
+        }
+
+        const newFilesPromise = req.files.map(file => File.create({...file, recipe_id: req.body.id}))
+
+        await Promise.all(newFilesPromise)
+
+        if(req.body.removed_files){
+            const removedFiles = req.body.removed_files.split(',')
+            const lastIndex = removedFiles.length - 1
+            removedFiles.splice(lastIndex, 1)
+
+            const removedFilesPromise =  removedFiles.map(id => File.delete(id))
+
+            await Promise.all(removedFilesPromise)
+        }
+
+        return res.redirect(`/admin/recipes/${req.body.id}`)
     },
     newChef(req, res){
         return res.render('admin/chefs/create')
