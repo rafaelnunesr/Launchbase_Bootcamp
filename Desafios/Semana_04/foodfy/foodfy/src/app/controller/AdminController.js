@@ -57,7 +57,7 @@ module.exports = {
     },
     async showRecipe(req, res) {
         let results = await Recipe.find(req.params.id)
-        const recipe = results.rows[0]
+        let recipe = results.rows[0]
 
         if(!recipe) return res.send('Receita não encontrada.')
 
@@ -83,15 +83,13 @@ module.exports = {
             return value.rows
         })
 
-        console.log(chef)
-
         recipe = {
             ...recipe,
             ingredients: stringToList(recipe.ingredients),
             preparation: stringToList(recipe.preparation)
         }
 
-        return res.render('admin/recipes/edit', {chef, files: filesArray, recipe})
+        return res.render('admin/recipes/show', {chef, files: filesArray, recipe})
 
 
     },
