@@ -14,7 +14,7 @@
 
     {% if files %}
         {% for image in files %}
-            <div class="photo-box" id={{image.id}}>
+            <div class="photo photo-box" id={{image.id}}>
                 <img 
                     src="{{image.src}}" 
                     alt="{{image.name}}">
@@ -23,7 +23,7 @@
                         onclick="PhotosUpload.removeOldPhoto(event)">close</i>
             </div>
         {% endfor %}
-        <input type="hidden" class="removed_files">
+        <input type="hidden" name="removed_files">
     {% endif %}
 
    
