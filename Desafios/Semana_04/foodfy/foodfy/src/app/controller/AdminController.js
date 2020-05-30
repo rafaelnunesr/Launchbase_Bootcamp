@@ -2,6 +2,7 @@ const Recipe = require('../models/Recipe')
 const File = require('../models/File')
 const RecipeFiles = require('../models/RecipeFiles')
 const { stringToList } = require('../../lib/utils')
+const Chef = require('../models/Chef')
 
 module.exports = {
     index(req, res){
@@ -54,6 +55,46 @@ module.exports = {
 
 
     },
+    async showRecipe(req, res) {
+        let results = await Recipe.find(req.params.id)
+        const recipe = results.rows[0]
+
+        if(!recipe) return res.send('Receita não encontrada.')
+
+        const filesId = await RecipeFiles.findRecipeInfo(recipe.id).then((value) => {
+            return value.rows
+        })
+
+        let filesArray = []
+
+        for(let i = 0; i < filesId.length; i++){
+            let files = ""
+            const file = await RecipeFiles.findFile(filesId[i].file_id).then((value) => {
+                files = value.rows
+                files = files.map(file => ({
+                    ...file,
+                    src: `${req.protocol}://${req.headers.host}${file.path.replace('public', "")}`
+                }))
+            })
+            filesArray.push(files[0])
+        }
+
+        const chef = await Chef.find(recipe.chef_id).then((value) => {
+            return value.rows
+        })
+
+        console.log(chef)
+
+        recipe = {
+            ...recipe,
+            ingredients: stringToList(recipe.ingredients),
+            preparation: stringToList(recipe.preparation)
+        }
+
+        return res.render('admin/recipes/edit', {chef, files: filesArray, recipe})
+
+
+    },
     async editRecipe(req, res){
         let results = await Recipe.find(req.params.id)
         let recipe = results.rows[0]
@@ -103,7 +144,7 @@ module.exports = {
             }
         }
 
-        console.log(req.body)
+        console.log(req.files)
         if (req.files.length == 0){
             return res.send('Por favor, envie pelo menos uma foto da receita.')
         }
