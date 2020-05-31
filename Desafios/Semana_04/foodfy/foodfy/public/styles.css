@@ -201,11 +201,15 @@ a.button:hover {
     color: rgb(2, 2, 122);
 }
 
-.admin-pagination {
+.pagination {
    margin-top: auto;
    padding: 20px;
    margin-left: auto;
    margin-right: auto;
+}
+
+.pagination a {
+    margin-left: 16px;
 }
 
 /* ADMIN CREATE RECIPE */

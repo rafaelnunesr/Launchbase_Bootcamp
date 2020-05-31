@@ -5,8 +5,34 @@ const { stringToList } = require('../../lib/utils')
 const Chef = require('../models/Chef')
 
 module.exports = {
-    index(req, res){
-        return res.render('admin/index')
+    async index(req, res){
+        
+        let { filter, page, limit } = req.query
+
+        page = page || 1
+        limit = limit || 6
+        offset = limit * (page - 1)
+
+        const params = {
+            filter, 
+            page,
+            limit, 
+            offset
+        }
+
+        let recipes = await Recipe.paginate(params)
+        
+        const pagination = {
+            total: Math.ceil(recipes.rows[0].total / limit),
+            page}
+
+        recipes = recipes.rows.map(recipe => ({
+            ...recipe,
+            src: `${req.protocol}://${req.headers.host}${recipe.path.replace('public', "")}`
+        }))
+
+        return res.render('admin/index', {recipes, filter, pagination})
+
     },
     newRecipe(req, res){
 
