@@ -80,7 +80,7 @@ module.exports = {
         }
 
         const chef = await Chef.find(recipe.chef_id).then((value) => {
-            return value.rows
+            return value.rows[0].name
         })
 
         recipe = {
