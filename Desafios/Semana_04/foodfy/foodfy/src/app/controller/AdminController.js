@@ -31,6 +31,19 @@ module.exports = {
             src: `${req.protocol}://${req.headers.host}${recipe.path.replace('public', "")}`
         }))
 
+        let recipesIdControl = []
+        let recipesList = []
+
+        for(recipe of recipes){
+            console.log(recipe)
+            if(!recipesIdControl.includes(recipe.id)){
+                recipesList.push(recipe)
+                recipesIdControl.push(recipe.id)  
+            }
+        }
+
+        recipes = recipesList
+
         return res.render('admin/index', {recipes, filter, pagination})
 
     },
