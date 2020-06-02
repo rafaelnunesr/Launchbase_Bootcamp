@@ -25,24 +25,25 @@ module.exports = {
         const pagination = {
             total: Math.ceil(recipes.rows[0].total / limit),
             page}
+        
+        let rec = []
+        for(recipe of recipes.rows){
+            let file = await RecipeFiles.findRecipeInfo(recipe.id)
 
-        recipes = recipes.rows.map(recipe => ({
-            ...recipe,
-            src: `${req.protocol}://${req.headers.host}${recipe.path.replace('public', "")}`
-        }))
+            
+            const fileId = file.rows[0].file_id
 
-        let recipesIdControl = []
-        let recipesList = []
+            let fileSrc = await RecipeFiles.findFile(fileId)
 
-        for(recipe of recipes){
-            console.log(recipe)
-            if(!recipesIdControl.includes(recipe.id)){
-                recipesList.push(recipe)
-                recipesIdControl.push(recipe.id)  
-            }
+            console.log(fileSrc.rows[0])
+
+            rec = recipes.rows.map(recipe => ({
+                ...recipe,
+                src: `${req.protocol}://${req.headers.host}${fileSrc.rows[0].path.replace('public', "")}`
+            }))
         }
 
-        recipes = recipesList
+        console.log(rec)
 
         return res.render('admin/index', {recipes, filter, pagination})
 

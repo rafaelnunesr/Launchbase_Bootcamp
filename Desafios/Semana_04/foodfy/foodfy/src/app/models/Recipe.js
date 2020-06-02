@@ -58,19 +58,11 @@ module.exports = {
 
         query = `
         SELECT *, ${totalQuery}
-        FROM recipes AS Recipe
-           INNER JOIN
-           (SELECT id AS chef_id_, name as chef_name
-            FROM chefs) AS Chef
-           ON Recipe.chef_id = Chef.chef_id_
-           INNER JOIN
-           (SELECT recipe_id AS recipe_id, file_id
-            FROM recipe_files) AS Recipe_Files
-           ON Recipe.id = Recipe_Files.recipe_id
-           INNER JOIN
-           (SELECT id AS files_id, path
-            FROM files) As File
-           ON Recipe_Files.file_id = File.files_id
+            FROM recipes
+            INNER JOIN (
+            SELECT name AS chef_name, id AS chef_id
+            FROM chefs) AS Chefs
+            ON recipes.chef_id = Chefs.chef_id
            ${filterQuery}
            LIMIT $1 OFFSET $2
         `
