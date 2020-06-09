@@ -35,8 +35,6 @@ module.exports = {
 
             let fileSrc = await RecipeFiles.findFile(fileId)
 
-            console.log(fileSrc.rows[0])
-
             rec = recipes.rows.map(recipe => ({
                 ...recipe,
                 src: `${req.protocol}://${req.headers.host}${fileSrc.rows[0].path.replace('public', "")}`

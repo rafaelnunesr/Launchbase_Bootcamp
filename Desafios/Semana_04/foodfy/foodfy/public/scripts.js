@@ -95,6 +95,28 @@ const PhotosUpload = {
 
         PhotosUpload.input.files = PhotosUpload.getAllFiles()
     },
+    addChefAvatar(event){
+        const { file } = event.target
+
+        PhotosUpload.input = event.target
+
+        PhotosUpload.files.push(file)
+
+        const reader = new FileReader()
+
+        reader.onload = () => {
+            const image = new Image() // <img>
+            image.src = String(reader.result)
+
+            const div = PhotosUpload.getContainer(image)
+
+            PhotosUpload.preview.appendChild(div)
+        }
+
+        reader.readAsDataURL(file)
+
+            //PhotosUpload.input.files = PhotosUpload.getAllFiles()
+    },
     hasLimit(event){
         const { upLoadLimit, input, preview } = PhotosUpload
         const { files: fileList } = input
