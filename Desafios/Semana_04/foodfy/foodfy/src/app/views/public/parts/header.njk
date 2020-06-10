@@ -1,0 +1,19 @@
+<header>
+        <div class="logo">
+            <a href="/">
+                <img src="../../../assets/logo.png" alt="Foodfy Logo">
+            </a>
+        </div>
+
+        <div class="links">
+            <a href="#">Sobre</a>
+            <a href="#">Receitas</a>
+            <a href="#">Chefs</a>
+        </div>
+
+        <div class="search-recipe">
+            {% block search %}
+                {% include './search.njk' %}
+            {% endblock %}
+        </div>
+</header>

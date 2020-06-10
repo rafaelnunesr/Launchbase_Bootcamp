@@ -41,8 +41,6 @@ module.exports = {
             }))
         }
 
-        console.log(rec)
-
         return res.render('admin/index', {recipes, filter, pagination})
 
     },

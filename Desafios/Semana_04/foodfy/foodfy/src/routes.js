@@ -4,6 +4,7 @@ const routes = express.Router()
 const multer = require('./app/middlewares/multer')
 
 const AdminController = require('./app/controller/AdminController')
+const User = require('./app/controller/User')
 
 routes.get('/admin', AdminController.index)
 routes.get('/admin/recipes/create', AdminController.newRecipe)
@@ -14,5 +15,7 @@ routes.put('/admin/recipes', multer.array('photos', 5), AdminController.RecipePu
 
 routes.get('/admin/chefs/create', AdminController.newChef)
 
+
+routes.get('/', User.index)
 
 module.exports = routes
