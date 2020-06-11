@@ -6,6 +6,7 @@ const Chef = require('../models/Chef')
 
 module.exports = {
     index(req, res){
+
         return res.render('public/index', { showSearch: true })
     },
     about(req, res){

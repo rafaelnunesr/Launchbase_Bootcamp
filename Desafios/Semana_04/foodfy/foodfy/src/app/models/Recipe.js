@@ -70,3 +70,15 @@ module.exports = {
         return db.query(query, [limit, offset])
     }
 }
+
+/*
+
+SELECT chefs.*, recipes.*, MAX(recipe_files.file_id), MAX(files.path), MAX(files.name) AS file_name
+FROM chefs
+INNER JOIN recipes ON recipes.chef_id = chefs.id
+INNER JOIN recipe_files ON recipe_files.recipe_id = recipes.id
+INNER JOIN files ON recipe_files.file_id = files.id
+WHERE chefs.id = 2
+GROUP BY chefs.id, recipes.id
+
+*/

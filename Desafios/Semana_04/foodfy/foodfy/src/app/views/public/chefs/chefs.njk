@@ -9,12 +9,14 @@
         {% for chef in chefs %}
             <div class="chef-mini-preview">
                 <div class="chef-mini-avatar">
-                    <img src="{{chef.photo}}" alt="Foto de {{chef.name}}">
+                    <a href="/chefs/{{chef.id}}">
+                        <img src="{{chef.photo}}" alt="Foto de {{chef.name}}">
+                    </a>
                 </div>
 
                 <div class="chef-mini-info">
                     <h2>{{chef.name}}</h2>
-                    <p>0 receitas</p>
+                    <p>{{ chef.total_recipes }} receitas</p>
                 </div>
             </div>
         {% endfor %}
