@@ -1,0 +1,23 @@
+{% extends '../layout.njk' %}
+
+{% block head %}
+    <title>Foodfy | Receitas</title>
+{% endblock %}
+
+{% block content %}
+
+    <div class="recipes-index">
+        {% include '../parts/recipe.njk' %}
+        {% include '../parts/recipe.njk' %}
+        {% include '../parts/recipe.njk' %}
+        {% include '../parts/recipe.njk' %}
+        {% include '../parts/recipe.njk' %}
+        {% include '../parts/recipe.njk' %}
+        {% include '../parts/recipe.njk' %}
+        {% include '../parts/recipe.njk' %}
+        {% include '../parts/recipe.njk' %}
+    </div>
+
+    {% include '../../admin/parts/pagination.njk' %}
+
+{% endblock %}

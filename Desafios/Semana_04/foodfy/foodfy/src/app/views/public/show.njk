@@ -1,0 +1,90 @@
+{% extends './layout.njk' %}
+
+{% block head %}
+    <title>Foodfy | {{recipe.name}}</title>
+{% endblock %}
+
+{% block content %}
+
+    <div class="gallery">
+        <div class="highlight">
+            {% if not files[0] %}
+                <img src="http://placeholder.it/500x500?text=PRODUTO SEM FOTO" />
+            {% else %}
+                <img 
+                    src="{{files[0].src}}" 
+                    alt="{{files[0].name}}"
+                    onclick="Lightbox.open()">
+            {% endif %}
+
+            <div class="lightbox-target">
+                <img src="{{files[0].src}}" alt="{{files[0].name}}">
+                <a 
+                    href="#"
+                    class="lightbox-close"
+                    onclick="Lightbox.close()">
+                    <i class="material-icons">close</i></a>
+            </div>
+
+            <div class="gallery-small-photos">
+                <div class="gallery-preview">
+                    {% for image in files %}
+                        <img 
+                            src="{{image.src}}" 
+                            alt="{{image.name}}"
+                            {% if loop.index0 == 0 %}
+                                class="active"
+                            {% endif %}
+                            onclick="ImageGallery.setImage(event)">
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="recipe-title">
+        <h1>{{recipe.name}}</h1>
+    </div>
+
+    <div class="recipe-chef">
+        <p>Por {{chef}}</p>
+    </div>
+
+    <div class="recipe-item">
+        <div class="page-title">
+            <h1 class="side">Ingredientes</h1>
+            <a class='side ingredients' onClick="hide_showIngredients()">ESCONDER</a>
+        </div>
+
+        <div class="recipe-item-text recipe_ingredients">
+            {% for ingredient in recipe.ingredients %}
+                <p>- {{ingredient}}</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="recipe-item">
+        <div class="page-title">
+            <h1 class="side">Modo de Preparo</h1>
+            <a class='side preparation' onClick="hide_showPreparation()">ESCONDER</a>
+        </div>
+
+        <div class="recipe-item-text recipe_preparation">
+            {% for preparation in recipe.preparation %}
+                <p>- {{preparation}}</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="recipe-item">
+        <div class="page-title">
+            <h1 class="side">Informaçōes adicionais</h1>
+            <a class='side information' onClick="hide_showInformation()">ESCONDER</a>
+        </div>
+
+        <div class="recipe-item-text recipe_information">
+            <p>{{recipe.information}}</p>
+        </div>
+    </div>
+
+{% endblock %}

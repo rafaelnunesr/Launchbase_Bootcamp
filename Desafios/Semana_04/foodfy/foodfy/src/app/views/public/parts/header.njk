@@ -6,14 +6,16 @@
         </div>
 
         <div class="links">
-            <a href="#">Sobre</a>
-            <a href="#">Receitas</a>
-            <a href="#">Chefs</a>
+            <a href="/about">Sobre</a>
+            <a href="/recipes">Receitas</a>
+            <a href="/chefs">Chefs</a>
         </div>
 
-        <div class="search-recipe">
-            {% block search %}
-                {% include './search.njk' %}
-            {% endblock %}
-        </div>
+        {% if showSearch %}
+            <div class="search-recipe">
+                {% block search %}
+                    {% include './search.njk' %}
+                {% endblock %}
+            </div>
+        {% endif %}
 </header>
