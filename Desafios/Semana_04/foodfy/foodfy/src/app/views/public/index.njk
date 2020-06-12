@@ -17,12 +17,9 @@
     </div>
 
     <div class="recipes-index">
-        {% include './parts/recipe.njk' %}
-        {% include './parts/recipe.njk' %}
-        {% include './parts/recipe.njk' %}
-        {% include './parts/recipe.njk' %}
-        {% include './parts/recipe.njk' %}
-        {% include './parts/recipe.njk' %}
+        {% for recipe in recipes %}
+            {% include './parts/recipe.njk' %}
+        {% endfor %}
     </div>
 
 {% endblock %}

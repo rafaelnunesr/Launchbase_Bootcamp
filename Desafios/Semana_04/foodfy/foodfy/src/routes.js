@@ -18,7 +18,7 @@ routes.get('/admin/chefs/create', AdminController.newChef)
 
 routes.get('/', Public.index)
 routes.get('/about', Public.about)
-routes.get('/recipes/:id', Public.show)
+routes.get('/recipes/:id', Public.showRecipe)
 routes.get('/chefs/:id', Public.showChef)
 routes.get('/chefs', Public.chefs)
 routes.get('/recipes', Public.recipes)

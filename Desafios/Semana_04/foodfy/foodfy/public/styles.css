@@ -797,3 +797,16 @@ form button.delete-button:hover {
     margin-top: 4px;
     color: var(--third-gray-color);
 }
+
+.chef-recipes {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.chef-without-recipe {
+    margin-top: 30px;
+    text-align: center;
+}
+
