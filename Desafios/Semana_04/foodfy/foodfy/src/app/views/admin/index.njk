@@ -28,7 +28,9 @@
         </div>
 
         <div class="admin-recipes-preview">
-            {% include './parts/recipe.njk' %}
+            {% for recipe in recipes %}
+                {% include './parts/recipe.njk' %}
+            {% endfor %}
         </div>
     </div>
 

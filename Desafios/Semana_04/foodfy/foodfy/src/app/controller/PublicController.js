@@ -108,13 +108,14 @@ module.exports = {
     },
     async recipes(req, res){
 
-        let { page, limit } = req.query
+        let { page, limit, filter } = req.query
 
         page = page || 1
         limit = limit || 12
         offset = limit * (page - 1)
 
         const params = {
+            filter,
             limit,
             offset
         }
@@ -122,11 +123,15 @@ module.exports = {
         let results = await Recipe.paginate(params)
         results = results.rows
 
+        let recipes = []
+
+        if(results.length == 0){
+            return res.render('public/recipes/recipes', { recipes, showSearch: true, filter})
+        }
+
         pagination = {
             total: Math.ceil(results[0].total / limit),
             page}
-        
-        let recipes = []
 
         results.map(recipe => {
             recipes.push({
@@ -137,8 +142,6 @@ module.exports = {
             })
         })
 
-        
-
-        return res.render('public/recipes/recipes', { recipes, showSearch: true, pagination })
+        return res.render('public/recipes/recipes', { recipes, showSearch: true, pagination, filter })
     }
 }

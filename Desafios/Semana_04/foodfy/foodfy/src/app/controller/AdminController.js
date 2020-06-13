@@ -6,43 +6,41 @@ const Chef = require('../models/Chef')
 
 module.exports = {
     async index(req, res){
-        
-        let { filter, page, limit } = req.query
+        let { page, limit, filter } = req.query
 
         page = page || 1
         limit = limit || 6
         offset = limit * (page - 1)
 
         const params = {
-            filter, 
-            page,
-            limit, 
+            filter,
+            limit,
             offset
         }
 
-        let recipes = await Recipe.paginate(params)
-        
-        const pagination = {
-            total: Math.ceil(recipes.rows[0].total / limit),
-            page}
-        
-        let rec = []
-        for(recipe of recipes.rows){
-            let file = await RecipeFiles.findRecipeInfo(recipe.id)
+        let results = await Recipe.paginate(params)
+        results = results.rows
 
-            
-            const fileId = file.rows[0].file_id
+        let recipes = []
 
-            let fileSrc = await RecipeFiles.findFile(fileId)
-
-            rec = recipes.rows.map(recipe => ({
-                ...recipe,
-                src: `${req.protocol}://${req.headers.host}${fileSrc.rows[0].path.replace('public', "")}`
-            }))
+        if(results.length == 0){
+            return res.render('admin/index', { recipes, filter})
         }
 
-        return res.render('admin/index', {recipes, filter, pagination})
+        pagination = {
+            total: Math.ceil(results[0].total / limit),
+            page}
 
+        results.map(recipe => {
+            recipes.push({
+                ...recipe,
+                recipe_name: recipe.name,
+                recipe_path: `${req.protocol}://${req.headers.host}${recipe.file_path.replace("public", "")}`,
+                recipe_id: recipe.id
+            })
+        })
+
+        return res.render('admin/index', { recipes, pagination, filter })
     },
     newRecipe(req, res){
 
@@ -177,8 +175,7 @@ module.exports = {
                 return res.send('Por favor, preencha todos os campos')
             }
         }
-
-        console.log(req.files)
+        
         if (req.files.length == 0){
             return res.send('Por favor, envie pelo menos uma foto da receita.')
         }

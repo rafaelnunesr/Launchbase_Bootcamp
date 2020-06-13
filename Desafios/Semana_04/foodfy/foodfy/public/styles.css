@@ -626,16 +626,18 @@ form button.delete-button:hover {
     border-radius: 4px;
 }
 
-.search button {
+.search button.search-button {
     padding: 6px 20px;
     border-radius: 4px;
     background: rgb(105, 86, 192);
     color: white;
+    top: 0;
+    position: initial;
 
     transition: background-color 200ms;
 }
 
-.search button:hover {
+.search button.search-button:hover {
     background-color: rgb(78, 62, 151);
 }
 

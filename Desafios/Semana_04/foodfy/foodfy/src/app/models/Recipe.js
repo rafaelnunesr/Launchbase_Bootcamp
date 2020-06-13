@@ -56,17 +56,6 @@ module.exports = {
             )AS total`
         }
 
-        // query = `
-        // SELECT *, ${totalQuery}
-        //     FROM recipes
-        //     INNER JOIN (
-        //     SELECT name AS chef_name, id AS chef_id
-        //     FROM chefs) AS Chefs
-        //     ON recipes.chef_id = Chefs.chef_id
-        //    ${filterQuery}
-        //    LIMIT $1 OFFSET $2
-        // `
-
         query = `
                     SELECT recipes.id, 
                     recipes.chef_id,
@@ -80,9 +69,9 @@ module.exports = {
             INNER JOIN chefs ON chefs.id = recipes.chef_id
             INNER JOIN recipe_files ON recipe_files.recipe_id = recipes.id
             INNER JOIN files ON recipe_files.file_id = files.id
+            ${filterQuery}
             GROUP BY recipes.id, chefs.id
             ORDER BY recipes.accessed DESC
-            ${filterQuery}
             LIMIT $1 OFFSET $2`
 
         return db.query(query, [limit, offset])
@@ -109,15 +98,3 @@ module.exports = {
                          WHERE recipes.id = $1`, [id])
     }
 }
-
-/*
-
-SELECT chefs.*, recipes.*, MAX(recipe_files.file_id), MAX(files.path), MAX(files.name) AS file_name
-FROM chefs
-INNER JOIN recipes ON recipes.chef_id = chefs.id
-INNER JOIN recipe_files ON recipe_files.recipe_id = recipes.id
-INNER JOIN files ON recipe_files.file_id = files.id
-WHERE chefs.id = 2
-GROUP BY chefs.id, recipes.id
-
-*/

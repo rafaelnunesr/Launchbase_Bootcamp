@@ -1,22 +1,21 @@
-{% for recipe in recipes %}
-    <div class="admin-recipe-preview-container">
-        <div class="admin-recipe-preview-photo">
-            <img 
-                src="{{recipe.src}}" 
-                alt="Foto de {{recipe.name}}">
-        </div>
 
-        <div class="admin-recipe-info">
-            <div class="admin-recipe-preview-title">
-                <h1>{{recipe.name}}</h1>
-            </div>
-            <div class="admin-recipe-preview-chef-name">
-                <p>Por {{recipe.chef_name}}</p>
-            </div>
-            <div class="admin-recipe-preview-link-show">
-                <a href="/admin/recipes/{{recipe.id}}">Visualizar</a>
-            </div>
-        </div>
-
+<div class="admin-recipe-preview-container">
+    <div class="admin-recipe-preview-photo">
+        <img 
+            src="{{recipe.recipe_path}}" 
+            alt="Foto de {{recipe.recipe_name}}">
     </div>
-{% endfor %}
+
+    <div class="admin-recipe-info">
+        <div class="admin-recipe-preview-title">
+            <h1>{{recipe.recipe_name}}</h1>
+        </div>
+        <div class="admin-recipe-preview-chef-name">
+            <p>Por {{recipe.chef_name}}</p>
+        </div>
+        <div class="admin-recipe-preview-link-show">
+            <a href="/admin/recipes/{{recipe.recipe_id}}">Visualizar</a>
+        </div>
+    </div>
+
+</div>
