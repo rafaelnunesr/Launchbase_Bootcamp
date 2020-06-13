@@ -68,6 +68,7 @@ if (pagination) {
 const PhotosUpload = {
     input: "",
     preview: document.querySelector('.admin-recipes-photos-preview'), // div com todas as fotos do preview
+    previewChef: document.querySelector('.admin-chef-photos-preview'),
     upLoadLimit: 5,
     files: [],
     AddRecipePhoto(event){
@@ -99,18 +100,21 @@ const PhotosUpload = {
         const { files: fileList } = event.target
         PhotosUpload.input = event.target
 
+        console.log(fileList)
+
         if(PhotosUpload.hasLimit(event)) return
 
         Array.from(fileList).forEach(file => {
             PhotosUpload.files.push(file)
 
+            console.log(file)
             const reader = new FileReader()
 
             reader.onload = () => {
                 const image = new Image() // <img>
                 image.src = String(reader.result)
 
-                const div = PhotosUpload.getContainer(image)
+                const div = PhotosUpload.getChefPhotoContainer(image)
 
                 PhotosUpload.preview.appendChild(div)
             }
@@ -154,6 +158,19 @@ const PhotosUpload = {
         return dataTransfer.files
     },
     getContainer(image) {
+        const div = document.createElement('div')
+        div.classList.add('photo-box')
+        div.classList.add('photo')
+
+        div.onclick = PhotosUpload.removePhoto
+
+        div.appendChild(image)
+
+        div.appendChild(PhotosUpload.getRemoveButton())
+
+        return div
+    },
+    getChefPhotoContainer(image) {
         const div = document.createElement('div')
         div.classList.add('photo-box')
         div.classList.add('photo')
