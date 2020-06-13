@@ -9,7 +9,7 @@ module.exports = {
         let { page, limit, filter } = req.query
 
         page = page || 1
-        limit = limit || 6
+        limit = limit || 12
         offset = limit * (page - 1)
 
         const params = {
@@ -198,5 +198,46 @@ module.exports = {
     },
     newChef(req, res){
         return res.render('admin/chefs/create')
+    },
+    async chefs(req, res){
+        let results = await Chef.all()
+        let chefs = results.rows
+
+        return res.render('admin/chefs/chefs', {chefs})
+    },
+    async showChef(req, res){
+
+        let results = await Chef.findChef_Recipes(req.params.id)
+        let chef = results.rows
+        let total_recipes = 0
+
+        if (chef.length == 0){
+            results = await Chef.find(req.params.id)
+            chef = results.rows
+        }
+
+        let chef_info = {
+            id: chef[0].id,
+            _name: chef[0].name,
+            photo: chef[0].photo,
+            recipes: []
+        }
+
+        if (chef[0].recipe_id)
+            chef.map(rec => {
+                chef_info.recipes.push({
+                    recipe_id: rec.recipe_id,
+                    recipe_name: rec.recipe_name,
+                    recipe_path: `${req.protocol}://${req.headers.host}${rec.file_path.replace("public", "")}`
+                })
+                total_recipes++
+            })
+
+        chef_info.total_recipes = total_recipes
+
+        return res.render('admin/chefs/show', {chef: chef_info})
+    },
+    editChef(req, res){
+        return res.send('edit chef')
     }
 }

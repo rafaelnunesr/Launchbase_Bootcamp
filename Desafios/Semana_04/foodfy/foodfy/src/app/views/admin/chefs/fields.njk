@@ -18,6 +18,16 @@
     </div>
 
     <div class="chef_avatar">
-        <img src="https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?cs=srgb&dl=woman-wearing-pink-collared-half-sleeved-top-1036623.jpg&fm=jpg" alt="">
+        {% for image in files %}
+            <div class="photo photo-box" id={{image.id}}>
+                <img 
+                    src="{{image.src}}" 
+                    alt="{{image.name}}">
+                    <i 
+                        class="material-icons"
+                        onclick="PhotosUpload.removeOldPhoto(event)">close</i>
+            </div>
+            <input type="hidden" name="removed_files">
+        {% endfor %}
     </div>
 </div>

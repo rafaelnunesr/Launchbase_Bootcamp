@@ -96,26 +96,29 @@ const PhotosUpload = {
         PhotosUpload.input.files = PhotosUpload.getAllFiles()
     },
     addChefAvatar(event){
-        const { file } = event.target
-
+        const { files: fileList } = event.target
         PhotosUpload.input = event.target
 
-        PhotosUpload.files.push(file)
+        if(PhotosUpload.hasLimit(event)) return
 
-        const reader = new FileReader()
+        Array.from(fileList).forEach(file => {
+            PhotosUpload.files.push(file)
 
-        reader.onload = () => {
-            const image = new Image() // <img>
-            image.src = String(reader.result)
+            const reader = new FileReader()
 
-            const div = PhotosUpload.getContainer(image)
+            reader.onload = () => {
+                const image = new Image() // <img>
+                image.src = String(reader.result)
 
-            PhotosUpload.preview.appendChild(div)
-        }
+                const div = PhotosUpload.getContainer(image)
 
-        reader.readAsDataURL(file)
+                PhotosUpload.preview.appendChild(div)
+            }
 
-            //PhotosUpload.input.files = PhotosUpload.getAllFiles()
+            reader.readAsDataURL(file)
+        })
+
+        PhotosUpload.input.files = PhotosUpload.getAllFiles()
     },
     hasLimit(event){
         const { upLoadLimit, input, preview } = PhotosUpload
@@ -197,18 +200,41 @@ const PhotosUpload = {
 const Search = {
     searchInputField(){
         const searchInputAdmin = document.querySelector('#admin-search-input')
-        const searchButtonIcon = document.querySelector('.button-search i')
+        const addRecipeButton = document.querySelector('#addRecipe')
+        const addChefButton = document.querySelector('#addChef')
+        const addHideSearchButton = document.querySelector('.hide-search')
+        const searchForm = document.querySelector('.admin-subheader-links form')
+        const buttonSearch = document.querySelector('.button-search')
 
         const status = searchInputAdmin.type
         if (status == "hidden"){
             searchInputAdmin.type = "text"
-            searchButtonIcon.innerHTML = "keyboard_arrow_right"
+            addHideSearchButton.removeAttribute('hidden')
+            addRecipeButton.setAttribute('hidden', 'hidden')
+            addChefButton.setAttribute('hidden', 'hidden')
 
         }else {
-            searchInputAdmin.type = "hidden"
-            searchButtonIcon.innerHTML = "search"
-            document.querySelector('#admin-search-input').value = ""
+            buttonSearch.addEventListener('click', () => {
+                searchForm.submit()
+            })
         }
+    },
+    hideInputField(){
+        const searchInputAdmin = document.querySelector('#admin-search-input')
+        const addRecipeButton = document.querySelector('#addRecipe')
+        const addChefButton = document.querySelector('#addChef')
+        const addHideSearchButton = document.querySelector('.hide-search')
+
+        const status = searchInputAdmin.type
+        if (status == "text"){
+            searchInputAdmin.type = "hidden"
+            document.querySelector('#admin-search-input').value = ""
+            addHideSearchButton.setAttribute('hidden', 'hidden')
+            addRecipeButton.removeAttribute('hidden')
+            addChefButton.removeAttribute('hidden')
+
+        }
+
     }
 }
 

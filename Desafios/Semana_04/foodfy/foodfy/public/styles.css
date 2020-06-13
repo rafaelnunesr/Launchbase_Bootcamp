@@ -127,15 +127,16 @@ a.button:hover {
 .admin-subheader-links input {
     border: 1px solid var(--primary-purple-color);
     margin-right: 8px;
-    border-radius: 10px;
+    border-radius: 4px;
     padding: 5px;
+    height: 30px;
 }
 
 .admin-subheader i {
     cursor: pointer;
     color: var(--primary-purple-color);
     padding: 2px 5px;
-    border-radius: 10px;
+    border-radius: 4px;
 
     border: 1px solid var(--primary-purple-color);
 }
@@ -406,6 +407,11 @@ form button.delete-button:hover {
     background: white;
 }
 
+form #admin-search-input {
+    position: relative;
+    bottom: 8px;
+}
+
 .input-item input,
 .input-item select {
     margin-top: 5px;
@@ -639,6 +645,10 @@ form button.delete-button:hover {
 
 .search button.search-button:hover {
     background-color: rgb(78, 62, 151);
+}
+
+.hide-search {
+    margin-right: 8px;
 }
 
 /* USER FOOTER */

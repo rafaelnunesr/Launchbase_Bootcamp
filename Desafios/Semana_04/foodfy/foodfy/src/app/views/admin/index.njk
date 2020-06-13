@@ -12,18 +12,26 @@
             </div>
             
             <div class="admin-subheader-links">
-                <a href="admin/recipes/create" class="button">+ Receita</a>
-                <a href="admin/chefs/create" class="button">+ Chef</a>
-                <input 
-                    id="admin-search-input" 
-                    type="hidden" 
-                    name="admin-search-input"
-                    placeholder="Enter para pesquisar">
-                <a class="button-search">
-                    <i 
+                <a id="addRecipe" href="admin/recipes/create" class="button">+ Receita</a>
+                <a id="addChef" href="admin/chefs/create" class="button">+ Chef</a>
+                <a class="hide-search" hidden>
+                    <i
                         class="material-icons"
-                        onclick="Search.searchInputField()">search</i>
+                        onclick="Search.hideInputField()">keyboard_arrow_right</i>
                 </a>
+                <form action="/admin/recipes" method="GET">
+                    <input 
+                        id="admin-search-input" 
+                        type="hidden" 
+                        name="filter"
+                        placeholder="Enter para pesquisar"
+                        value={{filter}}>
+                            <a class="button-search">
+                                <i 
+                                    class="material-icons"
+                                    onclick="Search.searchInputField()">search</i>
+                            </a>
+                </form>
             </div>
         </div>
 
