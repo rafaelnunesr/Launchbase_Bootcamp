@@ -102,7 +102,7 @@ const PhotosUpload = {
 
         console.log(fileList)
 
-        if(PhotosUpload.hasLimit(event)) return
+        if(PhotosUpload.hasChefLimit(event)) return
 
         Array.from(fileList).forEach(file => {
             PhotosUpload.files.push(file)
@@ -116,7 +116,7 @@ const PhotosUpload = {
 
                 const div = PhotosUpload.getChefPhotoContainer(image)
 
-                PhotosUpload.preview.appendChild(div)
+                PhotosUpload.previewChef.appendChild(div)
             }
 
             reader.readAsDataURL(file)
@@ -149,6 +149,32 @@ const PhotosUpload = {
 
         return false
     },
+    hasChefLimit(event){
+        const chefUpLoadLimit = 1
+        const { input, previewChef } = PhotosUpload
+        const { files: fileList } = input
+
+        if(fileList.length > chefUpLoadLimit) {
+            alert(`Envie no máximo ${chefUpLoadLimit} fotos.`)
+            event.preventDefault()
+            return true
+        }
+
+        const photosDiv = []
+        previewChef.childNodes.forEach(item => {
+            if (item.classList && item.classList.value == "chef-avatar")
+                photosDiv.push(item)
+        })
+
+        const totalPhotos = fileList.length + photosDiv.length
+        if(totalPhotos > chefUpLoadLimit) {
+            alert("Você atingiu o limite máximo de fotos")
+            event.preventDefault()
+            return true
+        }
+
+        return false
+    },
     getAllFiles() {
         const dataTransfer = new ClipboardEvent("").clipboardData || new DataTransfer() // Firefox || Google Chrome
 
@@ -172,10 +198,10 @@ const PhotosUpload = {
     },
     getChefPhotoContainer(image) {
         const div = document.createElement('div')
-        div.classList.add('photo-box')
+        div.classList.add('chef-avatar')
         div.classList.add('photo')
 
-        div.onclick = PhotosUpload.removePhoto
+        div.onclick = PhotosUpload.removeChefPhoto
 
         div.appendChild(image)
 
@@ -192,6 +218,16 @@ const PhotosUpload = {
     removePhoto(event) {
         const photoDiv = event.target.parentNode // busca o pai do elemento i, no caso a div
         const photosArray = Array.from(PhotosUpload.preview.children) // array das photos
+        const index = photosArray.indexOf(photoDiv)
+
+        PhotosUpload.files.splice(index, 1) // splice remove itens de um array, 1 sao quantos elementos a serem removidos no array
+        PhotosUpload.input.files = PhotosUpload.getAllFiles()
+
+        photoDiv.remove()
+    },
+    removeChefPhoto(event) {
+        const photoDiv = event.target.parentNode // busca o pai do elemento i, no caso a div
+        const photosArray = Array.from(PhotosUpload.previewChef.children) // array das photos
         const index = photosArray.indexOf(photoDiv)
 
         PhotosUpload.files.splice(index, 1) // splice remove itens de um array, 1 sao quantos elementos a serem removidos no array

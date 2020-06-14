@@ -12,9 +12,17 @@
             </div>
         </div>
 
-        <form action="">
-            <a href="" class="save-button">Salvar chef</a>
+        <form id="form-save" method="POST" action="/admin/chefs" enctype="multipart/form-data">
+            <a class="save-button">Salvar chef</a>
             {% include "./fields.njk" %}
         </form>
     </div>
+
+    <script>
+        const saveForm = document.querySelector('#form-save')
+        const saveButton = document.querySelector('.save-button')
+        saveButton.addEventListener('click', function(event){
+            saveForm.submit()
+        })
+    </script>
 {% endblock %}

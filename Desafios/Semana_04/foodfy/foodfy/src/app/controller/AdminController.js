@@ -58,6 +58,8 @@ module.exports = {
 
         const keys = Object.keys(req.body)
 
+        console.log(req.body)
+
         for (key of keys){
             if(req.body[key == '' && key != 'information']){
                 return res.send('Por favor, preencha todos os campos')
@@ -239,5 +241,30 @@ module.exports = {
     },
     editChef(req, res){
         return res.send('edit chef')
+    },
+    async chefPost(req, res){
+
+        const keys = Object.keys(req.body)
+
+        console.log(req.body)
+
+        for (key of keys){
+            if(req.body[key == '']){
+                return res.send('Por favor, preencha todos os campos')
+            }
+        }
+
+        // console.log(req.files)
+
+        // if (req.files.length == 0){
+        //     return res.send('Por favor, envie uma foto do chef.')
+        // }
+
+        // let results = await Chef.create(req.body)
+        // const chefId = results.rows[0].id
+
+        // return res.redirect('/admin/chefs/show', { chefId })
+
+
     }
 }

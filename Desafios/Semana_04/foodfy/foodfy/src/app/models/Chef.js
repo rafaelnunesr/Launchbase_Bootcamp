@@ -31,6 +31,24 @@ module.exports = {
                          GROUP BY chefs.id
                          ORDER BY chefs.name ASC
         `)
+    },
+    create(data){
+        const query = `
+            INSERT INTO chefs (
+                name,
+                photo,
+                created_at,
+            )VALUES ($1, $2, $3)
+            RETURNING id
+        `
+
+        const values = [
+            data.name,
+            data.photo,
+            date(Date.now()).iso,
+        ]
+
+        return db.query(query, values)
     }
 }
 

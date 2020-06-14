@@ -20,9 +20,8 @@
             >
     </div>
 
-    <div class="photos-preview">
         {% for image in files %}
-            <div class="photo photo-box" id={{image.id}}>
+            <div class="chef-avatar photo" id={{image.id}}>
                 <img 
                     src="{{image.src}}" 
                     alt="{{image.name}}">
@@ -32,5 +31,5 @@
             </div>
             <input type="hidden" name="removed_files">
         {% endfor %}
-    </div>
+
 </div>

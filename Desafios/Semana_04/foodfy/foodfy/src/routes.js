@@ -16,6 +16,7 @@ routes.put('/admin/recipes', multer.array('photos', 5), AdminController.RecipePu
 routes.get('/admin/chefs/create', AdminController.newChef)
 routes.get('/admin/recipes', AdminController.index)
 routes.get('/admin/chefs', AdminController.chefs)
+routes.post('/admin/chefs', multer.single('photos'), AdminController.chefPost)
 routes.get('/admin/chefs/:id', AdminController.showChef)
 routes.get('/admin/chefs/:id/edit', AdminController.editChef)
 
