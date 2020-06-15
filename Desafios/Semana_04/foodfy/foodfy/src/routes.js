@@ -19,7 +19,9 @@ routes.get('/admin/chefs', AdminController.chefs)
 routes.post('/admin/chefs', multer.array('photo', 1), AdminController.chefPost)
 routes.get('/admin/chefs/:id', AdminController.showChef)
 routes.get('/admin/chefs/:id/edit', AdminController.editChef)
+routes.put('/admin/chefs', multer.array('photo', 1), AdminController.chefPut)
 routes.delete('/admin/chefs', AdminController.deleteChef)
+routes.delete('/admin/recipes', AdminController.deleteRecipe)
 
 
 routes.get('/', PublicController.index)

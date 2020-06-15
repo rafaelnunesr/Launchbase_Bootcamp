@@ -3,6 +3,7 @@ const File = require('../models/File')
 const RecipeFiles = require('../models/RecipeFiles')
 const { stringToList } = require('../../lib/utils')
 const Chef = require('../models/Chef')
+const fs = require('fs')
 
 module.exports = {
     async index(req, res){
@@ -280,17 +281,47 @@ module.exports = {
 
         const id = req.body.id
 
-        console.log(req.body)
-
         const totalRecipes = await Chef.findChef_Recipes(id)
         if (totalRecipes.rows.length > 0){
             return res.send('Infelizmente, este chef não pode ser deletado no momento, pois ele possui receitas. Apague todas as receitas deste chef primeiro, para depois excluí-lo.')
         }
+
+        let file = await Chef.find(id)
+        file = file.rows[0].photo
+        
+        fs.unlinkSync(file)
 
         await Chef.delete(id)
 
         return res.redirect('/admin/chefs')
 
 
+    },
+    async deleteRecipe(req, res){
+        const id = req.body.id
+
+    },
+    async chefPut(req, res){
+        const keys = Object.keys(req.body)
+
+        for(key of keys){
+            if(req.body[key] == '' && key != 'removed_files'){
+                return res.send('Por favor, preencha todos os campos.')
+            }
+        }
+
+        if (req.files.length == 0){
+            return res.send('Por favor, envie pelo menos uma foto do chef.')
+        }
+
+        const data = {
+            name: req.body.name,
+            photo: req.files[0].path,
+            id: req.body.id
+        }
+
+        await Chef.update(data)
+
+        return res.redirect(`/admin/chefs/${req.body.id}`)
     }
 }

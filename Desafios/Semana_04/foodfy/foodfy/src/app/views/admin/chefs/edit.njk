@@ -28,6 +28,7 @@
                 event.preventDefault() // cancela o submit
             }else {
                 formDelete.action = '/admin/chefs?_method=DELETE'
+                formDelete.enctype=''
                 formDelete.submit()
             }
 

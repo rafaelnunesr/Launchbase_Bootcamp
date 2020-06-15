@@ -55,6 +55,22 @@ module.exports = {
         return db.query(`
             DELETE FROM chefs
             WHERE id = $1`, [id])
+    },
+    update(data){
+        const query = `
+            UPDATE chefs SET
+                name = ($1),
+                photo = ($2)
+            WHERE id = $3
+        `
+
+        const values = [
+            data.name,
+            data.photo,
+            data.id
+        ]
+
+        return db.query(query, values)
     }
 }
 
