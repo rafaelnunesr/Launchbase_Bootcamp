@@ -11,13 +11,13 @@ server.use(methodOverride('_method'))
 server.use(routes)
 
 nunjucks.configure('src/app/views', {
-    express: server,
+    express:server,
     autoescape: false,
     noCache: true
 })
 
 server.set('view engine', 'njk')
 
-server.listen(5000, function(){
+server.listen(5000, function() {
     console.log('server is running')
 })

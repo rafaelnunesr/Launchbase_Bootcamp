@@ -58,8 +58,6 @@ module.exports = {
 
         const keys = Object.keys(req.body)
 
-        console.log(req.body)
-
         for (key of keys){
             if(req.body[key == '' && key != 'information']){
                 return res.send('Por favor, preencha todos os campos')
@@ -133,7 +131,7 @@ module.exports = {
         let results = await Recipe.find(req.params.id)
         let recipe = results.rows[0]
 
-        if(!recipe) return res.send('Produto não encontrado!')
+        if(!recipe) return res.send('Receita não encontrada!')
 
         const filesId = await RecipeFiles.findRecipeInfo(recipe.id).then((value) => {
             
@@ -221,7 +219,7 @@ module.exports = {
         let chef_info = {
             id: chef[0].id,
             _name: chef[0].name,
-            photo: chef[0].photo,
+            photo: `${req.protocol}://${req.headers.host}${chef[0].photo.replace("public", "")}`,
             recipes: []
         }
 
@@ -239,14 +237,23 @@ module.exports = {
 
         return res.render('admin/chefs/show', {chef: chef_info})
     },
-    editChef(req, res){
-        return res.send('edit chef')
+    async editChef(req, res){
+
+        let results = await Chef.find(req.params.id)
+        let chef = results.rows[0]
+
+        if(!chef) return res.send('Chef não encontrado!')
+
+        chef = {
+            ...chef,
+            src: `${req.protocol}://${req.headers.host}${chef.photo.replace('public', "")}`
+        }
+
+        return res.render('admin/chefs/edit', { chef })
     },
     async chefPost(req, res){
 
         const keys = Object.keys(req.body)
-
-        console.log(req.body)
 
         for (key of keys){
             if(req.body[key == '']){
@@ -254,16 +261,35 @@ module.exports = {
             }
         }
 
-        // console.log(req.files)
+        if (req.files.length == 0){
+            return res.send('Por favor, envie uma foto do chef.')
+        }
 
-        // if (req.files.length == 0){
-        //     return res.send('Por favor, envie uma foto do chef.')
-        // }
+        const data = {
+            name: req.body.name,
+            photo: req.files[0].path
+        }
 
-        // let results = await Chef.create(req.body)
-        // const chefId = results.rows[0].id
+        let results = await Chef.create(data)
+        const chefId = results.rows[0].id
 
-        // return res.redirect('/admin/chefs/show', { chefId })
+        return res.redirect(`/admin/chefs/${chefId}`)
+
+    },
+    async deleteChef(req, res){
+
+        const id = req.body.id
+
+        console.log(req.body)
+
+        const totalRecipes = await Chef.findChef_Recipes(id)
+        if (totalRecipes.rows.length > 0){
+            return res.send('Infelizmente, este chef não pode ser deletado no momento, pois ele possui receitas. Apague todas as receitas deste chef primeiro, para depois excluí-lo.')
+        }
+
+        await Chef.delete(id)
+
+        return res.redirect('/admin/chefs')
 
 
     }

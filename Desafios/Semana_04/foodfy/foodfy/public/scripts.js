@@ -100,14 +100,10 @@ const PhotosUpload = {
         const { files: fileList } = event.target
         PhotosUpload.input = event.target
 
-        console.log(fileList)
-
         if(PhotosUpload.hasChefLimit(event)) return
 
         Array.from(fileList).forEach(file => {
             PhotosUpload.files.push(file)
-
-            console.log(file)
             const reader = new FileReader()
 
             reader.onload = () => {
@@ -150,12 +146,12 @@ const PhotosUpload = {
         return false
     },
     hasChefLimit(event){
-        const chefUpLoadLimit = 1
+        const chefUploadLimit = 1
         const { input, previewChef } = PhotosUpload
         const { files: fileList } = input
 
-        if(fileList.length > chefUpLoadLimit) {
-            alert(`Envie no máximo ${chefUpLoadLimit} fotos.`)
+        if(fileList.length > chefUploadLimit) {
+            alert(`Envie no máximo ${chefUploadLimit} fotos.`)
             event.preventDefault()
             return true
         }
@@ -167,7 +163,7 @@ const PhotosUpload = {
         })
 
         const totalPhotos = fileList.length + photosDiv.length
-        if(totalPhotos > chefUpLoadLimit) {
+        if(totalPhotos > chefUploadLimit) {
             alert("Você atingiu o limite máximo de fotos")
             event.preventDefault()
             return true

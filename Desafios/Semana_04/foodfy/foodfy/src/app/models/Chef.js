@@ -1,4 +1,5 @@
 const db = require('../../config/db')
+const { date } = require('../../lib/utils')
 
 module.exports = {
     findChef_Recipes(id){
@@ -37,7 +38,7 @@ module.exports = {
             INSERT INTO chefs (
                 name,
                 photo,
-                created_at,
+                created_at
             )VALUES ($1, $2, $3)
             RETURNING id
         `
@@ -49,6 +50,11 @@ module.exports = {
         ]
 
         return db.query(query, values)
+    },
+    delete(id){
+        return db.query(`
+            DELETE FROM chefs
+            WHERE id = $1`, [id])
     }
 }
 

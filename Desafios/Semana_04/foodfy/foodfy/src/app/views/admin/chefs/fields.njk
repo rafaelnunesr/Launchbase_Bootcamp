@@ -3,7 +3,9 @@
         <h1>Chef</h1>
         <input 
             type="text"
-            placeholder="Nome do Chef">
+            name="name"
+            placeholder="Nome do Chef"
+            value={{chef.name}}>
     </div>
 </div>
 
@@ -14,22 +16,21 @@
         <input 
             id="photos-chef_avatar-upload"
             type="file"
-            name="photos"
+            name="photo"
             accept="image/*"
             onchange="PhotosUpload.addChefAvatar(event)"
-            >
+            />
     </div>
 
-        {% for image in files %}
-            <div class="chef-avatar photo" id={{image.id}}>
-                <img 
-                    src="{{image.src}}" 
-                    alt="{{image.name}}">
-                    <i 
-                        class="material-icons"
-                        onclick="PhotosUpload.removeOldPhoto(event)">close</i>
-            </div>
-            <input type="hidden" name="removed_files">
-        {% endfor %}
+    <div class="chef-avatar photo" id={{chef.id}}>
+        <img 
+            src="{{chef.src}}" 
+            alt="{{chef.name}}">
+            <i 
+                class="material-icons"
+                onclick="PhotosUpload.removeOldPhoto(event)">close</i>
+    </div>
+    <input type="hidden" name="removed_files">
+    <input type="hidden" name='id' value={{chef.id}}>
 
 </div>
