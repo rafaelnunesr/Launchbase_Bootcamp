@@ -16,12 +16,10 @@ module.exports = {
                 preparation,
                 information,
                 created_at,
-                accessed
+                updated_at
             )VALUES ($1, $2, $3, $4, $5, $6, $7)
             RETURNING id
         `
-        const recipeAccessed = 0
-
         const values = [
             data.chef_id,
             data.name,
@@ -29,7 +27,8 @@ module.exports = {
             data.preparation,
             data.information,
             date(Date.now()).iso,
-            recipeAccessed
+            date(Date.now()).iso
+            
         ]
 
         return db.query(query, values)
@@ -71,7 +70,7 @@ module.exports = {
             INNER JOIN files ON recipe_files.file_id = files.id
             ${filterQuery}
             GROUP BY recipes.id, chefs.id
-            ORDER BY recipes.accessed DESC
+            ORDER BY recipes.updated_at DESC
             LIMIT $1 OFFSET $2`
 
         return db.query(query, [limit, offset])
@@ -89,12 +88,7 @@ module.exports = {
                         INNER JOIN recipe_files ON recipe_files.recipe_id = recipes.id
                         INNER JOIN files ON recipe_files.file_id = files.id
                         GROUP BY recipes.id, chefs.id
-                        ORDER BY recipes.accessed DESC
+                        ORDER BY recipes.updated_at DESC
                         LIMIT $1`, [6])
-    },
-    addVisitToRecipe(id){
-        return db.query(`UPDATE recipes
-                         SET accessed = accessed + 1
-                         WHERE recipes.id = $1`, [id])
     }
 }
