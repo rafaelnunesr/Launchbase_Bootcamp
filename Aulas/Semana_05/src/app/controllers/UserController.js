@@ -1,19 +1,5 @@
-class Person {
-    constructor(name){
-        this.name = name
-    }
-
-    getName() {
-        return this.name
-    }
-
-}
-
-class Dev extends Person {
-    getName() {
-        return 'outra coisa'
+module.exports = {
+    registerForm(req, res){
+        return res.render('user/register')
     }
 }
-
-const dev = new Dev("rafael")
-console.log(dev.getName())
