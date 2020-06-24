@@ -209,10 +209,11 @@ const Validate = {
 
         input.value = results.value
 
-        if(results.error)
+        if(results.error){
             Validate.displayError(input, results.error)
 
-        input.focus()
+            input.focus()
+        }
     },
     displayError(input, error) {
         const div = document.createElement('div')
@@ -233,6 +234,39 @@ const Validate = {
 
         if(!value.match(mailFormat))
             error = 'Email inválido'
+
+        return {
+            error,
+            value
+        }
+    },
+    isCpfCnpj(value) {
+
+        let error = null
+
+        const cleanValues = value.replace(/\D/g, "") 
+
+        if(cleanValues.length > 11 && cleanValues.length < 14){
+            error = 'CNPJ incorreto'
+        }
+        else if (cleanValues.length < 12 && cleanValues.length !== 11){
+            error = 'CPF incorreto'
+        }
+
+        return {
+            error,
+            value
+        }
+    },
+    isCep(value) {
+
+        let error = null
+
+        const cleanValues = value.replace(/\D/g, "") 
+
+        if(cleanValues.length !== 8){
+            error = 'CEP inválido'
+        }
 
         return {
             error,
