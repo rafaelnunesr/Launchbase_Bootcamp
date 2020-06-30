@@ -7,6 +7,10 @@ const session = require('./config/session')
 const server = express()
 
 server.use(session)
+server.use((req, res, netx) => {
+    res.locals.session = req.session
+    netx()
+})
 server.use(express.urlencoded( { extended: true } ))
 server.use(express.static('public'))
 server.use(methodOverride('_method'))
