@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+        <title>Foodfy | Login</title>
+    {% endblock %}
+    {% include './styles.njk' %}
+</head>
+<body>
+
+    {% block content %}
+        {% include './parts/messages.njk' %}
+        {% include './parts/fields-login.njk' %}
+    {% endblock %}
+
+    <script src="/scripts.js"></script>
+</body>
+</html>

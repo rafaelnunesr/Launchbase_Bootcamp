@@ -1,0 +1,27 @@
+  @keyframes hidemessage {
+    to {
+        top: -50px;
+        opacity: 0;
+    }
+}
+
+.messages {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 200px;
+    color: white;
+    padding: 30px;
+    font-family: 'Roboto', sans-serif;
+
+    animation: hidemessage 400ms 5s ease-out forwards;
+    text-align: center;
+}
+
+.messages.error {
+    background: red;
+}
+
+.messages.success {
+    background: greenyellow;
+}

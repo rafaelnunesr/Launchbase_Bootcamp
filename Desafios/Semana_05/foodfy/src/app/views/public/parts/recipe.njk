@@ -1,0 +1,28 @@
+<div class="recipe">
+    <div class="recipe-img">
+        <a href="/recipes/{{recipe.recipe_id}}">
+            {% if not recipe.recipe_path %}
+                <img src="http://placehold.it/500x500?text=PRODUTO SEM FOTO" />
+            {% else %}
+                <img src="{{recipe.recipe_path}}" alt="Foto de {{recipe.recipe_name}}">
+            {% endif %}
+        </a>
+    </div>
+
+    <div class="recipe-name">
+        <h2>{{recipe.recipe_name}}</h2>
+    </div>
+
+    {% if chef.name %}
+        <div class="recipe-chef-name">
+            <p>Por {{chef.name}}</p>
+        </div>
+    {% endif %}
+
+    {% if recipe.chef_name %}
+        <div class="recipe-chef-name">
+            <p>Por {{recipe.chef_name}}</p>
+        </div>
+    {% endif %}
+</div>
+

@@ -1,0 +1,31 @@
+
+<div class="admin-recipe-preview-container">
+    <div class="admin-recipe-preview-photo">
+        <img 
+            src="{{recipe.recipe_path}}" 
+            alt="Foto de {{recipe.recipe_name}}">
+    </div>
+
+    <div class="admin-recipe-info">
+        <div class="admin-recipe-preview-title">
+            <h1>{{recipe.recipe_name}}</h1>
+        </div>
+        
+        {% if chef.name %}
+            <div class="recipe-chef-name">
+                <p>Por {{chef.name}}</p>
+            </div>
+        {% endif %}
+
+        {% if recipe.chef_name %}
+            <div class="recipe-chef-name">
+                <p>Por {{recipe.chef_name}}</p>
+            </div>
+        {% endif %}
+
+        <div class="admin-recipe-preview-link-show">
+            <a href="/admin/recipes/{{recipe.recipe_id}}">Visualizar</a>
+        </div>
+    </div>
+
+</div>

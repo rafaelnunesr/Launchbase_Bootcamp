@@ -1,0 +1,46 @@
+{% extends './layout.njk' %}
+
+{% block head %}
+    <title>Foodfy | Admin</title>
+{% endblock %}
+
+{% block content %}
+    <div class="main-page">
+        <div class="admin-subheader">
+            <div class="admin-page-title">
+                <h1>Gerenciar receitas</h1>
+            </div>
+            
+            <div class="admin-subheader-links">
+                <a id="addRecipe" href="/admin/recipes/create" class="button">+ Receita</a>
+                <a id="addChef" href="/admin/chefs/create" class="button">+ Chef</a>
+                <a class="hide-search" hidden>
+                    <i
+                        class="material-icons"
+                        onclick="Search.hideInputField()">keyboard_arrow_right</i>
+                </a>
+                <form action="/admin/recipes" method="GET">
+                    <input 
+                        id="admin-search-input" 
+                        type="hidden" 
+                        name="filter"
+                        placeholder="Enter para pesquisar"
+                        value={{filter}}>
+                            <a class="button-search">
+                                <i 
+                                    class="material-icons"
+                                    onclick="Search.searchInputField()">search</i>
+                            </a>
+                </form>
+            </div>
+        </div>
+
+        <div class="admin-recipes-preview">
+            {% for recipe in recipes %}
+                {% include './parts/recipe.njk' %}
+            {% endfor %}
+        </div>
+    </div>
+
+    {% include './parts/pagination.njk' %}
+{% endblock %}

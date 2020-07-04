@@ -1,0 +1,487 @@
+/* ADMIN INDEX */
+.admin-subheader {
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.admin-subheader-links {
+    display: flex;
+    justify-content: flex-end;
+}
+
+a.button {
+    color: var(--primary-purple-color);
+    padding: 4px 8px;
+    border-radius: 4px;
+
+    border: 1px solid var(--primary-purple-color);
+
+    transition: background-color 200ms;
+    margin-right: 8px;
+} 
+
+a.button:hover {
+    background-color: var(--primary-purple-color);
+    color: white;
+}
+
+.admin-subheader-links input {
+    border: 1px solid var(--primary-purple-color);
+    margin-right: 8px;
+    border-radius: 4px;
+    padding: 5px;
+    height: 30px;
+}
+
+.admin-subheader i {
+    cursor: pointer;
+    color: var(--primary-purple-color);
+    padding: 2px 5px;
+    border-radius: 4px;
+
+    border: 1px solid var(--primary-purple-color);
+}
+
+.admin-subheader i:hover {
+    background: var(--primary-purple-color);
+    color: white;
+}
+
+.admin-page-title h1,
+.page-title h1 {
+    font-size: 20px;
+}
+
+.admin-recipes-preview {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.admin-recipe-preview-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 20px;
+}
+
+.admin-recipe-preview-photo img {
+    width: 90%;
+    transition: 200ms;
+    border-radius: 10px;
+
+    box-shadow: 0px 0px 8px -2px rgba(0, 0, 0, 0.7);
+}
+
+.admin-recipe-preview-photo img:hover {
+    filter: brightness(70%);
+}
+
+.admin-recipe-preview-title h1 {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.admin-recipe-preview-chef-name p {
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 4px;
+    color: var(--third-gray-color);
+}
+
+.admin-recipe-preview-link-show {
+    margin-top: 20px;
+}
+
+.admin-recipe-preview-link-show a {
+    font-size: 14px;
+    font-weight: 400;
+    color: blue;
+
+    transition: 200ms;
+}
+
+.admin-recipe-preview-link-show a:hover {
+    color: rgb(2, 2, 122);
+}
+
+.pagination {
+   margin-top: auto;
+   padding: 20px;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.pagination a {
+    margin-left: 16px;
+}
+
+/* ADMIN CREATE RECIPE */
+form {
+    position: relative;
+}
+
+form button,
+.save-button {
+    position: absolute;
+    right: 0;
+    top: -40px;
+
+    background: var(--primary-blue-color);
+    border: none;
+    color: white;
+    font-size: 14px;
+
+    padding: 4px 8px;
+    border-radius: 4px;
+
+    transition: 200ms;
+}
+
+form button,
+.save-button:hover {
+    background: var(--secondary-blue-color);
+}
+
+form button.delete-button {
+    right: 120px;
+    background: orangered;
+}
+
+form button.delete-button:hover {
+    background: rgb(194, 2, 2);
+}
+
+.admin-recipes-photos-preview {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+}
+
+.photo-box-upload,
+.photo-box {
+    width: 150px;
+    height: 150px;
+    border: 1px solid var(--secondary-gray-color);
+
+    border-radius: 4px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 200ms;
+    position: relative;
+}
+
+.photo-box-upload input,
+.photo-box input {
+    width: 150px;
+    height: 150px;
+    opacity: 0;
+
+    position: absolute;
+}
+
+.photo-box-upload:hover,
+.photo-box:hover {
+    box-shadow: 0px 0px 6px -2px rgba(0, 0, 0, 0.5);
+}
+
+.photo-box-upload i {
+    color: var(--secondary-gray-color);
+    font-size: 60px;
+    font-weight: 300;
+}
+
+.photo-box i,
+.chef-avatar i {
+    position: absolute;
+    color: var(--secondary-gray-color);
+    font-size: 60px;
+    font-weight: 300;
+
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+
+    top: 0;
+    left: 0;
+
+    background: rgba(255, 255, 255, 0.8);
+    color: red;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 200ms;
+
+    cursor: pointer;
+    opacity: 0;
+}
+
+.photo-box i:hover,
+.chef-avatar i:hover {
+    opacity: 1;
+}
+
+.photo-box img {
+    height: 100%;
+
+    object-fit: cover;
+    transition: 200ms;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+/* ADMIN FIELDS */
+.fields-input {
+    margin-top: 30px;
+}
+
+.input-item {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.input-chef-avatar {
+    margin-top: 20px;
+    width: 120px;
+    position: relative;
+}
+
+.input-chef-avatar p {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: var(--primary-blue-color);
+    color: white;
+
+    text-align: center;
+}
+
+.input-chef-avatar input {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+
+    cursor: pointer;
+}
+
+.chef-avatar {
+    width: 300px;
+    height: 300px;
+
+    margin: 40px auto;
+    position: relative;
+}
+
+.chef-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.chef-avatar img:hover {
+    box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.5);
+}
+
+.chef_info {
+    text-align: center;
+    margin-top: -20px;
+}
+
+.chef_info p {
+    color: var(--third-gray-color);
+    font-size: 16px;
+    margin-top: 4px;
+}
+
+.input-item h1 {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.input-item select {
+    background: white;
+}
+
+form #admin-search-input {
+    position: relative;
+    bottom: 8px;
+}
+
+.input-item input,
+.input-item select {
+    margin-top: 5px;
+    width: 100%;
+    border-radius: 4px;
+    padding: 10px;
+
+    border: 1px solid var(--secondary-gray-color);
+}
+
+.input-item input:focus,
+.input-item select:focus {
+    border: 2px solid var(--primary-gray-color);
+}
+
+.input-item a {
+    color: var(--primary-blue-color);
+    cursor: pointer;
+    margin-top: 5px;
+
+    transition: 200ms;
+}
+
+.input-item a:hover {
+    color: var(--primary-purple-color)
+}
+
+.input-item textarea {
+    margin-top: 5px;
+    width: 100%;
+    height: 200px;
+    resize: none;
+    border-radius: 4px;
+
+    padding: 10px;
+
+    border: 1px solid var(--secondary-gray-color);
+}
+
+.input-item textarea:focus {
+    border: 2px solid var(--primary-gray-color)
+}
+
+/* ADMIN SHOW */
+.gallery {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.gallery .highlight > img {
+    width: 100%;
+    height: 250px;
+
+    /*object-fit: none;*/
+    object-fit: cover;
+    object-position: 50% 50%;
+
+    border-radius: 10px;
+
+    cursor: zoom-in;
+}
+
+.gallery-small-photos {
+    display: grid;
+    grid-template-columns: 60% repeat(5, 1fr);
+}
+
+.gallery-preview {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 2px;
+    width: 100%;
+
+    grid-area: 1 / col2-start / last-line / 3;
+}
+
+.gallery-preview img {
+    height: 50px;
+    width: 100%;
+
+    border-radius: 4px;
+
+    object-fit: cover;
+
+    opacity: 0.6;
+
+    cursor: pointer;
+
+    transition: 200ms;
+}
+
+.gallery-preview img:hover,
+.gallery-preview img.active {
+    opacity: 1;
+}
+
+.recipe-title,
+.recipe-chef {
+    text-align: center;
+}
+
+.recipe-chef p{
+    font-size: 13px;
+    color: var(--third-gray-color);
+}
+
+.recipe-item {
+    margin-top: 20px;
+}
+
+.recipe-item-text p {
+    font-size: 15px;
+    color: var(--third-gray-color);
+    margin-left: 20px;
+    margin-top: 8px;
+}
+
+/* LIGHTBOX */
+.highlight .lightbox-target {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+
+    overflow: hidden;
+    z-index: 100;
+
+    top: -100%;
+    left: 0;
+    opacity: 0;
+
+    transition: opacity 400ms;
+}
+
+.highlight .lightbox-target img {
+    margin: auto;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    background: white;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+
+    width: 90%;
+    height: 90%;
+
+    object-fit: contain;
+}
+
+.highlight a.lightbox-close {
+    width: 50px;
+    height: 50px;
+
+    background: white;
+
+    position: absolute;
+    top: -80px;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 400ms;
+}
