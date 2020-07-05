@@ -7,6 +7,6 @@ const users = require('./users')
 
 routes.use(public)
 routes.use('/admin', admin)
-routes.use('/admin', users)
+routes.use('/users', users)
 
 module.exports = routes

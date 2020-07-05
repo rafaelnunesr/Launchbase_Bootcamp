@@ -6,9 +6,6 @@ const Chef = require('../models/Chef')
 const fs = require('fs')
 
 module.exports = {
-    login(req, res) {
-        return res.render('admin/login/index')
-    },
     async index(req, res){
         let { page, limit, filter } = req.query
 

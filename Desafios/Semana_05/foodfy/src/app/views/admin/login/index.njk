@@ -9,10 +9,12 @@
 <body>
 
     {% block content %}
-        {% include './parts/messages.njk' %}
-        {% include './parts/fields-login.njk' %}
+        <form action="/users/login" method='POST'>
+            {% include './parts/messages.njk' %}
+            {% include './parts/fields-login.njk' %}
+        </form>
     {% endblock %}
 
-    <script src="/scripts.js"></script>
+    {% include './scripts.njk' %}
 </body>
 </html>

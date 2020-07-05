@@ -5,7 +5,6 @@ const multer = require('../app/middlewares/multer')
 
 const AdminController = require('../app/controller/AdminController')
 
-routes.get('/login', AdminController.login)
 routes.get('/', AdminController.index)
 routes.get('/recipes/create', AdminController.newRecipe)
 routes.post('/recipes', multer.array('photos', 5), AdminController.recipePost)

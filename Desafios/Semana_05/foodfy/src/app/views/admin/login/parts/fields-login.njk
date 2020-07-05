@@ -16,7 +16,9 @@
             <input 
                 type="email" 
                 name="email"
-                placeholder='Digite seu email'>
+                placeholder='Digite seu email'
+                value="{{user.email}}"
+                onblur="ValidateEmail.apply(this, 'isEmail')">
         </div>
 
         <div class="item">
