@@ -1,13 +1,4 @@
 /* USER PAGE */
-.container {
-    margin-left: 14%;
-    margin-right: 14%;
-    min-height: 100%;
-    overflow: auto;
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
 .container header {
     margin: 0 auto;
     display: flex;
