@@ -15,23 +15,36 @@ module.exports = {
             }
         }
 
-        const user = await User.findUser(req.body.email)
-        let results = user.rows[0]
+        let user = await User.findUser(req.body.email)
+        user = user.rows[0]
 
-        if(!results) {
+        if(!user) {
             return res.render('admin/login/index', {
                 user: req.body,
                 error: 'Usuário não cadastrado.'
             })
         }
 
-        const password = results.password
+        const password = user.password
         const passwordMatch = await compare(req.body.password, password)
 
         if(!passwordMatch){
             return res.render('admin/login/index', {
                 user: req.body,
                 error: 'Senha inválida!'
+            })
+        }
+
+        req.user = user
+
+        next()
+    },
+    ifUserLogin(req, res, next){
+        const { userId: id } = req.session
+        console.log(id)
+        if(!id){
+            return res.render('admin/login/index', {
+                error: 'Faça login para acessar o conteudo.'
             })
         }
 

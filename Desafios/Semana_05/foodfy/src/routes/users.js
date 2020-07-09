@@ -3,11 +3,13 @@ const routes = express.Router()
 
 const ProfileController = require('../app/controller/ProfileController')
 const UserController = require('../app/controller/UserController')
-const UserValidator = require('../app/validators/user')
+const SessionValidator = require('../app/validators/session')
+const SessionController = require('../app/controller/SessionController')
 
 //login / logout
-routes.get('/login', UserController.login)
-routes.post('/login', UserValidator.post, UserController.post)
+routes.get('/login', SessionController.login)
+routes.post('/login', SessionValidator.post, SessionController.post)
+routes.get('/logout', SessionController.logout)
 
 // Rotas de perfil de um usuário logado
 //routes.get('/profile', ProfileController.index) // Mostrar o formulário com dados do usuário logado

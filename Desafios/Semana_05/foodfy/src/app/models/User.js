@@ -1,4 +1,3 @@
-const User = require('../models/User')
 const db = require('../../config/db')
 
 module.exports = {

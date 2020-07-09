@@ -66,3 +66,31 @@ a.cancel {
 a.cancel:hover {
     background-color: var(--third-gray-color);
 }
+
+.user-fields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.user-fields h3 {
+    font-size: 15px;
+}
+
+.user-fields input {
+    margin-top: 4px;
+    border: 1px solid var(--third-gray-color);
+    padding: 8px;
+    width: 90%;
+
+    border-radius: 4px;
+}
+
+.admin-option {
+    margin-top: 16px;
+    font-size: 14px;
+}
+
+.admin-option input[type="checkbox"] 
+{ 
+    margin-right: 4px; 
+}
