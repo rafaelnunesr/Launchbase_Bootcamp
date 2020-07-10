@@ -34,5 +34,11 @@ module.exports = {
             console.error(err)
 
         }
+    },
+    allUsers(){
+        return db.query(`
+            SELECT id, name, email
+            FROM users
+        `)
     }
 }
