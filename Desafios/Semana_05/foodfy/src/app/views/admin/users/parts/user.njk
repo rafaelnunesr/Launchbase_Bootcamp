@@ -1,14 +1,16 @@
-<div class="user">
-    <div class="name">
-        Rafael Nunes
-    </div>
+{% for user in users %}
+    <div class="user">
+        <div class="name">
+            {{user.name}}
+        </div>
 
-    <div class="email">
-        rafaelemail@email.com
-    </div>
+        <div class="email">
+            {{user.email}}
+        </div>
 
-    <div class="controls">
-        <a href="#">Editar</a>
-        <a href="">Remover</a>
+        <div class="controls">
+            <a href="/admin/profile/{{user.id}}">Editar</a>
+            <a href="">Remover</a>
+        </div>
     </div>
-</div>
+{% endfor %}
