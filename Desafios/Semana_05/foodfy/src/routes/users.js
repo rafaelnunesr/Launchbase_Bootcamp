@@ -9,12 +9,13 @@ const SessionController = require('../app/controller/SessionController')
 
 //login / logout
 routes.get('/login', SessionController.login)
-routes.post('/login', SessionValidator.post, SessionController.post)
+routes.post('/login', SessionValidator.loginPost, SessionController.post)
 routes.get('/logout', SessionController.logout)
 
 // Rotas de perfil de um usuário logado
-//routes.get('/profile', ProfileController.index) // Mostrar o formulário com dados do usuário logado
-//routes.put('/profile', ProfileController.put)// Editar o usuário logado
+routes.get('/profile', ProfileController.index) // Mostrar o formulário com dados do usuário logado
+routes.get('/profile/:id', ProfileController.edit) // Mostrar o formulário com dados do usuário logado
+routes.put('/profile', SessionValidator.editUser,ProfileController.put)// Editar o usuário logado
 
 // Rotas que o administrador irá acessar para gerenciar usuários
 routes.get('/users', UserController.list) //Mostrar a lista de usuários cadastrados
