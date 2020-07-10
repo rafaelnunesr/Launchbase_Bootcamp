@@ -2,8 +2,12 @@ const User = require("../models/User")
 const mailer = require('../../lib/mailer')
 
 module.exports = {
-    list(req, res){
-        return res.render('./admin/users/users')
+    async list(req, res){
+        const users = await User.allUsers()
+
+        const results = users.rows
+
+        return res.render('./admin/users/users', { users: results })
     },
     create(req, res) {
         return res.render('./admin/users/create')
