@@ -6,7 +6,7 @@ module.exports = {
 
         req.session.userId = req.user.id
 
-        return res.redirect('/admin')
+        return res.redirect('/admin/profile')
     },
     logout(req, res){
         req.session.destroy()
