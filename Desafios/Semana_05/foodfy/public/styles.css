@@ -122,20 +122,18 @@ form button,
     right: 0;
     top: -40px;
 
-    background: var(--primary-blue-color);
-    border: none;
+    padding: 4px 16px;
+    background-color: var(--primary-purple-color);
     color: white;
-    font-size: 14px;
-
-    padding: 4px 8px;
+    font-size: 16px;
     border-radius: 4px;
 
-    transition: 200ms;
+    transition: all 200ms;
 }
 
-form button,
+form button:hover,
 .save-button:hover {
-    background: var(--secondary-blue-color);
+    background-color: var(--secondary-purple-color);
 }
 
 form button.delete-button {

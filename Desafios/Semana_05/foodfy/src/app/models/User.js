@@ -1,7 +1,38 @@
 const db = require('../../config/db')
+const { hash } =  require('bcryptjs')
 
 module.exports = {
     findUser(email) {
         return db.query('SELECT * FROM users WHERE email = $1', [email])
+    },
+    async create(data) {
+        try {
+            const query = `
+                INSERT INTO users (
+                    name, 
+                    email,
+                    password,
+                    is_admin
+                ) VALUES ($1, $2, $3, $4)
+                RETURNING *
+            `
+            const randomPassword = Math.round(Math.random() * 96848293)
+            const password = await hash(String(randomPassword), 8)
+            
+            const values = [
+                data.name,
+                data.email,
+                password,
+                data.isAdmin || false
+            ]
+
+            const results = await db.query(query, values)
+            return results.rows[0]
+
+
+        }catch(err){
+            console.error(err)
+
+        }
     }
 }

@@ -56,20 +56,28 @@
 }
 
 /*FIELDS USER*/
-a.cancel {
-    background-color: var(--secondary-gray-color);
-    color: white;
-
-    transition: all 200ms;
+form.user button{
+    margin: initial;
+    position: initial;
 }
 
-a.cancel:hover {
+form.user button.cancel {
+    background-color: var(--secondary-gray-color);
+    color: white;
+    cursor: pointer;
+}
+
+form.user button.cancel:hover {
     background-color: var(--third-gray-color);
 }
 
 .user-fields {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+}
+
+.user-fields .item {
+    margin-bottom: 16px;
 }
 
 .user-fields h3 {
@@ -85,12 +93,17 @@ a.cancel:hover {
     border-radius: 4px;
 }
 
-.admin-option {
-    margin-top: 16px;
-    font-size: 14px;
+.item .isAdmin {
+    display: flex;
 }
 
-.admin-option input[type="checkbox"] 
+.isAdmin input[type="checkbox"] 
 { 
-    margin-right: 4px; 
+    width: initial;
+    margin-right: 8px;
+}
+
+.isAdmin h4 {
+    margin-top: 4px;
+    font-size: 14px;
 }

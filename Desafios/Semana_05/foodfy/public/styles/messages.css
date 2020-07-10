@@ -9,9 +9,9 @@
     position: absolute;
     right: 0;
     top: 0;
-    width: 200px;
+    width: 300px;
     color: white;
-    padding: 30px;
+    padding: 40px;
     font-family: 'Roboto', sans-serif;
 
     animation: hidemessage 400ms 5s ease-out forwards;
