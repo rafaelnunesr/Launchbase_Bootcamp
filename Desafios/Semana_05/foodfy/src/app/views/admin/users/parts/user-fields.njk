@@ -13,7 +13,8 @@
             type="email" 
             placeholder="Digite o email"
             name="email"
-            value="{{user.email}}">
+            value="{{user.email}}"
+            onblur="ValidateEmail.apply(this, 'isEmail')">
     </div>
 
     {% if edit %}
