@@ -116,12 +116,10 @@ form {
     position: relative;
 }
 
+button,
 form button,
 .save-button {
-    position: absolute;
-    right: 0;
-    top: -40px;
-
+    
     padding: 4px 16px;
     background-color: var(--primary-purple-color);
     color: white;
@@ -131,6 +129,14 @@ form button,
     transition: all 200ms;
 }
 
+form button,
+.save-button {
+    position: absolute;
+    right: 0;
+    top: -40px;
+}
+
+button:hover,
 form button:hover,
 .save-button:hover {
     background-color: var(--secondary-purple-color);
