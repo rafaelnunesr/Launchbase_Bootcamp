@@ -1,8 +1,9 @@
 const User = require('../models/User')
 const { compare } = require('bcryptjs')
+const { findUser } = require('../models/User')
 
 module.exports = {
-    async post(req,  res, next){
+    async loginPost(req,  res, next){
 
         const keys = Object.keys(req.body)
 
@@ -46,6 +47,43 @@ module.exports = {
             return res.render('admin/login/index', {
                 error: 'Faça login para acessar o conteudo.'
             })
+        }
+
+        next()
+    },
+    async editUser(req, res, next){
+
+        try {
+
+            const keys = Object.keys(req.body)
+
+            for (key of keys){
+                if(req.body[key] == ''){
+                    return res.render('admin/users/edit', {
+                        error: 'Preencha todos os campos!',
+                        user: results, 
+                        edit: true
+                    })
+                }
+            }
+
+            const user = await findUser(req.session.userId)
+            const results = user.rows[0]
+
+            const checkPassword = await compare(req.body.password, results.password)
+
+            if (!checkPassword){
+                return res.render('admin/users/edit', {
+                    error: 'Senha incorreta!',
+                    user: results, 
+                    edit: true
+                })
+            }
+
+            next()
+
+        }catch(err){
+            console.error(err)
         }
 
         next()
