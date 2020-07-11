@@ -11,6 +11,8 @@ const SessionController = require('../app/controller/SessionController')
 routes.get('/login', SessionController.login)
 routes.post('/login', SessionValidator.loginPost, SessionController.post)
 routes.get('/logout', SessionController.logout)
+routes.get('/recover-password', ProfileController.recoverPassword)
+routes.post('/recover-password', UserValidator.recoverPassword, ProfileController.recoverPasswordPost)
 
 // Rotas de perfil de um usuário logado
 routes.get('/profile', ProfileController.index) // Mostrar o formulário com dados do usuário logado

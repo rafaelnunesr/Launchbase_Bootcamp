@@ -2,18 +2,30 @@ const User = require("../models/User")
 const { put } = require("../../routes/users")
 
 module.exports = {
-    index(req, res){
-        return res.render('admin/users/show', {  })
+    async index(req, res){
+
+        const { userId: id } = req.session
+        const user = await User.findUser({ where: {id} })
+
+        return res.render('admin/users/show', { edit: true, user })
     },
     async edit(req, res){
 
-        const user = await User.findUser(req.params.id)
-        const results = user.rows[0]
+        const { id } = req.params
+        const user = await User.findUser({ where: {id} })
 
-        return res.render(`admin/users/edit`, { user: results, edit: true })
+        return res.render(`admin/users/edit`, { user, edit: true })
 
     },
     async put(req, res){
         return res.send('ok')
+    },
+    recoverPassword(req, res){
+        return res.render('admin/users/recover-password')
+    },
+    recoverPasswordPost(req, res){
+        return res.render('/', {
+            success: 'Email enviado com a recuperação da senha. Check sua caixa de entrada.'
+        })
     }
 }
