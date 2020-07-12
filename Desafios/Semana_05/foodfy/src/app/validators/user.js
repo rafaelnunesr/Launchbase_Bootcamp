@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const { put, edit } = require('../controller/ProfileController')
 
 module.exports = {
     async post(req, res, next){
@@ -52,5 +53,30 @@ module.exports = {
         req.user = user
 
         next()
+    },
+    async edit(req, res, next){
+
+        const userIdLogged = req.session.userId
+        const user = await User.findUser({ where: {userIdLogged} })
+
+        try{
+
+            if(user.id != userIdLogged || !user.is_admin){
+                return res.render('/admin/users', {
+                    error: 'Desculpe, você não possui privilégios para editar outros usuários.'
+                })
+            }
+
+            next()
+
+        }catch(err){
+            console.error(err)
+            return res.return('/admin', {
+                error: 'Desculpe, ocorreu um erro. Por favor, tente novamente!'
+            })
+        }
+
+    },
+    async put(req, res, next){
     }
 }

@@ -1,3 +1,6 @@
+const { hash } = require('bcryptjs')
+const User =  require('../models/User')
+
 module.exports = {
     login(req, res) {
         return res.render('admin/login/index')
@@ -33,7 +36,7 @@ module.exports = {
 
             // avisa o usuário sobre a nova senha
 
-            return res.render('admin/login', {
+            return res.render('admin/login/index', {
                 user: req.body,
                 success: 'Senha atualizada com sucesso.'
             })

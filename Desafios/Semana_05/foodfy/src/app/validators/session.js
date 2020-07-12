@@ -18,7 +18,6 @@ module.exports = {
 
         const email = req.body.email
         let user = await User.findUser( {where: {email}} )
-        user = user.rows[0]
 
         if(!user) {
             return res.render('admin/login/index', {
@@ -90,7 +89,7 @@ module.exports = {
         next()
     },
     async reset(req, res, next){
-        const { email, password, passwordRepeat, token } = req.body
+        const { email, password, passwordRepeat, token} = req.body
 
         const user = await User.findUser( { where: { email } } )
 
@@ -99,6 +98,14 @@ module.exports = {
                 user: req.body,
                 token,
                 error: 'Usuário não cadastrado'
+            })
+        }
+
+        if (password != passwordRepeat) {
+            return res.render('admin/password-reset', {
+                user: req.body,
+                token,
+                error: 'As senhas não são idênticas! Escolha senhas iguais.'
             })
         }
 
@@ -113,7 +120,7 @@ module.exports = {
         let now = new Date()
         now = now.setHours(now.getHours())
 
-        if (now > user.reset_token_expires){
+        if (now > Number(user.reset_token_expires)){
             return res.render('admin/password-reset', {
                 user: req.body,
                 token,

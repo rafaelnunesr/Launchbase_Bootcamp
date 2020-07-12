@@ -1,5 +1,6 @@
 const User = require("../models/User")
 const mailer = require('../../lib/mailer')
+const { edit } = require("./ProfileController")
 
 module.exports = {
     async list(req, res){
@@ -40,5 +41,12 @@ module.exports = {
         return res.render('./admin/index', {
             success: 'O usuário foi devidamente cadastrado e notificado por email.'
         })
+    },
+    async edit(res, req){
+        return res.render(`/admin/edit/${user.id}`)
+
+    },
+    async put(req, res){
+
     }
 }

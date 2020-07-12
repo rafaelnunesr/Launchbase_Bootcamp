@@ -25,7 +25,8 @@ routes.put('/profile', SessionValidator.editUser,ProfileController.put)// Editar
 routes.get('/users', UserController.list) //Mostrar a lista de usuários cadastrados
 routes.get('/user/create', UserController.create)
 routes.post('/users', UserValidator.post, UserController.post) //Cadastrar um usuário
-//routes.put('/users', UserController.put) // Editar um usuário
+routes.get('/users/:id', UserValidator.edit, UserController.edit)
+routes.put('/users', UserValidator.put, UserController.put) // Editar um usuário
 //routes.delete('/users', UserController.delete) // Deletar um usuário
 
 module.exports = routes
