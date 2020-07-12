@@ -16,7 +16,8 @@ module.exports = {
             }
         }
 
-        let user = await User.findUser(req.body.email)
+        const email = req.body.email
+        let user = await User.findUser( {where: {email}} )
         user = user.rows[0]
 
         if(!user) {
@@ -87,5 +88,43 @@ module.exports = {
         }
 
         next()
+    },
+    async reset(req, res, next){
+        const { email, password, passwordRepeat, token } = req.body
+
+        const user = await User.findUser( { where: { email } } )
+
+        if (!user) {
+            return res.render('admin/password-reset', {
+                user: req.body,
+                token,
+                error: 'Usuário não cadastrado'
+            })
+        }
+
+        if ( token != user.reset_token ) {
+            return res.render('admin/password-reset', {
+                user: req.body,
+                token,
+                error: 'Token inválido. Solicite uma nova recuperacao de senha.'
+            })
+        }
+
+        let now = new Date()
+        now = now.setHours(now.getHours())
+
+        if (now > user.reset_token_expires){
+            return res.render('admin/password-reset', {
+                user: req.body,
+                token,
+                error: 'Token expirado. Solicite uma nova recuperação de senha.' 
+            })
+        }
+
+        req.user = user
+
+        next()
+
+
     }
 }

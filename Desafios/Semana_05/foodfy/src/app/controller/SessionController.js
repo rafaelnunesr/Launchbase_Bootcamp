@@ -11,5 +11,42 @@ module.exports = {
     logout(req, res){
         req.session.destroy()
         return res.redirect('/')
+    },
+    resetForm(req, res) {
+        return res.render('admin/password-reset', { token: req.query.token })
+    },
+    async reset(req, res){
+        const { password, token } = req.body
+        const user = req.user
+
+        try {
+
+            // cria um novo hash de senha
+            const newPassword = await hash(password, 8)
+
+            // atualiza o usuário 
+            await User.update(user.id, {
+                password: newPassword,
+                reset_token: '',
+                reset_token_expires: ''
+            })
+
+            // avisa o usuário sobre a nova senha
+
+            return res.render('admin/login', {
+                user: req.body,
+                success: 'Senha atualizada com sucesso.'
+            })
+
+        }catch(err){
+            console.error(err)
+            return res.render('admin/reset-password', {
+                user: req.body,
+                token,
+                error: 'Erro inexperado. Por favor, tente novamente.'
+            })
+        }
+
+
     }
 }

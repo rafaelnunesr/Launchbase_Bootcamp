@@ -15,7 +15,7 @@ module.exports = {
         }
 
         const email = req.body.email
-        const user = await User.findUser({ where: email })
+        const user = await User.findUser({ where: {email} })
 
         if (user) {
             return res.render('admin/users/create', {
@@ -40,7 +40,7 @@ module.exports = {
         }
 
         const email = req.body.email
-        const user = await User.findUser({ where: email })
+        const user = await User.findUser({ where: {email} })
 
         if (!user) {
             return res.render('admin/users/recover-password', {
@@ -48,6 +48,8 @@ module.exports = {
                 error: 'Usuário não cadastrado!'
             })
         }
+
+        req.user = user
 
         next()
     }
