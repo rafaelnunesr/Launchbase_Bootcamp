@@ -20,7 +20,7 @@ routes.post('/password-reset', SessionValidator.reset, SessionController.reset)
 // Rotas de perfil de um usuário logado
 routes.get('/profile', isLoggedRedirect, ProfileController.index) // Mostrar o formulário com dados do usuário logado
 routes.get('/profile/:id', onlyUsers, ProfileController.edit) // Mostrar o formulário com dados do usuário logado
-routes.put('/profile', onlyUsers, SessionValidator.editUser,ProfileController.put)// Editar o usuário logado
+routes.put('/profile', onlyUsers, SessionValidator.editUser, ProfileController.put)// Editar o usuário logado
 
 // Rotas que o administrador irá acessar para gerenciar usuários
 routes.get('/users', onlyUsers, UserController.list) //Mostrar a lista de usuários cadastrados
