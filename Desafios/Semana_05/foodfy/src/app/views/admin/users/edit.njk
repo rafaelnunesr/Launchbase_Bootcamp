@@ -6,7 +6,7 @@
 
 {% block content %}
     <div class="container">
-        <form class="user" action="/admin/users" method='POST'>
+        <form class="user" action="/admin/profile?_method=PUT" method='POST'>
             <div class="sub-header">
                 <h1>Editar {{user.name}}</h1>
                 <nav>
