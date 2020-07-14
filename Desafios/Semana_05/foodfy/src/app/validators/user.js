@@ -62,7 +62,7 @@ module.exports = {
         try{
 
             if(user.id != userIdLogged || !user.is_admin){
-                return res.render('/admin/users', {
+                return res.render('admin/users', {
                     error: 'Desculpe, você não possui privilégios para editar outros usuários.'
                 })
             }
@@ -71,12 +71,31 @@ module.exports = {
 
         }catch(err){
             console.error(err)
-            return res.return('/admin', {
+            return res.render('admin/', {
                 error: 'Desculpe, ocorreu um erro. Por favor, tente novamente!'
             })
         }
 
     },
     async put(req, res, next){
+        
+        try {
+            const id = req.session.userId
+            const user = await User.findUser({ where: {id} })
+
+            if (user.is_admin || user.id == req.body.id){
+                next()
+            }else{
+                return res.render('admin/users', {
+                    error: 'Desculpe, você não possui privilégios para editar este usuário.'
+                })
+            }
+        }catch(err){
+            console.error(err)
+            return res.render('admin/users', {
+                error: "Desculpe, algo de errado aconteceu. POr favor, tente novamente."
+            })
+        }
+
     }
 }
