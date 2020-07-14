@@ -21,8 +21,6 @@ async function onlyAdminUsers(req, res, next){
     const id = req.session.userId
     const user = await User.findUser({ where: { id } })
 
-    console.log(user)
-
     if (!user.is_admin){
         return res.render('admin/users/users', {
             error: 'Desculpe, você não tem permissões de administrador.'
