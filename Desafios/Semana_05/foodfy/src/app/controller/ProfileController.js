@@ -1,7 +1,8 @@
 const User = require("../models/User")
 const mailer = require('../../lib/mailer')
-const { hash } = require('bcryptjs')
+const { hash, compare } = require('bcryptjs')
 const crypto = require('crypto')
+const user = require("../validators/user")
 
 module.exports = {
     async index(req, res){
@@ -20,7 +21,37 @@ module.exports = {
 
     },
     async put(req, res){
-        return res.send('ok')
+
+        let { id, password, email, name } = req.body
+
+        // check if password match
+        const userDataBeforeUpdate = await User.findUser( { where: {id} } )
+
+        const passwordCheck = compare(password, userDataBeforeUpdate.password)
+        if (!passwordCheck){
+            return res.redirect(`/admin/profile/${id}`, {
+                error: 'Desculpe, a senha está incorreta. Nenhuma alteração para este usuário foi feita.'
+            })
+        }
+
+        // check if email has already been register
+        if (email != userDataBeforeUpdate.email){
+            const newEmail = await User.findUser({ where: {email} })
+            if (newEmail){
+                return res.redirect(`/admin/profile/${id}`, {
+                    error: 'Desculpe, já existe um outro usuário cadastrado com este email.'
+                })
+            }
+        }
+
+        await User.update(id, {
+            name,
+            email
+        })
+
+        return res.render(`admin/profile/${id}`, {
+            success: `O usuário ${name} foi atualizado com sucesso.`
+        })
     },
     recoverPassword(req, res){
         return res.render('admin/users/recover-password', { token: req.query.token })
