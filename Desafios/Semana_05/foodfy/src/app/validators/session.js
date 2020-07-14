@@ -67,15 +67,15 @@ module.exports = {
                 }
             }
 
-            const user = await findUser(req.session.userId)
-            const results = user.rows[0]
+            const id = req.session.userId
+            const user = await findUser({ where: {id} })
 
-            const checkPassword = await compare(req.body.password, results.password)
+            const checkPassword = await compare(req.body.password, user.password)
 
             if (!checkPassword){
                 return res.render('admin/users/edit', {
                     error: 'Senha incorreta!',
-                    user: results, 
+                    user: user, 
                     edit: true
                 })
             }
@@ -85,8 +85,6 @@ module.exports = {
         }catch(err){
             console.error(err)
         }
-
-        next()
     },
     async reset(req, res, next){
         const { email, password, passwordRepeat, token} = req.body
