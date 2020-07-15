@@ -9,8 +9,26 @@
         </div>
 
         <div class="controls">
-            <a href="/admin/profile/{{user.id}}">Editar</a>
-            <a href="">Remover</a>
+            <form action="/admin/users?_method=DELETE" method='POST' id="delete-user">
+                <a href="/admin/profile/{{user.id}}">Editar</a>
+                <button class="delete-user" type="submit" value={{user.id}}>Remover</button>
+                <input type="hidden" name="id" value={{user.id}}>
+            </form>
         </div>
     </div>
+
+     <script>
+        const deleteForm = document.querySelector('#delete-user')
+        const deleteButton = document.querySelector('form .delete-user')
+
+        deleteButton.addEventListener('click', function(event){
+            const confirmation = confirm('Deseja excluir este usuário?') // global confirmacao que retorna um boolean
+            if (!confirmation){
+                event.preventDefault() // cancela o submit
+            }else {
+                deleteForm.submit()
+            }
+        
+        }) 
+    </script>
 {% endfor %}
