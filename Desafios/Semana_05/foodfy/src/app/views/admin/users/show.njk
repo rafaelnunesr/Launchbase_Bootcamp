@@ -6,14 +6,16 @@
 
 {% block content %}
     <div class="container">
-            <div class="sub-header">
-                <h1>Bem vindo, {{user.name}}</h1>
-                <button
-                    type="button"
-                    onClick="location.href='/admin'">Editar</button>
+        <div class="sub-header">
+            <h1>Bem vindo, {{user.name}}</h1>
+            <button
+                type="button"
+                onClick="location.href='/admin'">Editar</button>
 
-            </div>
-        {% include './parts/user-fields.njk' %}
-       </form>
+        </div>
+    
+        {% include './parts/user.njk' %}
+
     </div>
+
 {% endblock %}
