@@ -90,5 +90,8 @@ module.exports = {
                         GROUP BY recipes.id, chefs.id
                         ORDER BY recipes.updated_at DESC
                         LIMIT $1`, [6])
+    },
+    allUserRecipes(id){
+        return db.query(`SELECT * FROM recipes WHERE user_id = $1`, [id])
     }
 }
