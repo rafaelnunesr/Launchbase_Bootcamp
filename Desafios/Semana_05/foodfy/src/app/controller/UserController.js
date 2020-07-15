@@ -1,6 +1,8 @@
 const User = require("../models/User")
 const mailer = require('../../lib/mailer')
 const { edit } = require("./ProfileController")
+const { findUser } = require("../models/User")
+const Recipe = require("../models/Recipe")
 
 module.exports = {
     async list(req, res){
@@ -48,5 +50,46 @@ module.exports = {
     },
     async put(req, res){
 
+    },
+    async delete(req, res){
+
+        try{
+            let id = req.body.id
+            const user = await User.findUser({ where: {id} })
+
+            id = req.session.userId
+            const UserPrivilegies = await User.findUser({ where: {id} })
+
+            if (req.body.id == req.session.userId){
+                return res.render('admin/users/users', {
+                    error: 'Desculpe, você não pode excluir sua conta.'
+                })
+            }
+
+            if(!UserPrivilegies.is_admin){
+                return res.render('admin/users/users', {
+                    error: 'Desculpe, você não possui privilégios para excluir usuários'
+                })
+            }
+
+            // delete recipes from user
+            const recipes = await Recipe.allUserRecipes(user.id)
+            const RecipeFiles = await Recipe.allUserRecipes(userId)
+
+
+            // delete user
+            id = req.body.id
+            await User.delete(id)
+
+            return res.render('admin/users/users', {
+                success: `O usuário ${user.name} foi excluido`
+            })
+
+        }catch(err){
+            console.log(err)
+            return res.render('admin/index', {
+                error: 'Desculpe, ocorreu um erro. Por favor tente novamente.'
+            })
+        }
     }
 }
