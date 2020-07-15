@@ -70,6 +70,12 @@ module.exports = {
             const id = req.session.userId
             const user = await findUser({ where: {id} })
 
+            if(user.id != id || !user.is_admin){
+                return res.render('admin/users', {
+                    error: 'Você não possui privilégios para editar este usuário.'
+                })
+            }
+
             const checkPassword = await compare(req.body.password, user.password)
 
             if (!checkPassword){
