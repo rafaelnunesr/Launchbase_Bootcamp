@@ -42,6 +42,14 @@
     color: var(--secondary-purple-color);
 }
 
+.user .controls button {
+    all: initial;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.user .controls button,
 .user .controls a:last-child {
     text-decoration: none;
     color: tomato;
@@ -51,6 +59,7 @@
     transition: all 200ms;
 }
 
+.user .controls button:hover,
 .user .controls a:last-child:hover {
     color: rgb(207, 58, 32);
 }
