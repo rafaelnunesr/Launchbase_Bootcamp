@@ -28,6 +28,6 @@ routes.get('/user/create', onlyUsers, onlyAdminUsers, UserController.create)
 routes.post('/users', onlyUsers, onlyAdminUsers, UserValidator.post, UserController.post) //Cadastrar um usuário
 routes.get('/users/:id', onlyUsers, UserValidator.edit, UserController.edit)
 routes.put('/users', onlyUsers, UserValidator.put, UserController.put) // Editar um usuário
-//routes.delete('/users', UserController.delete) // Deletar um usuário
+routes.delete('/users', onlyUsers, UserController.delete) // Deletar um usuário
 
 module.exports = routes
