@@ -1,4 +1,5 @@
 const db = require('../../config/db')
+const Base = require('./Base')
 
 Base.init({ table: 'products' })
 
@@ -11,7 +12,7 @@ const Products = {
 
         return results.rows
     },
-    search(params){
+    async search(params){
         const { filter, category } = params
 
         let query = '',
@@ -37,7 +38,8 @@ const Products = {
             ${filterQuery}
         `
         
-        return db.query(query)
+        const results = await db.query(query)
+        return results.rows
     }
 }
 

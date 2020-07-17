@@ -1,4 +1,9 @@
+const { unlinkSync } = require('fs')
+const { hash } = require('bcryptjs')
+
 const User = require('../models/User')
+const Product = require('../models/Product')
+
 const { formatCep, formatCpfCnpj } = require('../../lib/utils')
 
 module.exports = {
@@ -7,20 +12,43 @@ module.exports = {
     },
     async show(req, res){
 
-        const { user } = req
-        user.cpf_cnpj = formatCpfCnpj(user.cpf_cnpj)
-        user.cep = formatCep(user.cep)
+        try {
 
-        return res.render('user/index', { user })
+            const { user } = req
+            user.cpf_cnpj = formatCpfCnpj(user.cpf_cnpj)
+            user.cep = formatCep(user.cep)
+
+            return res.render('user/index', { user })
+
+        } catch (error) {
+            console.error(error)
+        }
     },
     async post(req, res){
         
-        const userId = await User.create(req.body)
+        try {
 
-        req.session.userId = userId
+            let { name, email, password, cpf_cnpj, cep, address } = req.body
 
-        return res.redirect('/users')
+            password = await hash(password, 8)
+            cpf_cnpj = cpf_cnpj.replace(/\D/g, '')
+            cep = cep.replace(/\D/g, '')
 
+            const userId = await User.create({
+                name,
+                email,
+                password,
+                cpf_cnpj,
+                cep,
+                address
+            })
+
+            req.session.userId = userId
+
+            return res.redirect('/users')
+        } catch (error) {
+            console.error(error)
+        }
 
     },
     async update(req, res){
@@ -56,8 +84,24 @@ module.exports = {
 
         try {
 
+            const products = await Product.findAll({ where: { user_id: req.body.id } })
+
+            const allFilesPromise = products.map(product => Product.files(product.id))
+
+            let promiseResults = await Promise.all(allFilesPromise)
+
             await User.delete(req.body.id)
             req.session.destroy()
+
+            promiseResults.map(results => {
+                results.rows.map(file => {
+                    try {
+                        unlinkSync(file.path)
+                    } catch (error) {
+                        console.error(error)
+                    }
+                })
+            })
 
             return res.render('session/login', {
                 success: 'Conta excluida com sucesso.'
