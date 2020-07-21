@@ -71,7 +71,6 @@ module.exports = {
 
     },
     formatCep(value) {
-
         value = value.replace(/\D/g, "")
 
         if (value.length > 8)
