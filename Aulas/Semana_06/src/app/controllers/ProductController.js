@@ -3,8 +3,8 @@ const { unlinkSync } = require('fs')
 const Category = require('../../app/models/Category')
 const Product = require('../../app/models/Product')
 const File = require('../../app/models/File')
+const LoadProductService = require('../services/LoadProductServices')
 
-const { formatPrice, date } = require('../../lib/utils')
 const Categories = require('../../app/models/Category')
 
 module.exports = {
@@ -64,27 +64,9 @@ module.exports = {
     async show(req, res) {
 
         try {
-            let product = await Product.find(req.params.id)
+            const product = await LoadProductService.load('product', { where: { id: req.params.id } })
 
-            if (!product) return res.send('Product not found!')
-
-            const { minutes, hour, day, month } = date(product.updated_at)
-
-            product.published = {
-                day: `${day}/${month}`,
-                hour: `${hour}:${minutes}`
-            }
-
-            product.oldPrice = formatPrice(product.old_price)
-            product.price = formatPrice(product.price)
-
-            let files = await Product.files(product.id)
-            files = files.map(file => ({
-                ...file,
-                src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
-            }))
-
-            return res.render('products/show', { product, files })
+            return res.render('products/show', { product })
         } catch (error) {
             console.error(error)
         }
@@ -92,22 +74,11 @@ module.exports = {
     async edit(req, res) {
 
         try {
-            const product = await Product.find(req.params.id)
-
-            if (!product) return res.send('Product not found!')
-
-            product.old_price = formatPrice(product.old_price)
-            product.price = formatPrice(product.price)
+            const product = await LoadProductService.load('product', { where: { id: req.params.id } })
 
             const categories = await Category.findAll()
 
-            let files = await Product.files(product.id)
-            files = files.map(file => ({
-                ...file,
-                src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
-            }))
-
-            return res.render('products/edit', { product, categories, files })
+            return res.render('products/edit', { product, categories })
         } catch (error) {
             console.error(error)
         }
@@ -144,7 +115,7 @@ module.exports = {
 
             if (req.body.old_price != req.body.price) {
                 const oldProduct = await Product.find(req.body.id)
-                req.body.old_price = oldProduct.rows[0].price
+                req.body.old_price = oldProduct.price
             }
 
             await Product.update(req.body.id, {
