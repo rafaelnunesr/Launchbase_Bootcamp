@@ -156,3 +156,11 @@
 .product-edit {
     max-width: 700px;
 }
+
+.product-single .unavailable {
+    font-size: 14px;
+    color: #ccc;
+    font-weight: bold;
+    background: #eee;
+    padding: 8px 16px;
+}
