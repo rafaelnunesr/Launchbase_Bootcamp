@@ -1,0 +1,39 @@
+<div class="user-fields">
+    <div class="item">
+        <h3>Nome</h3>
+        <input 
+            type="text" 
+            placeholder="Digite o nome completo"
+            name="name"
+            value="{{user.name}}">
+    </div>
+    <div class="item">
+        <h3>Email</h3>
+        <input 
+            type="email" 
+            placeholder="Digite o email"
+            name="email"
+            value="{{user.email}}"
+            onblur="ValidateEmail.apply(this, 'isEmail')">
+    </div>
+
+    {% if edit %}
+        <div class="item">
+            <h3>Senha</h3>
+            <input 
+                type="password" 
+                placeholder="Digite a senha"
+                name="password">
+        </div>
+        <input type="hidden" name="id" value={{user.id}}>
+    {% else %}
+        <div class="item">
+            <div class="isAdmin">
+                <input 
+                    type="checkbox" 
+                    name="isAdmin">
+                <h4>Administrador</h4>
+            </div>
+        </div>
+    {% endif %}
+</div>

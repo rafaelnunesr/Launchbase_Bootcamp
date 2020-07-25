@@ -1,0 +1,82 @@
+:root {
+    --primary-gray-color: rgb(69, 69, 69);
+    --secondary-gray-color: rgb(175, 175, 175);
+    --third-gray-color: rgb(150, 150, 150);
+    --third-gray-color: rgb(125, 125, 125);
+    --primary-purple-color: rgb(81, 5, 168);
+    --secondary-purple-color: rgb(53, 4, 110);
+    --primary-blue-color: rgb(32, 30, 204);
+    --secondary-blue-color: rgb(21, 19, 126);
+}
+
+.session {
+    width: 300px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    margin-top: 40px;
+    margin-left: -150px;
+    text-align: center;
+
+    font-family: 'Roboto', sans-serif;
+    color: var(--primary-gray-color);
+}
+
+.login .logo {
+    margin-bottom: 100px;
+}
+
+.login .title h1{
+    font-size: 20px;
+}
+
+.login .item h3 {
+    text-align: left;
+}
+
+.login .item h3 {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.login .item input {
+    width: 100%;
+    padding: 5px;
+    outline: none;
+}
+
+.login .footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.login .footer a {
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--primary-gray-color);
+
+    transition: all 200ms;
+}
+
+.login .footer a:hover {
+    color: var(--third-gray-color);
+}
+
+.login .footer button {
+    background: var(--primary-purple-color);
+    color: white;
+    padding: 4px 16px;
+    border-radius: 4px;
+    border: none;
+    font-size: 14px;
+
+    margin-right: 0px;
+    cursor: pointer;
+
+    transition: all 200ms;
+}
+
+.login .footer button:hover {
+    background: var(--secondary-purple-color);
+}

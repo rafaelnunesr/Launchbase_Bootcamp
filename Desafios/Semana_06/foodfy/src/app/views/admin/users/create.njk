@@ -1,0 +1,25 @@
+{% extends '../layout.njk' %}
+
+{% block head %}
+    <title>Foodfy | Novo usuário</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form class="user" action="/admin/users" method='POST'>
+            <div class="sub-header">
+                <h1>Criar Usuário</h1>
+                <nav class="sub-header-buttons">
+                    <button 
+                        type="submit"
+                        class="button">Salvar</button>
+                    <button
+                        type="button"
+                        class="cancel"
+                        onClick="location.href='/admin'">Cancelar</button>
+                </nav>
+            </div>
+        {% include './parts/user-fields.njk' %}
+       </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends './layout.njk' %}
+
+{% block content %}
+
+    <div class="box-index-container">
+        <div class="index-text-box">
+            <h1>As melhores receitas</h1>
+            <p>Aprenda a construir os melhores pratos com receitas criadas por profissionais do mundo inteiro.</p>
+        </div>
+        <div class="index-image-box">
+            <img src="../../assets/chef.png" alt="Chef Image">
+        </div>
+    </div>
+
+    <div class="index-title">
+        <h2>Últimas receitas</h2>
+    </div>
+
+    <div class="recipes-index">
+        {% for recipe in recipes %}
+            {% include './parts/recipe.njk' %}
+        {% endfor %}
+    </div>
+
+{% endblock %}

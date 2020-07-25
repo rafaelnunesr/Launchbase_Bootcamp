@@ -1,0 +1,21 @@
+{% extends '../layout.njk' %}
+
+{% block head %}
+    <title>Foodfy | {{user.name}}</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="sub-header">
+            <h1>Bem vindo, {{user.name}}</h1>
+            <button
+                type="button"
+                onClick="location.href='/admin'">Editar</button>
+
+        </div>
+    
+        {% include './parts/user.njk' %}
+
+    </div>
+
+{% endblock %}

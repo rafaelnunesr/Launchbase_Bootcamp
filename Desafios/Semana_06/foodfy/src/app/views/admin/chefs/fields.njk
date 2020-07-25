@@ -1,0 +1,36 @@
+<div class="fields-input">
+    <div class="input-item">
+        <h1>Chef</h1>
+        <input 
+            type="text"
+            name="name"
+            placeholder="Nome do Chef"
+            value="{{chef.name}}">
+    </div>
+</div>
+
+<div class="admin-chef-photos-preview">
+
+    <div class="input-chef-avatar">
+        <p>Enviar Avatar</p>
+        <input 
+            id="photos-chef_avatar-upload"
+            type="file"
+            name="photo"
+            accept="image/*"
+            onchange="PhotosUpload.addChefAvatar(event)"
+            />
+    </div>
+
+    <div class="chef-avatar photo" id={{chef.id}}>
+        <img 
+            src="{{chef.src}}" 
+            alt="{{chef.name}}">
+            <i 
+                class="material-icons"
+                onclick="PhotosUpload.removeOldPhoto(event)">close</i>
+    </div>
+    <input type="hidden" name="removed_files">
+    <input type="hidden" name='id' value={{chef.id}}>
+
+</div>

@@ -1,0 +1,64 @@
+:root {
+    --primary-gray-color: rgb(69, 69, 69);
+    --secondary-gray-color: rgb(175, 175, 175);
+    --third-gray-color: rgb(150, 150, 150);
+    --third-gray-color: rgb(125, 125, 125);
+    --primary-purple-color: rgb(116, 87, 191);
+    --secondary-purple-color: rgb(71, 41, 146);
+    --primary-blue-color: rgb(32, 30, 204);
+    --secondary-blue-color: rgb(21, 19, 126);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+html, body {
+    min-height: 100vh;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    color: var(--primary-gray-color);
+}
+
+footer {
+    margin-top: auto;
+}
+
+.main-page {
+    width: 90%;
+    max-width: 940px;
+    margin: 0 auto;
+}
+
+.container {
+    margin-left: 14%;
+    margin-right: 14%;
+    min-height: 100%;
+    overflow: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+a.button {
+    background-color: var(--primary-purple-color);
+    color: white;
+    padding: 4px 16px;
+    text-align: center;
+    border-radius: 4px;
+
+    transition: all 200ms;
+    margin-right: 8px;
+} 
+
+a.button:hover {
+    background-color: var(--secondary-purple-color);
+}

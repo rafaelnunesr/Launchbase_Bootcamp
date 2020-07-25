@@ -1,0 +1,118 @@
+.sub-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.sub-header h1 {
+    font-size: 24px;
+}
+
+.users {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+.user .name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.user .email {
+    font-size: 14px;
+    color: var(--third-gray-color);
+    font-weight: 300;
+}
+
+.user .controls {
+    margin-top: 16px;
+    font-size: 14px;
+}
+
+.user .controls a {
+    text-decoration: none;
+    color: var(--primary-purple-color);
+    font-weight: 500;
+
+    transition: all 200ms;
+}
+
+.user .controls a:hover {
+    color: var(--secondary-purple-color);
+}
+
+.user .controls button {
+    all: initial;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.user .controls button,
+.user .controls a:last-child {
+    text-decoration: none;
+    color: tomato;
+    font-weight: 500;
+    margin-left: 8px;
+
+    transition: all 200ms;
+}
+
+.user .controls button:hover,
+.user .controls a:last-child:hover {
+    color: rgb(207, 58, 32);
+}
+
+/*FIELDS USER*/
+form.user button{
+    margin: initial;
+    position: initial;
+}
+
+form.user button.cancel {
+    background-color: var(--secondary-gray-color);
+    color: white;
+    cursor: pointer;
+}
+
+form.user button.cancel:hover {
+    background-color: var(--third-gray-color);
+}
+
+.user-fields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.user-fields .item {
+    margin-bottom: 16px;
+}
+
+.user-fields h3 {
+    font-size: 15px;
+}
+
+.user-fields input {
+    margin-top: 4px;
+    border: 1px solid var(--third-gray-color);
+    padding: 8px;
+    width: 90%;
+
+    border-radius: 4px;
+}
+
+.item .isAdmin {
+    display: flex;
+}
+
+.isAdmin input[type="checkbox"] 
+{ 
+    width: initial;
+    margin-right: 8px;
+}
+
+.isAdmin h4 {
+    margin-top: 4px;
+    font-size: 14px;
+}
