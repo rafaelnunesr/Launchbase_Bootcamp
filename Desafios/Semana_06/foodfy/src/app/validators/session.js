@@ -1,6 +1,5 @@
 const User = require('../models/User')
 const { compare } = require('bcryptjs')
-const { findUser } = require('../models/User')
 
 module.exports = {
     async loginPost(req,  res, next){
@@ -17,7 +16,7 @@ module.exports = {
         }
 
         const email = req.body.email
-        let user = await User.findUser( {where: {email}} )
+        let user = await User.findOne('users', {where: {email}} )
 
         if(!user) {
             return res.render('admin/login/index', {

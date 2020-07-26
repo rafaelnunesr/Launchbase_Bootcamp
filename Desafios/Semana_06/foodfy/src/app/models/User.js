@@ -4,7 +4,6 @@ Base.init({ table: 'users' })
 
 const Users = {
     ...Base,
-
 }
 
 module.exports = Users

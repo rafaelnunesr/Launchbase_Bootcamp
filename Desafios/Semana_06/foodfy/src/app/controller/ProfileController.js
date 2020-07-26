@@ -8,7 +8,7 @@ module.exports = {
     async index(req, res){
 
         const { userId: id } = req.session
-        const user = await User.findUser({ where: {id} })
+        const user = await User.find({ where: {id} })
 
         return res.render('admin/users/show', { edit: true, user })
     },
