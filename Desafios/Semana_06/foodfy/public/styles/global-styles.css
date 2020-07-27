@@ -3,8 +3,8 @@
     --secondary-gray-color: rgb(175, 175, 175);
     --third-gray-color: rgb(150, 150, 150);
     --third-gray-color: rgb(125, 125, 125);
-    --primary-purple-color: rgb(116, 87, 191);
-    --secondary-purple-color: rgb(71, 41, 146);
+    --primary-purple-color: rgb(81, 5, 168);
+    --secondary-purple-color: rgb(53, 4, 110);
     --primary-blue-color: rgb(32, 30, 204);
     --secondary-blue-color: rgb(21, 19, 126);
 }
@@ -24,14 +24,34 @@ html, body {
 
 body {
     font-family: 'Roboto', sans-serif;
+    color: var(--primary-gray-color);
     display: flex;
     flex-direction: column;
-    color: var(--primary-gray-color);
+}
+
+.body-content-container {
+    width: 90%;
+    max-width: 940px;
+    margin: 0 auto;
 }
 
 footer {
     margin-top: auto;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .main-page {
     width: 90%;
