@@ -156,22 +156,23 @@ async function createFiles(){
 
 async function setRecipeFiles(){
     
-    if(recipesIds.length == 0 || filesIds.length == 0){
-        const recipes = await Recipe.findAll()
+    recipesIds = []
+    filesIds = []
+    
+    const recipes = await Recipe.findAll()
 
-        const allRecipes = await Promise.all(recipes)
+    const allRecipes = await Promise.all(recipes)
 
-        for (recipe of allRecipes){
-            recipesIds.push(recipe.id)
-        }
+    for (recipe of allRecipes){
+        recipesIds.push(recipe.id)
+    }
 
-        const files = await File.findAll()
-        const allFiles = await Promise.all(files)
+    const files = await File.findAll()
+    const allFiles = await Promise.all(files)
 
-        for (file of allFiles){
-            filesIds.push(file.id)
-        }
-    } 
+    for (file of allFiles){
+        filesIds.push(file.id)
+    }
 
     let start = 0,
         end = 3
@@ -199,11 +200,11 @@ async function setRecipeFiles(){
 }
 
 async function init(){
-    // await createUsers()
-    // await createChefs()
-    // await createRecipesForUsers()
-    // await createRecipesForChefs()
-    //await createFiles()
+    await createUsers()
+    await createChefs()
+    await createRecipesForUsers()
+    await createRecipesForChefs()
+    await createFiles()
     await setRecipeFiles()
 }
 
