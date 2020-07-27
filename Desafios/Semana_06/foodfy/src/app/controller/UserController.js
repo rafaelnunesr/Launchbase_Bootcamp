@@ -6,11 +6,10 @@ const Recipe = require("../models/Recipe")
 
 module.exports = {
     async list(req, res){
-        const users = await User.allUsers()
+        
+        const users = await User.findAll()
 
-        const results = users.rows
-
-        return res.render('./admin/users/users', { users: results })
+        return res.render('./admin/users/users', { users })
     },
     create(req, res) {
         return res.render('./admin/users/create')
