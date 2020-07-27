@@ -43,16 +43,20 @@ module.exports = {
 
         return res.render('admin/index', { recipes, pagination, filter })
     },
-    newRecipe(req, res){
+    async createRecipe(req, res){
 
-        Recipe.chefSelectOptions()
-        .then(function(results){
-            const chefOptions = results.rows
+        try {
+            const chefList = await Chef.findAll()
+            const chefOptions  = []
+
+            for(chef of chefList){
+                chefOptions.push(chef)
+            }
 
             return res.render('admin/recipes/create', { chefOptions })
-        }).catch(function(err){
-            throw new Error(err)
-        })
+        } catch (error) {
+            console.error(error)
+        }
 
     },
     async recipePost(req, res){
@@ -197,12 +201,22 @@ module.exports = {
 
         return res.redirect(`/admin/recipes/${req.body.id}`)
     },
-    newChef(req, res){
+    createChef(req, res){
         return res.render('admin/chefs/create')
     },
     async chefs(req, res){
-        let results = await Chef.all()
-        let chefs = results.rows
+
+        const allChefs = await Chef.findAll()
+        const chefs = []
+        
+       for (chef of allChefs){
+           const recipes = await Recipe.findAll({ where: { chef_id: chef.id } })
+           chefs.push({
+                ...chef,
+                photo: `${req.protocol}://${req.headers.host}${chef.photo.replace('public', "")}`,
+                total_recipes: recipes.length
+           })
+       }
 
         return res.render('admin/chefs/chefs', {chefs})
     },
