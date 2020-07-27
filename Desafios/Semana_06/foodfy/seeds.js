@@ -44,7 +44,7 @@ async function createUsers(){
 
         users.push({
             name: faker.name.firstName() + ' ' + faker.name.lastName(),
-            email: faker.internet.email(),
+            email: faker.internet.email().toLowerCase(),
             password,
             reset_token: '',
             reset_token_expires: '',
