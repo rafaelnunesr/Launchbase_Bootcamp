@@ -67,9 +67,9 @@ CREATE TABLE public.recipes (
     ingredients text,
     preparation text,
     information text,
+    user_id integer,
     created_at timestamp without time zone DEFAULT now(),
-    updated_at timestamp without time zone DEFAULT now(),
-    user_id integer
+    updated_at timestamp without time zone DEFAULT now()
 );
 
 CREATE SEQUENCE public.recipes_id_seq
@@ -149,3 +149,17 @@ CREATE TABLE "session" (
   )
   WITH(OIDS=FALSE);
   ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
+
+  -- to run seeds
+DELETE FROM recipe_files;
+DELETE FROM recipes;
+DELETE FROM users;
+DELETE FROM chefs;
+DELETE FROM files;
+
+-- restart sequence auto-increment from tables ids
+ALTER SEQUENCE users_id_seq RESTART WITH 1;
+ALTER SEQUENCE chefs_id_seq RESTART WITH 1;
+ALTER SEQUENCE recipes_id_seq RESTART WITH 1;
+ALTER SEQUENCE recipe_files_id_seq RESTART WITH 1;
+ALTER SEQUENCE files_id_seq RESTART WITH 1;
