@@ -16,7 +16,7 @@ module.exports = {
         }
 
         const email = req.body.email
-        let user = await User.findOne('users', {where: {email}} )
+        const user = await User.findOne({where: { email }})
 
         if(!user) {
             return res.render('admin/login/index', {
@@ -27,6 +27,7 @@ module.exports = {
 
         const password = user.password
         const passwordMatch = await compare(req.body.password, password)
+
 
         if(!passwordMatch){
             return res.render('admin/login/index', {
