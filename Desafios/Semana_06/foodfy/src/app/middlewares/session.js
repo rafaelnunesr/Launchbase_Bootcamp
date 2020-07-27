@@ -19,7 +19,7 @@ function isLoggedRedirect(req, res, next){
 async function onlyAdminUsers(req, res, next){
     
     const id = req.session.userId
-    const user = await User.findUser({ where: { id } })
+    const user = await User.findOne({ where: { id } })
 
     if (!user.is_admin){
         return res.render('admin/users/users', {
