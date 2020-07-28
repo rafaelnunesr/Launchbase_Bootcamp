@@ -1,22 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    {% block head %}
-        <title>Foodfy | Login</title>
-    {% endblock %}
-    {% include './styles.njk' %}
-</head>
-<body>
+{% include './layout.njk' %}
 
-    {% block content %}
-        <div class="body-content-container">
-            <form action="/login" method='POST'>
-                {% include '../parts/messages.njk' %}
-                {% include './parts/fields-login.njk' %}
-            </form>
-        </div>
-    {% endblock %}
+{% block head %}
+    <title>Foodfy | Login</title>
+{% endblock %}
 
-    {% include './scripts.njk' %}
-</body>
-</html>
+{% block content %}
+    <form action="/login" method='POST'>
+        {% include './parts/fields-login.njk' %}
+    </form>
+{% endblock %}
