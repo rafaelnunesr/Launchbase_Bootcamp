@@ -9,10 +9,11 @@
     position: absolute;
     right: 0;
     top: 0;
-    width: 300px;
+    width: 350px;
     color: white;
     padding: 40px;
     font-family: 'Roboto', sans-serif;
+    font-weight: bold;
 
     animation: hidemessage 400ms 5s ease-out forwards;
     text-align: center;
