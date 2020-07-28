@@ -1,4 +1,5 @@
 const inputBorder = document.querySelector('input')
+const allInputs = document.querySelectorAll('input')
 const defaultStyle = inputBorder.style
 
 const ValidateEmail = {
@@ -20,7 +21,10 @@ const ValidateEmail = {
         messageError.innerHTML = error
         document.querySelector('body').appendChild(messageError)
 
-        inputBorder.style.border = '1px solid red'
+        for (inputElement of allInputs){
+            inputElement.style.border = '1px solid red'
+        }
+        
         input.focus()
     },
     clearErrors() {
