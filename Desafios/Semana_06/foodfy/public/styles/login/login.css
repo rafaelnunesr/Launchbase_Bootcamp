@@ -29,3 +29,15 @@
     display: flex;
     justify-content: space-between;
 }
+
+/*RESET PASSWORD */
+.footer-recover {
+    display: block;
+    margin-top: 10px;
+    position: relative;
+}
+
+#recover {
+    position: absolute;
+    right: 0;
+}
