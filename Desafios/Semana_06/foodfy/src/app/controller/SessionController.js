@@ -16,7 +16,7 @@ module.exports = {
         return res.redirect('/')
     },
     resetForm(req, res) {
-        return res.render('admin/password-reset', { token: req.query.token })
+        return res.render('admin/login/password-reset')
     },
     async reset(req, res){
         const { password, token } = req.body
