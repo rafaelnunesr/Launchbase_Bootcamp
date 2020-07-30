@@ -17,7 +17,7 @@ routes.get('/logout', SessionController.logout)
 // password-recover
 routes.get('/recover-password', ProfileController.recoverPassword)
 //routes.post('/recover-password', UserValidator.recoverPassword, ProfileController.recoverPasswordPost)
-//routes.get('/password-reset', SessionController.resetForm)
+routes.get('/password-reset', SessionController.resetForm)
 //routes.post('/password-reset', SessionValidator.reset, SessionController.reset)
 
 module.exports = routes
