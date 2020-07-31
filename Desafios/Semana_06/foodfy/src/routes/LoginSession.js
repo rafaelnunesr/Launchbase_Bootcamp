@@ -12,15 +12,15 @@ const UserValidator = require('../app/validators/user')
 
 //login / logout
 routes.get('/', SessionController.login)
-routes.post('/login', SessionValidator.loginPost, SessionController.post)
-routes.get('/logout', SessionController.logout)
+routes.post('/', SessionValidator.loginPost, SessionController.post)
+//routes.get('/logout', SessionController.logout)
 
 // password-recover / user inform its email
-routes.get('/recover-password', ProfileController.recoverPassword)
-routes.post('/recover-password', UserValidator.recoverPassword, ProfileController.recoverPasswordPost)
+routes.get('/password-recover', ProfileController.recoverPassword)
+routes.post('/password-recover', UserValidator.recoverPassword, ProfileController.recoverPasswordPost)
 
 // password recover with token
-routes.get('/password-reset', SessionController.resetForm)
+//routes.get('/password-reset', SessionController.resetForm)
 //routes.post('/password-reset', SessionValidator.reset, SessionController.reset)
 
 module.exports = routes
