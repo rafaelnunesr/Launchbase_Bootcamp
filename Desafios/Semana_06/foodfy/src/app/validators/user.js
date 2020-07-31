@@ -43,7 +43,7 @@ module.exports = {
         const user = await User.findOne({ where: {email} })
 
         if (!user) {
-            return res.render('admin/login/password-reset', {
+            return res.render('admin/login/password-recover', {
                 user: req.body,
                 error: 'Usuário não cadastrado!'
             })
