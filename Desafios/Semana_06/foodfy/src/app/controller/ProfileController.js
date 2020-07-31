@@ -54,16 +54,15 @@ module.exports = {
         })
     },
     recoverPassword(req, res){
-        return res.render('admin/users/recover-password', { token: req.query.token })
+        return res.render('admin/login/password-reset')
     },
     async recoverPasswordPost(req, res){
 
         try {
 
             const user = req.user
-
             const token = crypto.randomBytes(20).toString('hex')
-
+            
             let now = new Date()
             now = now.setHours(now.getHours() + 1)
 
@@ -79,19 +78,19 @@ module.exports = {
                 html: `<h2>Poxa ${user.name}, Esqueceu sua senha?</h2>
                     <p>Não se preocupe. Vamos te ajudar a recuperar seu acesso ao Foodfy</p>
                     <p>Para recuperar seu acesso cadastrando uma nova senha, clique neste link
-                        <a href='http:localhost:5000/admin/password-reset?token=${token}' target='_blank'>RECUPERAR SENHA</a> e sem seguida cadastre uma nova senha.
+                        <a href='http:localhost:5000/login/password-reset?token=${token}' target='_blank'>RECUPERAR SENHA</a> e sem seguida cadastre uma nova senha.
                     </p>
                     <p>Lembre-se que este link tem validade máxima de 1 hora.</p>
                 ` // corpo do email
             })
     
-            return res.render('public/index', {
+            return res.render('admin/login/index', {
                 success: 'Email enviado com a recuperação da senha. Check sua caixa de entrada.'
             })
 
         }catch(err){
             console.error(err)
-            return res.render('/', {
+            return res.render('admin/login/password-reset', {
                 error: 'Desculpe, ocorreu um erro. Por favor, tente novamente.'
             })
         }

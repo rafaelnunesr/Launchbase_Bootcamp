@@ -1,5 +1,4 @@
 const User = require('../models/User')
-const { put, edit } = require('../controller/ProfileController')
 
 module.exports = {
     async post(req, res, next){
@@ -41,10 +40,10 @@ module.exports = {
         }
 
         const email = req.body.email
-        const user = await User.findUser({ where: {email} })
+        const user = await User.findOne({ where: {email} })
 
         if (!user) {
-            return res.render('admin/users/recover-password', {
+            return res.render('admin/login/password-reset', {
                 user: req.body,
                 error: 'Usuário não cadastrado!'
             })
