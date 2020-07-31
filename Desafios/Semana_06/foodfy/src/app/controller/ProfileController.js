@@ -54,7 +54,7 @@ module.exports = {
         })
     },
     recoverPassword(req, res){
-        return res.render('admin/login/password-reset')
+        return res.render('admin/login/password-recover')
     },
     async recoverPasswordPost(req, res){
 
