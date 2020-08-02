@@ -182,8 +182,8 @@ const PhotosUpload = {
 const Search = {
     searchInputField(){
         const searchInputAdmin = document.querySelector('#admin-search-input')
-        const addRecipeButton = document.querySelector('#addRecipe')
-        const addChefButton = document.querySelector('#addChef')
+        const addRecipeButton = document.querySelector('.addRecipe')
+        const addChefButton = document.querySelector('.addChef')
         const addHideSearchButton = document.querySelector('.hide-search')
         const searchForm = document.querySelector('.admin-subheader-links form')
         const buttonSearch = document.querySelector('.button-search')
@@ -203,8 +203,8 @@ const Search = {
     },
     hideInputField(){
         const searchInputAdmin = document.querySelector('#admin-search-input')
-        const addRecipeButton = document.querySelector('#addRecipe')
-        const addChefButton = document.querySelector('#addChef')
+        const addRecipeButton = document.querySelector('.addRecipe')
+        const addChefButton = document.querySelector('.addChef')
         const addHideSearchButton = document.querySelector('.hide-search')
 
         const status = searchInputAdmin.type

@@ -30,8 +30,31 @@ async function onlyAdminUsers(req, res, next){
     next()
 }
 
+async function ifUserIsAdmin(req, res, next){
+    let isAdmin = false
+    const id = req.session.userId
+
+    if(id == undefined){
+        return res.render('/login', {
+            error: 'Você precisa estar logado para acessar este recurso.'
+        })
+    }
+
+    const user = await User.findOne({ where: { id } })
+
+    if (user.is_admin){
+        isAdmin = true
+    }
+
+    req.isAdmin = isAdmin
+
+    next()
+
+}
+
 module.exports =  {
     onlyUsers,
     isLoggedRedirect,
-    onlyAdminUsers
+    onlyAdminUsers, 
+    ifUserIsAdmin
 }

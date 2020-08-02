@@ -12,8 +12,10 @@
             </div>
             
             <div class="admin-subheader-links">
-                <a id="addRecipe" href="/admin/recipes/create" class="button">+ Receita</a>
-                <a id="addChef" href="/admin/chefs/create" class="button">+ Chef</a>
+                <button onclick="location.href='/admin/recipes/create'" class="addRecipe">+ Receita</button>
+                {% if isAdmin %}
+                    <button onclick="location.href='/admin/chefs/create'" class="addChef">+ Chef</button>
+                {% endif %}
                 <a class="hide-search" hidden>
                     <i
                         class="material-icons"

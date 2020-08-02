@@ -35,6 +35,7 @@
     color: var(--primary-purple-color);
     padding: 2px 5px;
     border-radius: 4px;
+    margin-left: 10px;
 
     border: 1px solid var(--primary-purple-color);
 }

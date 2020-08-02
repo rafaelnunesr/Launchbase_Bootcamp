@@ -6,10 +6,10 @@ const Recipe = require("../models/Recipe")
 
 module.exports = {
     async list(req, res){
-        
+        const ifUserIsAdmin = req.isAdmin
         const users = await User.findAll()
 
-        return res.render('./admin/users/users', { users })
+        return res.render('./admin/users/users', { users, isAdmin: ifUserIsAdmin })
     },
     create(req, res) {
         return res.render('./admin/users/create')

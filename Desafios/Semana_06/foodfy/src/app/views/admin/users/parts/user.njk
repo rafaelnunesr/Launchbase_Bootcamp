@@ -8,13 +8,15 @@
             {{user.email}}
         </div>
 
-        <div class="controls">
-            <form action="/admin/users?_method=DELETE" method='POST' id="delete-user">
-                <a href="/admin/profile/{{user.id}}">Editar</a>
-                <button class="delete-user" type="submit" value={{user.id}}>Remover</button>
-                <input type="hidden" name="id" value={{user.id}}>
-            </form>
-        </div>
+        {% if isAdmin %}
+            <div class="controls">
+                <form action="/admin/users?_method=DELETE" method='POST' id="delete-user">
+                    <a href="/admin/profile/{{user.id}}">Editar</a>
+                    <button class="delete-user" type="submit" value={{user.id}}>Remover</button>
+                    <input type="hidden" name="id" value={{user.id}}>
+                </form>
+            </div>
+        {% endif %}
     </div>
 
      <script>

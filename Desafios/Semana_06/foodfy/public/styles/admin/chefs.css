@@ -1,0 +1,43 @@
+.show-chefs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.chef-mini-preview {
+    display: flex;
+    margin-top: 10px;
+}
+
+.chef-mini-avatar img {
+    width: 70px;
+    height: 70px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+    object-position: 50% 50%;
+
+}
+
+.chef-mini-avatar img:hover {
+    border: 2px solid white;
+}
+
+.chef-mini-info {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    margin-left: 10px;
+}
+
+.chef-mini-info h2 {
+    font-size: 16px;
+}
+
+.chef-mini-info p {
+    font-size: 14px;
+    color: var(--third-gray-color)
+}

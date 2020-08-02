@@ -7,6 +7,8 @@ const fs = require('fs')
 
 module.exports = {
     async index(req, res){
+        const ifUserIsAdmin = req.isAdmin
+
         let { page, limit, filter } = req.query
 
         page = page || 1
@@ -25,7 +27,7 @@ module.exports = {
         let recipes = []
 
         if(results.length == 0){
-            return res.render('admin/index', { recipes, filter})
+            return res.render('admin/index', { recipes, filter, isAdmin: ifUserIsAdmin})
         }
 
         pagination = {
@@ -41,7 +43,7 @@ module.exports = {
             })
         })
 
-        return res.render('admin/index', { recipes, pagination, filter })
+        return res.render('admin/index', { recipes, pagination, filter, isAdmin: ifUserIsAdmin })
     },
     async createRecipe(req, res){
 

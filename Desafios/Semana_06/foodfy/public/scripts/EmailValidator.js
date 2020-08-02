@@ -1,6 +1,10 @@
 const inputBorder = document.querySelector('input')
 const allInputs = document.querySelectorAll('input')
-const defaultStyle = inputBorder.style
+
+let defaultStyle = ''
+if(allInputs.length != 0){
+    defaultStyle = inputBorder.style
+}
 
 const ValidateEmail = {
     apply (input, func){

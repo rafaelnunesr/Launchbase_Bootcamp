@@ -4,9 +4,9 @@ const routes = express.Router()
 const multer = require('../app/middlewares/multer')
 
 const AdminController = require('../app/controller/AdminController')
-const { isLoggedRedirect, onlyUsers, onlyAdminUsers } =  require('../app/middlewares/session')
+const { isLoggedRedirect, onlyUsers, onlyAdminUsers, ifUserIsAdmin } =  require('../app/middlewares/session')
 
-routes.get('/', onlyUsers, AdminController.index)
+routes.get('/', onlyUsers, ifUserIsAdmin, AdminController.index)
 routes.get('/recipes/create', onlyUsers, AdminController.createRecipe)
 routes.post('/recipes', onlyUsers, multer.array('photos', 5), AdminController.recipePost)
 routes.get('/recipes/:id', onlyUsers, AdminController.showRecipe)
