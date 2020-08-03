@@ -3,6 +3,7 @@ const File = require('../models/File')
 const RecipeFiles = require('../models/RecipeFiles')
 const { stringToList } = require('../../lib/utils')
 const Chef = require('../models/Chef')
+const User = require('../models/User')
 const fs = require('fs')
 
 module.exports = {
@@ -48,14 +49,32 @@ module.exports = {
     async createRecipe(req, res){
 
         try {
-            const chefList = await Chef.findAll()
-            const chefOptions  = []
+            const userLogged = req.session.userId
+            const ifUserIsAdmin = req.isAdmin
+            let chefsUsersOptions = []
 
-            for(chef of chefList){
-                chefOptions.push(chef)
+            if(ifUserIsAdmin){
+                const chefList = await Chef.findAll()
+                const userList = await User.findAll()
+                const chefOptions  = [{id: 0, name: '---CHEFS---'}]
+                const userOptions = [{id: 0, name: '---USERS---'}]
+
+                for(chef of chefList){
+                    chefOptions.push(chef)
+                }
+
+                for(user of userList){
+                    userOptions.push(user)
+                }
+
+                chefsUsersOptions = chefOptions.concat(userOptions)
+            }
+            else {
+                const user = await User.findOne({ where: {id: userLogged} })
+                chefsUsersOptions.push(user)
             }
 
-            return res.render('admin/recipes/create', { chefOptions })
+            return res.render('admin/recipes/create', { chefsUsersOptions, userLogged })
         } catch (error) {
             console.error(error)
         }
@@ -208,6 +227,8 @@ module.exports = {
     },
     async chefs(req, res){
 
+        const ifUserIsAdmin = req.isAdmin
+
         const allChefs = await Chef.findAll()
         const chefs = []
         
@@ -220,7 +241,7 @@ module.exports = {
            })
        }
 
-        return res.render('admin/chefs/chefs', {chefs})
+        return res.render('admin/chefs/chefs', {chefs, isAdmin: ifUserIsAdmin})
     },
     async showChef(req, res){
 

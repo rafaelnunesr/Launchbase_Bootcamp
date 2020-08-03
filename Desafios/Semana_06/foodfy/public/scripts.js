@@ -178,7 +178,6 @@ const PhotosUpload = {
     }
 }
 
-
 const Search = {
     searchInputField(){
         const searchInputAdmin = document.querySelector('#admin-search-input')
@@ -218,37 +217,6 @@ const Search = {
         }
 
     }
-}
-
-const AddComponentRecipe = {
-    addIngredient(){
-        const ingredients = document.querySelectorAll('input[name="ingredients"]')
-        const lastIngredient = ingredients[ingredients.length - 1].value
-
-        if(lastIngredient == ""){
-            alert("Você já possui um campo vazio para adicionar um ingrediente!")
-        } else {
-            const new_input = document.createElement('input')
-            new_input.name = "ingredients"
-            new_input.placeholder = "Adicione um novo ingrediente"
-            document.querySelector('.ingredients-fields').appendChild(new_input)
-        }
-    },
-    addPreparation(){
-        const preparation = document.querySelectorAll('input[name="preparation"]')
-        const lastPreparation = preparation[preparation.length - 1].value
-
-        if(lastPreparation == ""){
-            alert("Você já possui um campo vazio!")
-        } else {
-            const new_input = document.createElement('input')
-            new_input.name = "preparation"
-            new_input.placeholder = "Adicione um novo passo na preparação"
-            document.querySelector('.preparation-fields').appendChild(new_input)
-        }
-    }
-
-
 }
 
 const ImageGallery = {

@@ -31,12 +31,12 @@
 
 <div class="fields-input">
     <div class="input-item">
-        <h1>Chef</h1>
+        <h1>Chef / Usuário</h1>
         <select name="chef_id">
-            {% for chef in chefOptions %}
+            {% for chef in chefsUsersOptions %}
                 <option 
                     value="{{chef.id}}"
-                    {%if recipe.chef_id == chef.id%} selected {%endif%}>
+                    {%if recipe.chef_id == chef.id or userLogged == chef.id%} selected {%elif chef.id == 0%} disabled selected {%endif%}>
                     {{chef.name}}
                 </option>
             {% endfor %}
