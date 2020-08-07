@@ -15,7 +15,7 @@ module.exports = {
         }
 
         const email = req.body.email
-        const user = await User.findUser({ where: {email} })
+        const user = await User.findOne({ where: {email} })
 
         if (user) {
             return res.render('admin/users/create', {
@@ -56,7 +56,7 @@ module.exports = {
     async edit(req, res, next){
 
         const userIdLogged = req.session.userId
-        const user = await User.findUser({ where: {userIdLogged} })
+        const user = await User.findOne({ where: {userIdLogged} })
 
         try{
 
@@ -80,7 +80,7 @@ module.exports = {
         
         try {
             const id = req.session.userId
-            const user = await User.findUser({ where: {id} })
+            const user = await User.findOne({ where: {id} })
 
             if (user.is_admin || user.id == req.body.id){
                 next()

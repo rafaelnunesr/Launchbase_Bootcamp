@@ -14,6 +14,7 @@ function isLoggedRedirect(req, res, next){
     if(req.session.userId){
         return res.redirect('/admin')
     }
+
 }
 
 async function onlyAdminUsers(req, res, next){
