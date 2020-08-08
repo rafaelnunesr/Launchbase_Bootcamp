@@ -3,6 +3,7 @@ const Recipe = require("../models/Recipe")
 const { hash } = require('bcryptjs')
 
 const SendEmail = require('../services/SendEmail')
+const { userAccountCreated } = require('../components/HtmlEmail')
 
 module.exports = {
     async list(req, res){
@@ -32,39 +33,16 @@ module.exports = {
 
         await User.create(userData)
 
-        let userPrivileges = ''
+        const HtmlEmail = userAccountCreated({email, name, isAdmin})
 
-        if (userData.is_admin){
+        await SendEmail(HtmlEmail)
 
-            userPrivileges = 'Você foi cadastrado como um administrador. Isso significa que você poderá criar, alterar, modificar e excluir outros usuários e chefs dentro da plataforma.'
-
-        }else {
-
-            userPrivileges = 'Você foi cadastrado como um usuário. Isso significa que você não poderá criar, alterar e/ou excluir outros usuários, chefs e receitas de outros usuários.'
-
-        }
-
-        let userEmail  = {
-            user: userData.email,
-            subject: 'Parabéns, você é o mais novo membro do Foodfy',
-            html: `<h2>Bem vindo, ${userData.name}</h2>
-            <p>Parabéns, você é o mais novo membro do Foodfy.</p>
-            <p>Para acessar a sua conta, click em
-                <a href='http:localhost:5000/login' target='_blank'>ACESSAR CONTA</a> em seguida, click em esqueci minha senha e você terá a oportunidade de cadastrar uma senha para a sua conta.
-            </p>
-            <p>${userPrivileges}</p>`
-        }
-
-        await SendEmail(userEmail)
-
-        const message = {
+        return res.render('admin/users/users', {
             success: 'O usuário foi devidamente cadastrado e notificado por email'
-        }
-        return res.redirect('/admin/users')
+        })
     },
     async edit(res, req){
         return res.render(`/admin/edit/${user.id}`)
-
     },
     async put(req, res){
 

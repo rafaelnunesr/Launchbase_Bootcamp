@@ -15,7 +15,7 @@ module.exports = {
     async edit(req, res){
 
         const { id } = req.params
-        const user = await User.findUser({ where: {id} })
+        const user = await User.findOne({ where: {id} })
 
         return res.render(`admin/users/edit`, { user, edit: true })
 
