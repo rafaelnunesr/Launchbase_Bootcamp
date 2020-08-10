@@ -16,7 +16,7 @@ module.exports = {
         }
 
         const email = req.body.email
-        const user = await User.findOne({where: { email }})
+        const user = await User.findOne({ where: { email } })
 
         if(!user) {
             return res.render('admin/login/index', {
@@ -61,14 +61,14 @@ module.exports = {
                 if(req.body[key] == ''){
                     return res.render('admin/users/edit', {
                         error: 'Preencha todos os campos!',
-                        user: results, 
+                        user: req.body, 
                         edit: true
                     })
                 }
             }
 
             const id = req.session.userId
-            const user = await findUser({ where: {id} })
+            const user = await User.findOne({ where: {id} })
 
             if(user.id != id || !user.is_admin){
                 return res.render('admin/users', {
@@ -95,7 +95,7 @@ module.exports = {
     async reset(req, res, next){
         const { email, password, passwordRepeat, token} = req.body
 
-        const user = await User.findUser( { where: { email } } )
+        const user = await User.findOne( { where: { email } } )
 
         if (!user) {
             return res.render('admin/password-reset', {

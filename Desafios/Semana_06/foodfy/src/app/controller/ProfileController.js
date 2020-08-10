@@ -17,26 +17,35 @@ module.exports = {
         const { id } = req.params
         const user = await User.findOne({ where: {id} })
 
-        return res.render(`admin/users/edit`, { user, edit: true })
+        const userLogged =  await User.findOne({ where: {id: req.session.userId} })
+
+        return res.render(`admin/users/edit`, { user, edit: true, userLogged })
 
     },
     async put(req, res){
 
         let { id, password, email, name } = req.body
 
-        // check if password match
-        const userDataBeforeUpdate = await User.findUser( { where: {id} } )
+        const userDataBeforeUpdate = await User.findOne( { where: {id} } )
+        let passwordWithHashToBeChecked = ''
+        
+        if (id !== req.session.userId){
+            const userLogged = await User.findOne({ where: {id: req.session.userId} })
+            passwordWithHashToBeChecked = userLogged.password
+        }else {
+            passwordWithHashToBeChecked = userDataBeforeUpdate.password
+        }
 
-        const passwordCheck = compare(password, userDataBeforeUpdate.password)
+        const passwordCheck = compare(password, passwordWithHashToBeChecked)
+
         if (!passwordCheck){
             return res.redirect(`/admin/profile/${id}`, {
                 error: 'Desculpe, a senha está incorreta. Nenhuma alteração para este usuário foi feita.'
             })
         }
 
-        // check if email has already been register
         if (email != userDataBeforeUpdate.email){
-            const newEmail = await User.findUser({ where: {email} })
+            const newEmail = await User.findOne({ where: {email} })
             if (newEmail){
                 return res.redirect(`/admin/profile/${id}`, {
                     error: 'Desculpe, já existe um outro usuário cadastrado com este email.'
@@ -49,7 +58,7 @@ module.exports = {
             email
         })
 
-        return res.render(`admin/profile/${id}`, {
+        return res.render('admin/index', {
             success: `O usuário ${name} foi atualizado com sucesso.`
         })
     },

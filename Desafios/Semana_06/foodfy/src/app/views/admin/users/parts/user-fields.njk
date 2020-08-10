@@ -16,10 +16,16 @@
 
         <input type="hidden" name="id" value={{user.id}}>
 
-        {% if isAdmin %}
+        {% if userLogged %}
             <div class="item">
                 <div class="isAdmin">
-                    <input type="checkbox" name="isAdmin">
+                    <input 
+                        type="checkbox" 
+                        name="isAdmin"
+                        {% if user.is_admin %}
+                            checked
+                        {% endif %}
+                    >
                     <h4>Administrador</h4>
                 </div>
             </div>
