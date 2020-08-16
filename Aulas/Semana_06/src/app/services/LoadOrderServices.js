@@ -3,7 +3,6 @@ const User = require('../models/User')
 const LoadProductService = require('./LoadProductServices')
 
 const { formatPrice, date } =  require('../../lib/utils')
-const Order = require('../models/Order')
 
 async function format(order){
     // detalhes do produto
